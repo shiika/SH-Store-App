@@ -1,0 +1,71 @@
+@import '../../..//node_modules/bootstrap/scss/functions';
+@import '../../..//node_modules/bootstrap/scss/variables';
+@import '../../../node_modules/bootstrap/scss/mixins';
+
+@font-face {
+    font-family: latoRegular;
+    src: url(../assets/Fonts/Lato-Regular.ttf);
+}
+
+body {
+    font-family: latoRegular;
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: $text-primary;
+    text-decoration: none;
+
+    &:hover {
+        color: currentColor;
+        text-decoration: none;
+    }
+}
+
+
+
+// Utilities
+
+// Fonts
+.georgia-font {
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+}
+
+.lato-font {
+    font-family: latoRegular;
+}
+
+// Background-color
+.bg-light {
+    background-color: #BBBBBB !important;
+}
+
+.bg-dark {
+    background-color: #606060 !important;
+}
+
+// @include media-breakpoint-down(md) {
+
+//     html {
+//         font-size: 14px;
+//     }
+// }
+
+// @include media-breakpoint-down(sm) {
+
+//     html {
+//         font-size: 14px;
+//     }
+// }
+
+@include media-breakpoint-down(xs) {
+
+    html {
+        font-size: 12px;
+    }
+}

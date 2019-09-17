@@ -1,0 +1,120 @@
+<div class="home" appScroll>
+  <div class="home__header d-flex justify-content-start align-items-center flex-column mb-5">
+    <div class="home__img">
+      <img src="../../assets/img/20190909_aehp_jeansjoggers_lg.jpg" class="mw-100" alt="Models" #img>
+    </div>
+    <div class="home__container">
+      <h1 class="text-uppercase m-2 home__heading text-center font-weight-normal">hazy shade of spring</h1>
+      <h3 class="home__label m-0">Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo.</h3>
+      <button type="button" class="home__button d-none d-sm-inline-block btn btn-primary text-uppercase text-white">check new
+        arrivals</button>
+    </div>
+  </div>
+
+  <div class="white-background">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="home__grid">
+            <div class="home__grid__item home__grid__item--1">
+              <div class="home__grid__item__heading text-center text-white font-weight-bold text-uppercase">
+                <h2>Heather</h2>
+                <h2>Grey Basics</h2>
+                <em class="text-uppercase font-weight-normal mt-2 georgia-font">new arrivals</em>
+              </div>
+            </div>
+            <div class="home__grid__item home__grid__item--2 p-5 text-center text-white">
+              <a href="#" class="d-block w-100 logo mb-4"><img src="../../assets/SVG/Layer 31.svg" alt="Twitter"></a>
+              <em class="georgia-font">Opening Ceremony @IndonesiaFW tomorrow, PMers! Are you ready for the biggest
+                fashion
+                movement in Indonesia? #infoPM</em>
+            </div>
+            <div class="home__grid__item home__grid__item--3">
+
+            </div>
+            <div class="home__grid__item home__grid__item--4 bg-dark">
+              <img src="../../assets/SVG/Thin Left Down Arrow.svg" class="mb-3" alt="Thin Left Arrow">
+              <div class="home__grid__item__heading text-center text-white font-weight-bold text-uppercase">
+                <h2>Elegant Shoes</h2>
+                <em>Braided Leather</em>
+              </div>
+            </div>
+            <div class="home__grid__item home__grid__item--5">
+              <div class="home__grid__item__heading text-center text-white font-weight-bold text-uppercase">
+                <h2>Chuck taylors</h2>
+                <em>$125.00</em>
+              </div>
+            </div>
+            <div class="home__grid__item home__grid__item--6 p-5 text-center text-white">
+              <a href="#" class="d-block w-100 logo mb-4"><img src="../../assets/SVG/Layer 31.svg" alt="Twitter"></a>
+              <em class="georgia-font">Girls, Girls, Girls: A Look Back at 50 Years of the Pirelli Calendar
+                <span class="d-block mt-3">@Vogue</span>
+              </em>
+            </div>
+            <div class="home__grid__item home__grid__item--7">
+              <div class="home__grid__item__heading text-center text-white font-weight-bold text-uppercase">
+                <h2>jeans for adventure</h2>
+                <em>Braided Leather</em>
+              </div>
+            </div>
+            <div class="home__grid__item home__grid__item--8">sh</div>
+            <div class="home__grid__item home__grid__item--9 bg-dark">
+              <img src="../../assets/SVG/Thin Left Down Arrow.svg" class="mb-3" alt="Thin Left Arrow">
+              <div class="home__grid__item__heading text-center text-white font-weight-bold text-uppercase">
+                <h2>jaxon hat</h2>
+                <em>beante hat</em>
+              </div>
+            </div>
+            <div class="home__grid__item home__grid__item--10 bg-light">
+              <div class="home__grid__item__heading text-center text-white font-weight-bold text-uppercase">
+                <h2>basic blazer</h2>
+                <em>from $199.99</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row home__subscription">
+        <div class="col-12 text-center">
+          <h1 class="text-uppercase">sign up to recieve our updates</h1>
+          <p class="georgia-font"><em>Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et
+              ultrices
+              volutpat.</em></p>
+          <div class="form-group mt-5 home__subscription__input">
+            <input type="text" class="form-control px-2" placeholder="Your e-mail">
+            <button type="button" class="btn btn-primary px-4 text-white">add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row px-4">
+        <div class="col-12 home__carousel">
+          <div class="home__carousel__arrow home__carousel__arrow--left" (click)="onSlideRight()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="33.018" viewBox="0 0 17 33.018">
+              <path id="Arrow_Thin_Left._Attribute_as_Daniel_Bruce_from_Flaticon.com"
+                data-name="Arrow Thin Left. Attribute as Daniel Bruce from Flaticon.com"
+                d="M215.627,2094.249a1.375,1.375,0,0,0,0-1.879,1.224,1.224,0,0,0-1.791,0l-14.467,15.18a1.377,1.377,0,0,0,0,1.88l14.467,15.18a1.224,1.224,0,0,0,1.791,0,1.375,1.375,0,0,0,0-1.878l-13.194-14.241Z"
+                transform="translate(-198.999 -2091.981)" fill="#fff" />
+            </svg>
+          </div>
+          <div class="home__carousel__container position-relative d-flex" data-extra-right="3" data-extra-left="0"
+            #carouselContainer>
+            <div class="home__carousel__item" *ngFor="let item of testimonials; let i = index">
+              <img [src]="testimonials[i]" class="w-100 h-100 d-inline-block" alt="testimonial">
+            </div>
+          </div>
+          <div class="home__carousel__arrow home__carousel__arrow--right" (click)="onSlideLeft()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="33.018" viewBox="0 0 17 33.018">
+              <path id="Arrow_Thin_Right._Attribute_as_Daniel_Bruce_from_Flaticon.com"
+                data-name="Arrow Thin Right. Attribute as Daniel Bruce from Flaticon.com"
+                d="M1342.373,2121.751a1.376,1.376,0,0,0,0,1.879,1.225,1.225,0,0,0,1.791,0l14.468-15.18a1.376,1.376,0,0,0,0-1.88l-14.468-15.18a1.224,1.224,0,0,0-1.791,0,1.376,1.376,0,0,0,0,1.879l13.194,14.241Z"
+                transform="translate(-1342.002 -2091)" fill="#fff" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

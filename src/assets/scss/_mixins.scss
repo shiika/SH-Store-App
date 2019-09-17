@@ -1,0 +1,10 @@
+@mixin perfect-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin grid-background($url) {
+    background: url($url) center center no-repeat;
+    background-size: cover;
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -6,9 +7,21 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } fr
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  constructor(private renderer: Renderer2, private elRef: ElementRef) { }
+  @ViewChild("search", {static: true}) searchItem: ElementRef
+
+  constructor(
+    private renderer: Renderer2, 
+    private elRef: ElementRef) { }
 
   ngOnInit() {
+      this.searchItem.nativeElement.addEventListener("mouseenter", (e) => {
+        e.target.previousSibling.classList.toggle("active");
+      });
+
+      this.searchItem.nativeElement.addEventListener("mouseleave", (e) => {
+        e.target.previousSibling.classList.toggle("active");
+      })
+      
   }
 
   collapse(info: object) {
@@ -18,10 +31,5 @@ export class NavbarComponent implements OnInit {
         this.renderer.removeClass(this.elRef.nativeElement.querySelector(info["target"]), "show");
       }
   }
-
-  dropdownToggle(target: string) {
-    this.renderer.addClass(this.elRef.nativeElement.querySelector(target), "show");
-  }
-
 
 }

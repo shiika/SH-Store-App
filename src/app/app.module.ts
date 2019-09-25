@@ -6,6 +6,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { CollapseDirective } from './navbar/collapse.directive';
+import { MenComponent } from './men/men.component';
+import { AppRoutingModule } from './app-routing.module';
+import { WomanComponent } from './woman/woman.component';
 
 @NgModule({
   declarations: [
@@ -13,10 +16,13 @@ import { CollapseDirective } from './navbar/collapse.directive';
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    CollapseDirective
+    CollapseDirective,
+    MenComponent,
+    WomanComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

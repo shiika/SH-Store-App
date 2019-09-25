@@ -1,8 +1,9 @@
 @import '../../assets/scss/variables';
-@import '../../..//node_modules/bootstrap/scss/functions';
-@import '../../..//node_modules/bootstrap/scss/variables';
-@import '../../../node_modules/bootstrap/scss/mixins';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/dropdown';
+@import '~bootstrap/scss/forms';
 
 .navbar {
   padding: 2rem 0;
@@ -31,12 +32,19 @@
         opacity: 1;
     }
 
-    .nav-item:hover {
+    .nav-item:hover, .nav-item.active {
 
       &::after {
         width: calc(100% - 1.2rem * 2);
       }
 
+    }
+
+    .nav-item.disable-after {
+
+      &::after {
+        display: none;
+      }
     }
 
     .nav-item {
@@ -76,10 +84,36 @@
 
   &__login {
 
+    & > * {
+      transition: all 2s;
+    }
+
     .nav-item {
 
+      &__search {
+        border: 1px solid #333;
+        border-right: none;
+        width: 0px;
+        opacity: 0;
+        transition: width .6s, opacity .6s;
+
+        & + .nav-link {
+          height: 100%;
+        }
+
+        input {
+          border: none;
+          font-size: .7rem;
+        }
+      }
+
+      &__search.active {
+          width: 150px;
+          opacity: 1;
+      }
+
       .nav-link {
-        padding: .4rem .6rem;
+        padding: .4rem .7rem;
 
         &:hover::after {
           display: none;

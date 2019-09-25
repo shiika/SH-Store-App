@@ -1,28 +1,31 @@
 <nav class="navbar bg-white navbar-expand-lg navbar-light">
 
   <div class="container">
-    <a class="navbar-brand" href="#">SH</a>
+    <a class="navbar-brand" routerLink="/" routerLinkActive="active">SH</a>
     <button class="navbar-toggler" appCollapse (onCollapse)="collapse($event)" type="button" data-toggle="collapse"
       data-target="#navbarTogglerDemo01">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown active" appCollapse data-target="#dropdown-menu">
-          <a class="nav-link" href="#">Woman</a>
-          <div class="dropdown-menu" id="dropdown-menu">
-            <a href="#" class="dropdown-item">Link</a>
-            <a href="#" class="dropdown-item">Link</a>
-            <a href="#" class="dropdown-item">Link</a>
-            <a href="#" class="dropdown-item">Link</a>
+      <ul class="navbar-nav mr-auto" id="navigation-bar">
+        <li class="nav-item dropdown" routerLinkActive="active" appCollapse data-target="#woman-menu">
+          <a class="nav-link" [routerLink]="['categories', 'women']">Woman</a>
+          <div class="dropdown-menu" id="woman-menu">
+            <a href="#" class="dropdown-item">Hoodies & Sweatshirts</a>
+            <a href="#" class="dropdown-item">Jeans</a>
+            <a href="#" class="dropdown-item">Jackets and Coats</a>
+            <a href="#" class="dropdown-item">Sweaters & Cardigans</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Man</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Kids</a>
+        <li class="nav-item dropdown" routerLinkActive="active" appCollapse data-target="#men-menu">
+          <a class="nav-link" [routerLink]="['categories', 'men']">Men</a>
+          <div class="dropdown-menu" id="men-menu">
+              <a href="#" class="dropdown-item">Hoodies & Sweatshirts</a>
+              <a href="#" class="dropdown-item">Jackets & Coats</a>
+              <a href="#" class="dropdown-item">Jeans</a>
+              <a href="#" class="dropdown-item">Shoes</a>
+            </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Coming Soon</a>
@@ -32,7 +35,7 @@
         </li>
       </ul>
       <ul class="navbar-nav navbar__login">
-        <li class="nav-item mr-4">
+        <li class="nav-item disable-after mr-4">
           <a href="#" class="nav-link d-flex justify-content-center align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="11.002" height="17.002"
               viewBox="0 0 11.002 17.002">
@@ -50,7 +53,7 @@
             </svg> Log In
           </a>
         </li>
-        <li class="nav-item mr-5">
+        <li class="nav-item disable-after mr-5">
           <a href="#" class="nav-link d-flex justify-content-center align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="17" height="17" viewBox="0 0 17 17">
               <path
@@ -58,8 +61,11 @@
                 fill="#222" /></svg> Basket (0)
           </a>
         </li>
-        <li class="nav-item d-flex justify-content-center align-items-center" style="border: 1px solid #000">
-          <a href="#" class="nav-link d-flex">
+        <li class="nav-item d-flex justify-content-center align-items-center disable-after">
+          <div class="form-group nav-item__search m-0">
+            <input type="text" class="form-control" placeholder="Search Something...">
+          </div>
+          <a href="#" class="nav-link d-flex align-items-center position-relative" style="border: 1px solid #333" #search>
             <svg xmlns="http://www.w3.org/2000/svg" width="15.999" height="15.998" viewBox="0 0 15.999 15.998">
               <defs>
                 <style>

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
+import { InStockService } from './shared/in-stock.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,8 +9,11 @@ import { ViewEncapsulation } from '@angular/core';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
-  title = 'SH-Store-App';
+export class AppComponent implements OnInit {
+  constructor(private inStock: InStockService) {}
 
+  ngOnInit() {
+    
+  }
   
 }

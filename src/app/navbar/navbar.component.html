@@ -2,14 +2,14 @@
 
   <div class="container">
     <a class="navbar-brand" routerLink="/" routerLinkActive="active">SH</a>
-    <button class="navbar-toggler" appCollapse (onCollapse)="collapse($event)" type="button" data-toggle="collapse"
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
       data-target="#navbarTogglerDemo01">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <ul class="navbar-nav mr-auto" id="navigation-bar">
-        <li class="nav-item dropdown" routerLinkActive="active" appCollapse data-target="#woman-menu">
+        <li class="nav-item dropdown" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['categories', 'women']">Woman</a>
           <div class="dropdown-menu" id="woman-menu">
             <a href="#" class="dropdown-item">Hoodies & Sweatshirts</a>
@@ -18,9 +18,9 @@
             <a href="#" class="dropdown-item">Sweaters & Cardigans</a>
           </div>
         </li>
-        <li class="nav-item dropdown" routerLinkActive="active" appCollapse data-target="#men-menu">
+        <li class="nav-item dropdown" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['categories', 'men']">Men</a>
-          <div class="dropdown-menu" id="men-menu">
+          <div class="dropdown-menu">
               <a href="#" class="dropdown-item">Hoodies & Sweatshirts</a>
               <a href="#" class="dropdown-item">Jackets & Coats</a>
               <a href="#" class="dropdown-item">Jeans</a>

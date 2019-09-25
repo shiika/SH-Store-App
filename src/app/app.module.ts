@@ -16,7 +16,6 @@ import { WomanComponent } from './woman/woman.component';
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    CollapseDirective,
     MenComponent,
     WomanComponent
   ],

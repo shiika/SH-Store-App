@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../shared/item.model';
 import { InStockService } from '../shared/in-stock.service';
+import { Categories } from '../shared/categories.model';
 
 @Component({
     selector: "app-woman",
@@ -15,7 +16,18 @@ export class WomanComponent implements OnInit {
     constructor(private inStock: InStockService) {}
 
     ngOnInit() {
-        this.hoodies = this.inStock.getWomenCategory("Hoodies & Sweatshirts");
-        // this.jackets = this.inStock.getWomenCategory("Jackets & Coats");
+        this.getWomen();
+        this.inStock.womenItemsFetched
+            .subscribe(
+                (items: Categories) => {
+                    this.hoodies = items["Hoodies & Sweatshirts"];
+                }
+            )
     }
+
+    private getWomen() {
+        this.inStock.fetchWomen();
+    }
+
+    
 }

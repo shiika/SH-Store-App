@@ -1,98 +1,44 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
 import { Item } from './item.model';
+import { Categories } from './categories.model';
+import { Subject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class InStockService {
-  menItems: any = {
-    "Hoodies & Sweatshirts": [
-      {
-        img: "../../assets/img/Men/Hoody_1.jpg",
-        name: "AE FLEECE COLORBLOCK HOODIE",
-        price: 89.95
-      },
-      {
-        img: "../../assets/img/Men/Hoody_2.jpg",
-        name: "AE FLEECE COLORBLOCK HOODIE",
-        price: 89.95
-      },
-      {
-        img: "../../assets/img/Men/Hoody_3.jpg",
-        name: "AE FLEECE PULLOVER HOODIE",
-        price: 89.95
-      },
-      {
-        img: "../../assets/img/Men/Hoody_4.jpg",
-        name: "AE FLEECE PULLOVER HOODIE",
-        price: 89.95
-      }
-    ],
+  womenItemsFetched = new Subject<Categories>();
+  menItemsFetched = new Subject<Categories>();
 
-    "Jackets & Coats": [
-      {
-        img: "../../assets/img/Men/Jacket_1.jpg",
-        name: "AE FLEECE COLORBLOCK HOODIE",
-        price: 89.95
-      },
-      {
-        img: "../../assets/img/Men/Jacket_2.jpg",
-        name: "AE FLEECE COLORBLOCK HOODIE",
-        price: 89.95
-      },
-      {
-        img: "../../assets/img/Men/Jacket_3.jpg",
-        name: "AE FLEECE COLORBLOCK HOODIE",
-        price: 89.95
-      },
-      {
-        img: "../../assets/img/Men/Jacket_4.jpg",
-        name: "AE FLEECE COLORBLOCK HOODIE",
-        price: 89.95
-      },
-    ]
+  womenItems: Categories = {};
+  menItems: Categories = {};
+  
+
+  constructor(private http: HttpClient) { }
+
+  fetchWomen() {
+    this.http.get<{[key: string]: Item[]}>("https://shopping-store-1fe69.firebaseio.com/women.json")
+      .subscribe(
+        (womenItems) => {
+          this.womenItems = womenItems;
+          this.womenItemsFetched.next(womenItems);
+          console.log(womenItems);
+        }
+      )
   }
 
-  womenItems: any = {
-    "Hoodies & Sweatshirts": [
-      {
-        img: "../../assets/img/Women/Hoody_w_1.jpg",
-        name: "AE FLEECE COLORBLOCK HOODIE",
-        price: 89.95
-      },
-      {
-        img: "../../assets/img/Women/Hoody_w_2.jpg",
-        name: "AE FLEECE COLORBLOCK HOODIE",
-        price: 89.95
-      },
-      {
-        img: "../../assets/img/Women/Hoody_w_3.jpg",
-        name: "AE FLEECE COLORBLOCK HOODIE",
-        price: 89.95
-      },
-      {
-        img: "../../assets/img/Women/Hoody_w_4.jpg",
-        name: "AE FLEECE COLORBLOCK HOODIE",
-        price: 89.95
-      },
-    ]
+  fetchMen() {
+    this.http.get<{[key: string]: Item[]}>("https://shopping-store-1fe69.firebaseio.com/men.json")
+      .subscribe(
+        (menItems) => {
+          this.menItems = menItems;
+          this.menItemsFetched.next(menItems);
+          console.log(menItems);
+        }
+      )
   }
 
-  constructor() { }
-
-  getMenCategory(cat: string): Array<Item> {
-    return [...this.menItems[cat]]
-  }
-
-  getWomenCategory(cat: string): Array<Item> {
-    return [...this.womenItems[cat]]
-  }
-
-  // getHoodies(): Array<Item> {
-  //   return [...this.menItems["Hoodies & Sweatshirts"]];
-  // }
-
-  // getJackets(): Array<Item> {
-  //   return [...this.menItems["Jackets & Coats"]];
-  // }
+  
 }

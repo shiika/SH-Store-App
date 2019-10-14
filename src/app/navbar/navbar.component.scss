@@ -3,7 +3,6 @@
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/dropdown';
-@import '~bootstrap/scss/forms';
 
 .navbar {
   padding: 2rem 0;
@@ -13,23 +12,29 @@
     color: white;
     padding: .35rem .5rem .5rem;
     margin-right: .6rem;
-    position: relative;
   }
 
   .navbar-nav {
 
-    .dropdown .dropdown-toggle::after {
-      border: 0;
-    }
+    .dropdown {
 
-    .dropdown-menu {
-      opacity: 0;
-      transition: opacity .4s;
-        
-    }
+      .dropdown-menu.show {
+        overflow: hidden;
+        height: 0;
+        padding: 0;
+        border: none;
+        margin: 0;
+      }
 
-    .dropdown-menu.animate {
-        opacity: 1;
+      .dropdown-menu.slideIn {
+        // height: 0;
+        height: 130px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        padding: .5rem 0;
+        animation-name: slideIn;
+        animation-duration: .5s;
+      }
+
     }
 
     .nav-item:hover, .nav-item.active {
@@ -90,72 +95,65 @@
 
     .nav-item {
 
-      &__search {
-        border: 1px solid #333;
-        border-right: none;
-        width: 0px;
-        opacity: 0;
-        transition: width .6s, opacity .6s;
-
-        & + .nav-link {
-          height: 100%;
-        }
-
-        input {
-          border: none;
-          font-size: .7rem;
-        }
-      }
-
-      &__search.active {
-          width: 150px;
-          opacity: 1;
-      }
-
       .nav-link {
         padding: .4rem .7rem;
-
-        &:hover::after {
-          display: none;
-        }
       }
     }
   }
 
-    @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(md) {
 
-      .collapse:not(.show) {
-        display: block;
-      }
+    .navbar-collapse {
+      overflow: hidden;
+      height: 0;
+      transition: height 1s;
   
-      .collapse {
-        padding: 0;
-        overflow: hidden;
-        height: 0;
-        transition: height 1s, padding .3s;
+      .nav-item {
+        padding: .2rem 1.2rem;
       }
+
+      .nav-item:hover, .nav-item.active {
   
-      .collapse.show {
-        padding: .6rem 0;
-        height: 12.6rem;
-      }
-  
-      .navbar-nav .nav-item::after {
-        content: none;
-        display: none;
-      }
-      
-      .dropdown .dropdown-menu {
-        display: none;
+        &::after {
+          width: 0;
+        }
+    
       }
     }
-
-
-
-    @include media-breakpoint-down(xs) {
-      .collapse.show {
-        height: 13.6rem;
-      }
+  
+    .collapsed {
+        height: 260px;
     }
+  
+    .dropdown-menu {
+      display: none;
+    }
+  }
+
+} 
+
+@keyframes slideIn {
+  
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 130px;
+  }
+
+
+}
+
+@keyframes slideOut {
+  
+  from {
+    height: 130px;
+  }
+
+  to {
+    height: 0;
+  }
+
 
 }

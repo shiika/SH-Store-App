@@ -8,8 +8,8 @@
 </nav>
 
 <div class="container">
-    <div class="row">
-        <div class="col-12 men__header d-flex flex-column align-items-center">
+    <div class="row men__header">
+        <div class="col-12 d-flex flex-column align-items-center">
             <h1 class="text-uppercase">Hoodies & Sweatshirts</h1>
             <a href="#" class="d-block georgia-font"><em>show more &rarr;</em></a>
         </div>
@@ -26,8 +26,18 @@
             </div>
         </div>
         
+    </div>
+
+    <div class="row men__header">
+        <div class="col-12 d-flex flex-column align-items-center">
+            <h1 class="text-uppercase">Jackets & Coats</h1>
+            <a href="#" class="d-block georgia-font"><em>show more &rarr;</em></a>
+        </div>
+    </div>
+
+    <div class="row men__items">
         <div 
-        class="col-12 men__items__item col-md-6 col-lg-3 my-5"
+        class="col-12 men__items__item col-md-6 col-lg-3"
         *ngFor="let jacket of jackets">
             <img [src]="jacket.img" class="mw-100" alt="jacket">
             <div class="men__items__item__content d-flex flex-column align-items-center">
@@ -35,5 +45,6 @@
                 <span class="d-block">&euro; {{jacket.price}}</span>
             </div>
         </div>
+        
     </div>
 </div>

@@ -12,7 +12,7 @@ const appRoutes: Routes = [
         { path: 'men', component: MenComponent },
         { path: 'women', component: WomanComponent }
     ] },
-    { path: 'home', component: HomeComponent, data: { inHome: true } },
+    { path: 'home', component: HomeComponent },
 ];
 
 @NgModule({

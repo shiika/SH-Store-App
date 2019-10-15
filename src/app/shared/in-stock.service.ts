@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Item } from './item.model';
 import { Categories } from './categories.model';
 import { Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -19,14 +20,21 @@ export class InStockService {
   constructor(private http: HttpClient) { }
 
   fetchWomen() {
-    this.http.get<{[key: string]: Item[]}>("https://shopping-store-1fe69.firebaseio.com/women.json")
-      .subscribe(
-        (womenItems) => {
+    // this.http.get<{[key: string]: Item[]}>("https://shopping-store-1fe69.firebaseio.com/women.json")
+    //   .subscribe(
+    //     (womenItems) => {
+    //       this.womenItems = womenItems;
+    //       this.womenItemsFetched.next(womenItems);
+    //       console.log(womenItems);
+    //     }
+    //   )
+    return this.http.get<{[key: string]: Item[]}>("https://shopping-store-1fe69.firebaseio.com/women.json")
+      .pipe(tap(
+        womenItems => {
           this.womenItems = womenItems;
-          this.womenItemsFetched.next(womenItems);
-          console.log(womenItems);
+          console.log(this.womenItems);
         }
-      )
+      ))
   }
 
   fetchMen() {
@@ -37,6 +45,21 @@ export class InStockService {
           this.menItemsFetched.next(menItems);
           console.log(menItems);
         }
+      )
+  }
+
+  fetchItems(gender: string) {
+    return this.http.get<{[key: string]: Item[]}>(`https://shopping-store-1fe69.firebaseio.com/${gender}.json`)
+      .pipe(
+        tap(
+          data => {
+            if (gender === "men") {
+              this.menItems = data;
+            } else {
+              this.womenItems = data;
+            }
+          }
+        )
       )
   }
 

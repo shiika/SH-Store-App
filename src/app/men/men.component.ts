@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { InStockService } from '../shared/in-stock.service';
 import { Item } from '../shared/item.model';
 import { Categories } from '../shared/categories.model';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-men',
@@ -12,21 +14,21 @@ export class MenComponent implements OnInit {
   hoodies: Item[];
   jackets: Item[];
 
-  constructor(private inStock: InStockService) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-      this.getMen();
-      this.inStock.menItemsFetched
-          .subscribe(
-              (items: Categories) => {
-                  this.hoodies = items["Hoodies & Sweatshirts"];
-                  this.jackets = items["Jackets & Coats"];
-              }
+      this.route.data
+        .pipe(
+          map(
+            data => data["0"]
           )
-  }
-
-  private getMen() {
-      this.inStock.fetchMen();
+        )
+        .subscribe(
+          menItems => {
+            this.hoodies = menItems["Hoodies & Sweatshirts"];
+            this.jackets = menItems["Jackets & Coats"];
+          }
+        )
   }
 
 }

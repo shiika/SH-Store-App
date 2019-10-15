@@ -1,44 +1,42 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb bg-white">
-      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Woman</li>
-    </ol>
-  </nav>
+<nav aria-label="breadcrumb" id="breadcrumb">
+  <ol class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Woman</li>
+  </ol>
+</nav>
 
-  <div class="container">
-    <div class="row">
-        <div class="col-12 women__header d-flex flex-column align-items-center">
-            <h1 class="text-uppercase">Hoodies & Sweatshirts</h1>
-            <a href="#" class="d-block georgia-font"><em>show more &rarr;</em></a>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 women__header d-flex flex-column align-items-center">
+      <h1 class="text-uppercase">Hoodies & Sweatshirts</h1>
+      <a href="#" class="d-block georgia-font"><em>show more &rarr;</em></a>
     </div>
+  </div>
 
-    <div class="row women__items">
-        <div 
-        class="col-12 women__items__item col-md-6 col-lg-3 my-5"
-        *ngFor="let hoody of hoodies">
-            <img [src]="hoody.img" class="mw-100" alt="Hoody">
-            <div class="women__items__item__content d-flex flex-column align-items-center">
-                <h4>{{hoody.name}}</h4>
-                <span class="d-block">&euro; {{hoody.price}}</span>
-            </div>
-        </div>
-        
-        <div 
-        class="col-12 women__items__item col-md-6 col-lg-3 my-5"
-        *ngFor="let jacket of jackets">
-            <img [src]="jacket.img" class="mw-100" alt="jacket">
-            <div class="women__items__item__content d-flex flex-column align-items-center">
-                <h4>{{jacket.name}}</h4>
-                <span class="d-block">&euro; {{jacket.price}}</span>
-            </div>
-        </div>
+  <div class="row women__items">
+    <div class="col-12 women__items__item col-md-6 col-lg-3 my-5" *ngFor="let hoody of hoodies">
+      <img [src]="hoody.img" class="mw-100" alt="Hoody">
+      <div class="women__items__item__content d-flex flex-column align-items-center">
+        <h4>{{hoody.name}}</h4>
+        <span class="d-block">&euro; {{hoody.price}}</span>
+      </div>
     </div>
+  </div>
 
-    <div class="row">
-        <div class="col-12">
-            <!-- <button type="button" class="btn btn-info">Get Items</button> -->
-            <!-- <button type="button" class="btn btn-success" (click)="onGetItems()">Get Items</button> -->
-        </div>
+  <div class="row">
+    <div class="col-12 women__header d-flex flex-column align-items-center">
+      <h1 class="text-uppercase">Jeans</h1>
+      <a href="#" class="d-block georgia-font"><em>show more &rarr;</em></a>
     </div>
+  </div>
+
+  <div class="row women__items">
+    <div class="col-12 women__items__item col-md-6 col-lg-3 my-5" *ngFor="let jean of jeans">
+      <img [src]="jean.img" class="mw-100" alt="jean">
+      <div class="women__items__item__content d-flex flex-column align-items-center">
+        <h4>{{jean.name}}</h4>
+        <span class="d-block">&euro; {{jean.price}}</span>
+      </div>
+    </div>
+  </div>
 </div>

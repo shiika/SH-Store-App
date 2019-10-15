@@ -67,6 +67,28 @@
            "name":"AE FLEECE COLORBLOCK HOODIE",
            "price":89.95
         }
-     ]
+     ],
+     "Jeans":[ 
+      { 
+         "img":"../../assets/img/Women/jeans_w_1.jpg",
+         "name":"AE FLEECE COLORBLOCK HOODIE",
+         "price":89.95
+      },
+      { 
+         "img":"../../assets/img/Women/jeans_w_2.jpg",
+         "name":"AE FLEECE COLORBLOCK HOODIE",
+         "price":89.95
+      },
+      { 
+         "img":"../../assets/img/Women/jeans_w_3.jpg",
+         "name":"AE FLEECE COLORBLOCK HOODIE",
+         "price":89.95
+      },
+      { 
+         "img":"../../assets/img/Women/jeans_w_4.jpg",
+         "name":"AE FLEECE COLORBLOCK HOODIE",
+         "price":89.95
+      }
+   ]
   }
 }

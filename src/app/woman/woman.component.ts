@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../shared/item.model';
 import { InStockService } from '../shared/in-stock.service';
 import { Categories } from '../shared/categories.model';
+import { ActivatedRoute } from '@angular/router';
+
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: "app-woman",
@@ -11,22 +14,23 @@ import { Categories } from '../shared/categories.model';
 
 export class WomanComponent implements OnInit {
     hoodies: Item[];
-    jackets: Item[];
+    jeans: Item[];
 
-    constructor(private inStock: InStockService) {}
+    constructor(private route: ActivatedRoute) {}
 
     ngOnInit() {
-        this.getWomen();
-        this.inStock.womenItemsFetched
+        this.route.data
+            .pipe(map(
+                data => {
+                    return data["0"];
+                }
+            ))
             .subscribe(
-                (items: Categories) => {
-                    this.hoodies = items["Hoodies & Sweatshirts"];
+                womenItems => {
+                    this.hoodies = womenItems["Hoodies & Sweatshirts"];
+                    this.jeans = womenItems["Jeans"];
                 }
             )
-    }
-
-    private getWomen() {
-        this.inStock.fetchWomen();
     }
 
     

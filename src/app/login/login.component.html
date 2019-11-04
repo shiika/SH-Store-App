@@ -1,0 +1,41 @@
+<div class="backdrop" (click)="onClose()"></div>
+<div class="auth">
+  <h1 class="text-uppercase text-center lato-font">Sign In</h1>
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-9">
+        <form (ngSubmit)="submitForm()" #authForm="ngForm">
+          <div class="alert alert-danger" *ngIf="errorMessage">
+            {{errorMessage}}
+          </div>
+          <div class="form-group">
+            <label for="email" class="text-uppercase mb-1 d-inline-block">e-mail</label>
+            <input type="text" class="form-control" name="email" id="email" #formEmail="ngModel" ngModel email required>
+            <div class="alert alert-warning" *ngIf="formEmail.touched && formEmail.invalid">
+              Please enter a valid email!
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="text-uppercase mb-1 d-inline-block">
+              password
+            </label>
+            <input type="password" class="form-control" name="password" id="password" #formPassword="ngModel" ngModel required minlength="8">
+            
+            <div class="alert alert-warning" *ngIf="formPassword.touched && formPassword.invalid">
+              Pasword should be minimum of 8 characters
+            </div>
+          </div>
+
+          <button 
+            type="submit" 
+            style="cursor: pointer;"
+            [disabled]="authForm.invalid"
+            class="btn btn-primary mt-5 lato-font">Sign In</button>
+        </form>
+      </div>
+    </div>
+    <a class="text-primary d-inline-block text-center pt-3"
+      (click)="isLogin = !isLogin">I dont have an account
+    </a>
+  </div>
+</div>

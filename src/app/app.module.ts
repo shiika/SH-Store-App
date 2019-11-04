@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { DropdownDirective } from './navbar/dropdown.directive';
 import { MenComponent } from './men/men.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WomanComponent } from './woman/woman.component';
+import { LoginComponent } from './login/login.component';
+import { PlaceholderDirective } from './placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -19,14 +22,20 @@ import { WomanComponent } from './woman/woman.component';
     HomeComponent,
     FooterComponent,
     MenComponent,
-    WomanComponent
+    WomanComponent,
+    LoginComponent,
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    LoginComponent
+  ]
 })
 export class AppModule { }

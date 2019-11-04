@@ -10,7 +10,7 @@ const appRoutes: Routes = [
         path: '', redirectTo: 'home', pathMatch: 'full'
     },
     { path: 'categories', children: [
-        { path: 'men', component: MenComponent, resolve: [ItemsResolverService] },
+        { path: 'men', component: MenComponent, resolve: {menItems: ItemsResolverService} },
         { path: 'women', component: WomanComponent, resolve: [ItemsResolverService] }
     ] },
     { path: 'home', component: HomeComponent },

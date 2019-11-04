@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +26,7 @@ export class HomeComponent implements OnInit {
   extraLeft: number;
   
 
-  constructor(private renderer: Renderer2, private route: ActivatedRoute, private elRef: ElementRef) {
+  constructor() {
     
   }
 

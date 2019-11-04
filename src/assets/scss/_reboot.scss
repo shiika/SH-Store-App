@@ -20,6 +20,7 @@ ul {
 a {
     color: $text-primary;
     text-decoration: none;
+    cursor: pointer;
 
     &:hover {
         color: currentColor;
@@ -37,7 +38,7 @@ a {
 }
 
 .lato-font {
-    font-family: latoRegular;
+    font-family: latoRegular !important;
 }
 
 // Background-color

@@ -1,28 +1,41 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { MenComponent } from './men/men.component';
-import { HomeComponent } from './home/home.component';
-import { WomanComponent } from './woman/woman.component';
-import { ItemsResolverService } from './shared/items-resolver.service';
+import { MenComponent } from "./men/men.component";
+import { HomeComponent } from "./home/home.component";
+import { WomanComponent } from "./woman/woman.component";
+import { ItemsResolverService } from "./shared/items-resolver.service";
+import { AccountComponent } from "./account/account.component";
 
 const appRoutes: Routes = [
     {
-        path: '', redirectTo: 'home', pathMatch: 'full'
+        path: "",
+        redirectTo: "home",
+        pathMatch: "full"
     },
-    { path: 'categories', children: [
-        { path: 'men', component: MenComponent, resolve: {menItems: ItemsResolverService} },
-        { path: 'women', component: WomanComponent, resolve: [ItemsResolverService] }
-    ] },
-    { path: 'home', component: HomeComponent },
+    {
+        path: "account",
+        component: AccountComponent
+    },
+    {
+        path: "categories",
+        children: [
+            {
+                path: "men",
+                component: MenComponent,
+                resolve: { menItems: ItemsResolverService }
+            },
+            {
+                path: "women",
+                component: WomanComponent,
+                resolve: {womenItems: ItemsResolverService}
+            }
+        ]
+    },
+    { path: "home", component: HomeComponent }
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(appRoutes)
-    ],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
 })
-
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule {}

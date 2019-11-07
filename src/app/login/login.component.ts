@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output, ViewChild } from "@angular/core";
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 
 export class LoginComponent {
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService, private router: Router) {}
     authObs: Observable<any>;
     errorMessage: string = null;
     @ViewChild('authForm', {static: false}) authForm: NgForm;
@@ -19,7 +20,7 @@ export class LoginComponent {
 
 
     submitForm() {
-        const { email, password, username } = this.authForm.form.value;
+        const { email, password } = this.authForm.form.value;
         this.authObs = this.authService.signIn(email, password);
         
         this.authObs.subscribe(
@@ -35,6 +36,10 @@ export class LoginComponent {
 
     onClose() {
         this.closeComp.emit();
+    }
+
+    onNavigate() {
+        this.router.navigate(['./account']);
     }
 
 }

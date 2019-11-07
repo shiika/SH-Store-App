@@ -1,0 +1,79 @@
+<nav aria-label="breadcrumb" id="breadcrumb">
+  <ol class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item">Account</li>
+    <li class="breadcrumb-item active">{{editMode ? "Edit Information" : "Sign up"}}</li>
+  </ol>
+</nav>
+
+<h1 class="text-uppercase text-center">{{editMode ? "edit" : "create"}} your account</h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <form class="col-7 mt-5 form">
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="firstname" class="form__label">First Name</label>
+          <input type="text" class="form-control" name="firstname" id="firstname">
+        </div>
+
+        <div class="form-group col-6">
+          <label for="lastname" class="form__label">Last Name</label>
+          <input type="text" class="form-control" name="lastname" id="lastname">
+        </div>
+
+        <div class="form-group col-8">
+          <label for="companyname" class="form__label">Company Name(optional)</label>
+          <input type="text" class="form-control" name="companyname" id="companyname">
+        </div>
+
+        <div class="form-group col-4">
+          <label for="nip" class="form__label">NIP(optional)</label>
+          <input type="text" class="form-control" name="nip" id="nip">
+        </div>
+        <div class="form-group col-12">
+          <label for="address" class="form__label">Address</label>
+          <input type="text" class="form-control" name="address" id="address">
+        </div>
+        <div class="form-group col-6">
+          <label for="city" class="form__label">City</label>
+          <input type="text" class="form-control" name="city" id="city">
+        </div>
+
+        <div class="form-group col-6">
+          <label for="zip" class="form__label">ZIP Code</label>
+          <input type="text" class="form-control" name="zip" id="zip">
+        </div>
+        <div class="form-group col-12">
+          <select name="coutnry" class="custom-select" id="#country">
+            <option value="" selected>Choose your country</option>
+            <option value="">Egypt</option>
+            <option value="">Morroco</option>
+            <option value="">Algeria</option>
+            <option value="">Tunisia</option>
+          </select>
+        </div>
+        <div class="form-group col-6">
+          <label for="phone" class="form__label">Phone Number</label>
+          <input type="text" class="form-control" name="phone" id="phone">
+        </div>
+
+        <div class="form-group col-6">
+          <label for="email" class="form__label">Email</label>
+          <input type="email" class="form-control" name="email" id="email">
+        </div>
+
+        <div class="form-group col-12 d-flex justify-content-center">
+          <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Use this address for Billing</label>
+            </div>
+        </div>
+
+        <div class="form-group col-12 d-flex justify-content-center form__submit">
+          <button type="submit" class="btn btn-primary text-white rounded-0">Save Changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

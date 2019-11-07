@@ -1,0 +1,21 @@
+@import '../../assets/scss/variables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/breadcrumb';
+@import '~bootstrap/scss/forms';
+@import '~bootstrap/scss/custom-forms';
+
+.form {
+
+    &__label {
+        display: block;
+        margin-bottom: 0.7rem;
+    }
+
+    &-group {
+        margin-bottom: 1.8rem;
+        padding: 0 10px;
+    }
+}

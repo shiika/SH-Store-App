@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { WomanComponent } from './woman/woman.component';
 import { LoginComponent } from './login/login.component';
 import { PlaceholderDirective } from './placeholder.directive';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PlaceholderDirective } from './placeholder.directive';
     MenComponent,
     WomanComponent,
     LoginComponent,
-    PlaceholderDirective
+    PlaceholderDirective,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

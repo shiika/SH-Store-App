@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../shared/item.model';
 import { ActivatedRoute } from '@angular/router';
 
-import {map} from 'rxjs/operators';
-
 @Component({
     selector: "app-woman",
     templateUrl: "./woman.component.html",
@@ -21,15 +19,10 @@ export class WomanComponent implements OnInit {
             // {0: {"Hoodies & Sweatshirts" Array[4]}}
         // so we map data to desirable form
         this.route.data
-            .pipe(map(
-                data => {
-                    return data["0"];
-                }
-            ))
             .subscribe(
-                womenItems => {
-                    this.hoodies = womenItems["Hoodies & Sweatshirts"];
-                    this.jeans = womenItems["Jeans"];
+                data => {
+                    this.hoodies = data.womenItems["Hoodies & Sweatshirts"];
+                    this.jeans = data.womenItems["Jeans"];
                 }
             )
     }

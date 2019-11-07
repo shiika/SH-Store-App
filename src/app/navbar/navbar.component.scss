@@ -3,6 +3,7 @@
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/dropdown';
+@import "~bootstrap/scss/buttons";
 
 .navbar {
   padding: 1rem 0;
@@ -37,7 +38,8 @@
 
     }
 
-    .nav-item:hover, .nav-item.active {
+    .nav-item:hover,
+    .nav-item.active {
 
       &::after {
         width: calc(100% - 1.2rem * 2);
@@ -89,14 +91,22 @@
 
   &__login {
 
-    & > * {
-      transition: all 2s;
-    }
-
     .nav-item {
 
       .nav-link {
         padding: .4rem .7rem;
+
+        &__caret::after {
+          display: inline-block;
+          margin-left: .255em;
+          transform: translateY(4px);
+          vertical-align: .255em;
+          content: "";
+          border-bottom: 0;
+          border-top: .4rem solid;
+          border-right: .4rem solid transparent;
+          border-left: .4rem solid transparent;
+        }
       }
     }
   }
@@ -107,33 +117,34 @@
       overflow: hidden;
       height: 0;
       transition: height 1s;
-  
+
       .nav-item {
         padding: .2rem 1.2rem;
       }
 
-      .nav-item:hover, .nav-item.active {
-  
+      .nav-item:hover,
+      .nav-item.active {
+
         &::after {
           width: 0;
         }
-    
+
       }
     }
-  
+
     .collapsed {
-        height: 260px;
+      height: 260px;
     }
-  
+
     .dropdown-menu {
       display: none;
     }
   }
 
-} 
+}
 
 @keyframes slideIn {
-  
+
   from {
     height: 0;
   }
@@ -146,7 +157,7 @@
 }
 
 @keyframes slideOut {
-  
+
   from {
     height: 130px;
   }

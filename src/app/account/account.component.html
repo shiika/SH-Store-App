@@ -10,68 +10,82 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <form class="col-7 mt-5 form">
+    <form class="col-7 mt-5 form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="form-group col-6">
           <label for="firstname" class="form__label">First Name</label>
-          <input type="text" class="form-control" name="firstname" id="firstname">
+          <input type="text" class="form-control" name="firstname" id="firstname" formControlName="firstName" required>
         </div>
 
         <div class="form-group col-6">
           <label for="lastname" class="form__label">Last Name</label>
-          <input type="text" class="form-control" name="lastname" id="lastname">
+          <input type="text" class="form-control" name="lastname" id="lastname" formControlName="lastName" required>
         </div>
 
         <div class="form-group col-8">
           <label for="companyname" class="form__label">Company Name(optional)</label>
-          <input type="text" class="form-control" name="companyname" id="companyname">
+          <input type="text" class="form-control" name="companyname" id="companyname" formControlName="companyName">
         </div>
 
         <div class="form-group col-4">
-          <label for="nip" class="form__label">NIP(optional)</label>
-          <input type="text" class="form-control" name="nip" id="nip">
+          <label class="form__label">Gender</label>
+          <select name="gender" class="custom-select" formControlName="gender" required>
+            <option value="male" selected>Male</option>
+            <option value="female">Female</option>
+            <option value="other">Prefer not to tell</option>
+          </select>
         </div>
         <div class="form-group col-12">
           <label for="address" class="form__label">Address</label>
-          <input type="text" class="form-control" name="address" id="address">
+          <input type="text" class="form-control" name="address" id="address" formControlName="address" required
+            required>
         </div>
         <div class="form-group col-6">
           <label for="city" class="form__label">City</label>
-          <input type="text" class="form-control" name="city" id="city">
+          <input type="text" class="form-control" name="city" id="city" formControlName="city" required>
         </div>
 
         <div class="form-group col-6">
-          <label for="zip" class="form__label">ZIP Code</label>
-          <input type="text" class="form-control" name="zip" id="zip">
-        </div>
-        <div class="form-group col-12">
-          <select name="coutnry" class="custom-select" id="#country">
-            <option value="" selected>Choose your country</option>
-            <option value="">Egypt</option>
-            <option value="">Morroco</option>
-            <option value="">Algeria</option>
-            <option value="">Tunisia</option>
-          </select>
-        </div>
-        <div class="form-group col-6">
           <label for="phone" class="form__label">Phone Number</label>
-          <input type="text" class="form-control" name="phone" id="phone">
+          <input type="number" class="form-control" name="phone" id="phone" formControlName="phoneno"
+            pattern="^[1-9]+[0-9]*$" required>
+        </div>
+
+        <div class="form-group col-12">
+          <label for="country" class="form__label">Choose Your Country</label>
+          <select name="coutnry" class="custom-select" formControlName="country" id="country" required>
+            <option value="Egypt">Egypt</option>
+            <option value="Morroco">Morroco</option>
+            <option value="Algeria">Algeria</option>
+            <option value="Tunisia">Tunisia</option>
+          </select>
         </div>
 
         <div class="form-group col-6">
           <label for="email" class="form__label">Email</label>
-          <input type="email" class="form-control" name="email" id="email">
+          <input type="email" class="form-control" name="email" id="email" formControlName="email" required>
+          <div class="alert alert-danger" *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid">
+            Please enter a valid email</div>
+        </div>
+
+        <div class="form-group col-6">
+          <label for="password" class="form__label">Password</label>
+          <input type="password" class="form-control" name="password" id="password" formControlName="password"
+            required>
         </div>
 
         <div class="form-group col-12 d-flex justify-content-center">
           <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label class="custom-control-label" for="customCheck1">Use this address for Billing</label>
-            </div>
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1">Use this address for Billing</label>
+          </div>
         </div>
 
         <div class="form-group col-12 d-flex justify-content-center form__submit">
-          <button type="submit" class="btn btn-primary text-white rounded-0">Save Changes</button>
+          <button 
+          type="submit"
+          class="btn btn-primary text-white rounded-0"
+          [disabled]="signupForm.invalid">{{editMode ? "Save Changes" : "Sign Up"}}</button>
         </div>
       </div>
     </form>

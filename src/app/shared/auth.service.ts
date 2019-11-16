@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, concatMap, tap, take } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
-import { Router } from '@angular/router';
 
 interface ResPayload {
     idToken: string;
@@ -19,11 +19,11 @@ interface ResPayload {
 
 
 export class AuthService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private router: Router) {}
 
     userAuthentication: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
-    signUp(email: string, password: string, username?: string) {
+    signUp(email: string, password: string, username: string) {
         return this.http.post<ResPayload>("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB3hy4SAeurJT6IUoBnX3geh9hnARxBuU8", {
             email: email,
             password: password,
@@ -31,6 +31,7 @@ export class AuthService {
         }).pipe(
             take(1),
             // Following the signup request with an edit POST request to assign a username to the user
+            catchError(this.handleError),
             concatMap(
                 (payload: ResPayload) => {
                     return this.http.post("https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyB3hy4SAeurJT6IUoBnX3geh9hnARxBuU8", {
@@ -38,11 +39,15 @@ export class AuthService {
                         displayName: username,
                         deleteAttribute: ["PHOTO_URL"],
                         returnSecureToken: true
-
+                        
                     })
                 }
-            ),
-            catchError(this.handleError)
+                ),
+                concatMap(
+                    () => {
+                        return this.signIn(email, password)
+                    }
+                ),
         )
     }
 
@@ -81,8 +86,8 @@ export class AuthService {
     }
 
     private handleError(errRes: HttpErrorResponse) {
-        let errMessage = "A unknown error has occured!";
-        if (!errRes.error || errRes.error.error) {
+        let errMessage = "An unknown error has occured!";
+        if (!errRes.error || !errRes.error.error) {
             return throwError(errMessage);
         }
 
@@ -104,11 +109,12 @@ export class AuthService {
     }
 
     private handleAuthentication(payload: ResPayload) {
-        const { email, localId, idToken, expiresIn, displayName: username } = payload;
+        const { email, localId, idToken, expiresIn = "3600", displayName: username } = payload;
         const expirationDate = new Date(new Date().getTime() + (+expiresIn * 1000));
         const user = new User(email, localId, idToken, expirationDate, username);
         this.userAuthentication.next(user);
         localStorage.setItem("userData", JSON.stringify(user));
+        this.router.navigate(['/']);
         this.autoLogout(expirationDate.getTime());
     }
 }

@@ -28,7 +28,7 @@ export class LoginComponent {
                 this.closeComp.emit();
             },
             err => {
-                this.errorMessage = err;
+                this.errorMessage = err || "Network Error";
             }
         )
         

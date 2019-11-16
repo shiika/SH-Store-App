@@ -1,4 +1,3 @@
-@import '../../assets/scss/variables';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
@@ -6,6 +5,11 @@
 @import '~bootstrap/scss/breadcrumb';
 @import '~bootstrap/scss/forms';
 @import '~bootstrap/scss/custom-forms';
+@import '~bootstrap/scss/alert';
+
+input.ng-invalid.ng-touched {
+    border: 1px solid $danger;
+}
 
 .form {
 
@@ -17,5 +21,11 @@
     &-group {
         margin-bottom: 1.8rem;
         padding: 0 10px;
+    }
+
+    button[type=submit] {
+        background-color: #F68236;
+        border: 1px solid #F68236;
+        cursor: pointer;
     }
 }

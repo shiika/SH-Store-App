@@ -1,9 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { InStockService } from '../shared/in-stock.service';
 import { Item } from '../shared/item.model';
-import { Categories } from '../shared/categories.model';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 @Component({

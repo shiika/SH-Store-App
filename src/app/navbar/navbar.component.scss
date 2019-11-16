@@ -25,6 +25,11 @@
         padding: 0;
         border: none;
         margin: 0;
+
+        .dropdown-item:hover {
+          background-color: $primary;
+          color: white;
+        }
       }
 
       .dropdown-menu.slideIn {

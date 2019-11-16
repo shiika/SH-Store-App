@@ -27,7 +27,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Coming Soon</a>
+          <a class="nav-link" href="#">Comming Soon</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
@@ -52,14 +52,14 @@
                 transform="translate(-1079.999 -108.999)" />
             </svg>
             <span class="d-inline-block dropdown" *ngIf="isAuthenticated; else login" appDropdown>
-              Hi, {{ username }} <a class="text-primary" (click)="logout()">(logout)</a>
+              Hi, {{ username }}
               <span class="nav-link__caret dropdown-toggle" style="cursor: pointer;" >
               </span>
               <div class="dropdown-menu" *ngIf="isAuthenticated">
                 <a class="dropdown-item">Your Account</a>
                 <a class="dropdown-item">Your Order History</a>
                 <a class="dropdown-item">Your Favourites</a>
-                <a class="dropdown-item">Logout</a>
+                <a class="dropdown-item" (click)="logout()">Logout</a>
               </div>
             </span>
             <ng-template #login>

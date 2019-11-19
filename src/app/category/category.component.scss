@@ -1,0 +1,83 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/breadcrumb';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/button-group';
+@import '~bootstrap/scss/dropdown';
+@import '~bootstrap/scss/utilities/text';
+
+.category {
+
+  &__items {
+    padding: 3rem 0;
+  }
+
+  .btn-group {
+
+    button {
+        border: 0;
+        border-bottom: 1px solid black;
+        margin: 0 1rem;
+    }
+  }
+
+  .dropdown {
+
+    &-toggle {
+
+      &::after {
+        margin-left: 7rem;
+      }
+    }
+
+    &-menu.show {
+      overflow: hidden;
+      height: 0;
+      padding: 0;
+      border: none;
+      margin: 0;
+
+      &-item:hover {
+        background-color: $primary;
+        color: white;
+      }
+    }
+
+    &-menu.slideIn {
+      // height: 0;
+      height: 138px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      padding: .5rem 0;
+      animation-name: slideIn;
+      animation-duration: .5s;
+    }
+
+  }
+}
+
+@keyframes slideIn {
+
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 130px;
+  }
+
+
+}
+
+@keyframes slideOut {
+
+  from {
+    height: 130px;
+  }
+
+  to {
+    height: 0;
+  }
+
+
+}

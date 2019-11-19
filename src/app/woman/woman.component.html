@@ -1,7 +1,7 @@
 <nav aria-label="breadcrumb" id="breadcrumb">
   <ol class="breadcrumb bg-white">
     <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Woman</li>
+    <li class="breadcrumb-item active" aria-current="page">Women</li>
   </ol>
 </nav>
 
@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-12 women__header d-flex flex-column align-items-center">
       <h1 class="text-uppercase">Hoodies & Sweatshirts</h1>
-      <a href="#" class="d-block georgia-font"><em>show more &rarr;</em></a>
+      <a [routerLink]="['/women']" [fragment]="'Hoodies & Sweatshirts'" class="d-block georgia-font"><em>show more &rarr;</em></a>
     </div>
   </div>
 

@@ -1,0 +1,67 @@
+<nav aria-label="breadcrumb">
+  <div class="container px-0">
+    <ol class="breadcrumb bg-white">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item" aria-current="page">{{ gender }}</li>
+      <li class="breadcrumb-item active" aria-current="page">{{ category }}</li>
+    </ol>
+  </div>
+</nav>
+
+
+<div class="container category">
+  <div class="row category__header">
+    <div class="col-12 d-flex flex-column align-items-center">
+      <h1 class="text-uppercase">{{ gender }}</h1>
+      <h3 class="d-block georgia-font font-weight-normal"><em>{{ category }}</em></h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown dropdown-toggle bg-white text-dark" appDropdown>
+          Price
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">&euro;20-30</a>
+            <a class="dropdown-item" href="#">&euro;30-50</a>
+            <a class="dropdown-item" href="#">&euro;50-100</a>
+            <a class="dropdown-item" href="#">&euro;100 and more</a>
+            <a class="dropdown-item" href="#">&euro;100 and more</a>
+          </div>
+        </button>
+        <button type="button" class="btn btn-secondary bg-white text-dark dropdown dropdown-toggle" appDropdown>
+          Size
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">&euro;20-30</a>
+            <a class="dropdown-item" href="#">&euro;30-50</a>
+            <a class="dropdown-item" href="#">&euro;50-100</a>
+            <a class="dropdown-item" href="#">&euro;100 and more</a>
+            <a class="dropdown-item" href="#">&euro;100 and more</a>
+          </div>
+        </button>
+        <button type="button" class="btn btn-secondary bg-white text-dark dropdown dropdown-toggle" appDropdown>
+          Color
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">&euro;20-30</a>
+            <a class="dropdown-item" href="#">&euro;30-50</a>
+            <a class="dropdown-item" href="#">&euro;50-100</a>
+            <a class="dropdown-item" href="#">&euro;100 and more</a>
+            <a class="dropdown-item" href="#">&euro;100 and more</a>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row category__items">
+    <div class="col-12 men__items__item col-md-6 col-lg-3" *ngFor="let item of items">
+      <img [src]="item.img" class="mw-100" alt="category">
+      <div class="men__items__item__content d-flex flex-column align-items-center">
+        <h4>{{item.name}}</h4>
+        <span class="d-block">&euro; {{item.price}}</span>
+      </div>
+    </div>
+
+  </div>
+</div>

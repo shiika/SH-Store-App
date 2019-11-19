@@ -14,6 +14,7 @@ import { WomanComponent } from './woman/woman.component';
 import { LoginComponent } from './login/login.component';
 import { PlaceholderDirective } from './placeholder.directive';
 import { AccountComponent } from './account/account.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AccountComponent } from './account/account.component';
     WomanComponent,
     LoginComponent,
     PlaceholderDirective,
-    AccountComponent
+    AccountComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,6 @@ export class ItemsResolverService implements Resolve<Categories> {
         state: RouterStateSnapshot
     ): Observable<Categories> | Promise<Categories> | Categories {
         if (route.component == WomanComponent) {
-            console.log("womaaan!");
             return this.inStock.fetchItems("women");
         } else if (route.component == MenComponent) {
             return this.inStock.fetchItems("men");

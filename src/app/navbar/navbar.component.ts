@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { Subscription } from 'rxjs';
 

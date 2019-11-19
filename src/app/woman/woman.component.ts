@@ -15,9 +15,6 @@ export class WomanComponent implements OnInit {
     constructor(private route: ActivatedRoute) {}
 
     ngOnInit() {
-        // returning data["0"] as we recieve firebase database node in the form of 
-            // {0: {"Hoodies & Sweatshirts" Array[4]}}
-        // so we map data to desirable form
         this.route.data
             .subscribe(
                 data => {

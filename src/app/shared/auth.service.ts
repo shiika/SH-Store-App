@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, concatMap, tap, take } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
+import { UserInfo } from './userInfo.model';
 
 interface ResPayload {
     idToken: string;
@@ -23,10 +24,9 @@ export class AuthService {
 
     userAuthentication: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
-    signUp(email: string, password: string, username: string) {
+    signUp(authInfo: {email: string; password: string}, username: string, userInfo: UserInfo) {
         return this.http.post<ResPayload>("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB3hy4SAeurJT6IUoBnX3geh9hnARxBuU8", {
-            email: email,
-            password: password,
+            ...authInfo,
             returnSecureToken: true
         }).pipe(
             take(1),
@@ -42,19 +42,26 @@ export class AuthService {
                         
                     })
                 }
-                ),
-                concatMap(
-                    () => {
-                        return this.signIn(email, password)
-                    }
-                ),
+            ),
+            concatMap(
+                (payload: ResPayload) => {
+                    const userData = JSON.stringify(userInfo);
+                    const userId = payload.localId;
+                    return this.http.put(`https://shopping-store-1fe69.firebaseio.com/users/${userId}.json`, userData);
+                }
+            ),  
+            concatMap(
+                (res) => {
+                    console.log(res);
+                    return this.signIn(authInfo);
+                }
+            )
         )
     }
 
-    signIn(email: string, password: string) {
+    signIn(authInfo: {email: string; password: string}) {
         return this.http.post<ResPayload>("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB3hy4SAeurJT6IUoBnX3geh9hnARxBuU8", {
-            email: email,
-            password: password,
+            ...authInfo,
             returnSecureToken: true
         }).pipe(
             take(1),
@@ -77,6 +84,10 @@ export class AuthService {
     logout() {
         this.userAuthentication.next(null);
         localStorage.clear();
+    }
+
+    private saveUserInfo() {
+        
     }
 
     private autoLogout(expirationDuration: number) {
@@ -115,6 +126,7 @@ export class AuthService {
         this.userAuthentication.next(user);
         localStorage.setItem("userData", JSON.stringify(user));
         this.router.navigate(['/']);
-        this.autoLogout(expirationDate.getTime());
+        console.log(expirationDate);
+        this.autoLogout(+expiresIn * 1000);
     }
 }

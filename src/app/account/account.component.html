@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <form class="col-7 mt-5 form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <div class="row">
+      <div class="row" [formGroup]="signupForm.get('personalForm')">
         <div class="form-group col-6">
           <label for="firstname" class="form__label">First Name</label>
           <input type="text" class="form-control" name="firstname" id="firstname" formControlName="firstName" required>
@@ -47,8 +47,8 @@
 
         <div class="form-group col-6">
           <label for="phone" class="form__label">Phone Number</label>
-          <input type="number" class="form-control" name="phone" id="phone" formControlName="phoneno"
-            pattern="^[1-9]+[0-9]*$" required>
+          <input type="text" class="form-control" name="phone" id="phone" formControlName="phoneno"
+             required>
         </div>
 
         <div class="form-group col-12">
@@ -60,11 +60,13 @@
             <option value="Tunisia">Tunisia</option>
           </select>
         </div>
+      </div>
 
+      <div class="row" [formGroup]="signupForm.get('authForm')">
         <div class="form-group col-6">
           <label for="email" class="form__label">Email</label>
           <input type="email" class="form-control" name="email" id="email" formControlName="email" required>
-          <div class="alert alert-danger" *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid">
+          <div class="alert alert-danger" *ngIf="signupForm.get('authForm.email').touched && signupForm.get('authForm.email').invalid">
             Please enter a valid email</div>
         </div>
 

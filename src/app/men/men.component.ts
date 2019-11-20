@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Item } from '../shared/item.model';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { InStockService } from '../shared/in-stock.service';
 
 @Component({
   selector: 'app-men',
@@ -11,22 +12,22 @@ import { Subscription } from 'rxjs';
 export class MenComponent implements OnInit, OnDestroy {
   hoodies: Item[];
   jackets: Item[];
-  routeSub: Subscription;
+  itemsSub: Subscription;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private inStock: InStockService) {}
 
   ngOnInit() {
-      this.routeSub = this.route.data
+      this.itemsSub = this.inStock.menItems
         .subscribe(
           data => {
-            this.hoodies = data.menItems["Hoodies & Sweatshirts"];
-            this.jackets = data.menItems["Jackets & Coats"];
+            this.hoodies = data["Hoodies & Sweatshirts"];
+            this.jackets = data["Jackets & Coats"];
           }
         );
   }
 
   ngOnDestroy() {
-    this.routeSub.unsubscribe();
+    this.itemsSub.unsubscribe();
   }
 
 }

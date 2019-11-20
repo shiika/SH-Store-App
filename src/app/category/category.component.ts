@@ -3,7 +3,6 @@ import { ActivatedRoute } from "@angular/router";
 import { InStockService } from '../shared/in-stock.service';
 import { Category } from '../shared/category.model';
 import { concatMap } from 'rxjs/operators';
-import { Categories } from '../shared/categories.model';
 
 @Component({
   selector: 'app-category',
@@ -30,25 +29,9 @@ export class CategoryComponent implements OnInit {
       )
     ).subscribe(
       (items: Category[]) => {
-        console.log(items);
         this.items = items;
       }
     );
-
-    // this.route.fragment.subscribe(
-    //   (category) => {
-    //     const path = window.location.pathname.split("/");
-    //     const gender = path[1];
-    //     this.category = category;
-    //     this.gender = gender;
-    //   }
-    //   );
-
-    //   this.inStock.fetchCategory(this.gender, this.category).subscribe(
-    //     (items: Category[]) => {
-    //       this.items = items;
-    //     }
-    //   )
   }
 
 }

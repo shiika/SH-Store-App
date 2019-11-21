@@ -17,7 +17,7 @@ export class MenComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private inStock: InStockService) {}
 
   ngOnInit() {
-      this.itemsSub = this.inStock.menItems
+      this.itemsSub = this.inStock.menLoader
         .subscribe(
           data => {
             this.hoodies = data["Hoodies & Sweatshirts"];

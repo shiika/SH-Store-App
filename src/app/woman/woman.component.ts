@@ -17,7 +17,7 @@ export class WomanComponent implements OnInit, OnDestroy {
     constructor(private inStock: InStockService) {}
 
     ngOnInit() {
-        this.itemsSub = this.inStock.womenItems
+        this.itemsSub = this.inStock.womenLoader
             .subscribe(
                 data => {
                     this.hoodies = data["Hoodies & Sweatshirts"];

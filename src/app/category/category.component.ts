@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { InStockService } from '../shared/in-stock.service';
-import { Category } from '../shared/category.model';
 import { concatMap } from 'rxjs/operators';
+import { DataService } from '../shared/data.service';
+import { Item } from '../shared/item.model';
 
 @Component({
   selector: 'app-category',
@@ -11,10 +11,10 @@ import { concatMap } from 'rxjs/operators';
 })
 export class CategoryComponent implements OnInit {
   category: string;
-  items: Category[];
+  items: Item[];
   gender: string;
 
-  constructor(private route: ActivatedRoute, private inStock: InStockService) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
     this.route.fragment.pipe(
@@ -24,11 +24,11 @@ export class CategoryComponent implements OnInit {
           const gender = path[1];
           this.category = category;
           this.gender = gender;
-          return this.inStock.fetchCategory(gender, category)
+          return this.dataService.fetchCategory(gender, category)
         }
       )
     ).subscribe(
-      (items: Category[]) => {
+      (items: Item[]) => {
         this.items = items;
       }
     );

@@ -1,38 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { Categories } from './categories.model';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { Item } from './item.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class InStockService {
-  womenItems: Categories = {};
-  menItems: Categories = {};
-  
+  womenItems: Categories;
+  menItems: Categories;
+  categoryItems: Item[];
 
-  constructor(private http: HttpClient) { }
+  womenLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);
+  menLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);
+  categoryLoader: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>(null);
 
-  fetchItems(gender: string) {
-    return this.http.get<Categories>(`https://shopping-store-1fe69.firebaseio.com/${gender}.json`)
-      .pipe(
-        tap(
-          data => {
-            if (gender === "men") {
-              console.log(data);
-              this.menItems = data;
-            } else {
-              this.womenItems = data;
-            }
-          }
-        )
-      )
+  loadMenItems(items: Categories) {
+    this.menItems = items;
+    this.menLoader.next(items);
   }
 
-  fetchCategory(gender: string, category: string) {
-    return this.http.get(`https://shopping-store-1fe69.firebaseio.com/${gender}/${category}.json`)
+  loadWomenItems(items: Categories) {
+    this.womenItems = items;
+    this.womenLoader.next(items);
   }
 
+  loadCategoryItems(items: Item[]) {
+    this.categoryItems = items;
+    this.categoryLoader.next(items);
+    console.log(this.categoryItems);
+  }
   
 }

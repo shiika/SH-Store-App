@@ -1,94 +1,513 @@
-{ 
-  "men":{ 
-     "Hoodies & Sweatshirts":[ 
-        { 
-           "img":"../../assets/img/Men/Hoody_1.jpg",
-           "name":"AE FLEECE COLORBLOCK HOODIE",
-           "price":89.95
+{
+  "men": {
+    "New Collection": {
+      "Hoodies & Sweatshirts": [{
+          "img": "../../assets/img/Men/Hoody_1.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 1
         },
-        { 
-           "img":"../../assets/img/Men/Hoody_2.jpg",
-           "name":"AE FLEECE COLORBLOCK HOODIE",
-           "price":89.95
+        {
+          "img": "../../assets/img/Men/Hoody_2.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 2
         },
-        { 
-           "img":"../../assets/img/Men/Hoody_3.jpg",
-           "name":"AE FLEECE PULLOVER HOODIE",
-           "price":89.95
+        {
+          "img": "../../assets/img/Men/Hoody_3.jpg",
+          "name": "AE FLEECE PULLOVER HOODIE",
+          "price": 89.95,
+          "id": 3
         },
-        { 
-           "img":"../../assets/img/Men/Hoody_4.jpg",
-           "name":"AE FLEECE PULLOVER HOODIE",
-           "price":89.95
+        {
+          "img": "../../assets/img/Men/Hoody_4.jpg",
+          "name": "AE FLEECE PULLOVER HOODIE",
+          "price": 89.95,
+          "id": 4
         }
-     ],
-     "Jackets & Coats":[ 
-        { 
-           "img":"../../assets/img/Men/Jacket_1.jpg",
-           "name":"AE FLEECE COLORBLOCK HOODIE",
-           "price":89.95
+      ],
+      "Jackets & Coats": [{
+          "img": "../../assets/img/Men/Jacket_1.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 5
         },
-        { 
-           "img":"../../assets/img/Men/Jacket_2.jpg",
-           "name":"AE FLEECE COLORBLOCK HOODIE",
-           "price":89.95
+        {
+          "img": "../../assets/img/Men/Jacket_2.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 6
         },
-        { 
-           "img":"../../assets/img/Men/Jacket_3.jpg",
-           "name":"AE FLEECE COLORBLOCK HOODIE",
-           "price":89.95
+        {
+          "img": "../../assets/img/Men/Jacket_3.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 7
         },
-        { 
-           "img":"../../assets/img/Men/Jacket_4.jpg",
-           "name":"AE FLEECE COLORBLOCK HOODIE",
-           "price":89.95
+        {
+          "img": "../../assets/img/Men/Jacket_4.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 8
         }
-     ]
-  },
-  "women":{ 
-     "Hoodies & Sweatshirts":[ 
-        { 
-           "img":"../../assets/img/Women/Hoody_w_1.jpg",
-           "name":"AE FLEECE COLORBLOCK HOODIE",
-           "price":89.95
-        },
-        { 
-           "img":"../../assets/img/Women/Hoody_w_2.jpg",
-           "name":"AE FLEECE COLORBLOCK HOODIE",
-           "price":89.95
-        },
-        { 
-           "img":"../../assets/img/Women/Hoody_w_3.jpg",
-           "name":"AE FLEECE COLORBLOCK HOODIE",
-           "price":89.95
-        },
-        { 
-           "img":"../../assets/img/Women/Hoody_w_4.jpg",
-           "name":"AE FLEECE COLORBLOCK HOODIE",
-           "price":89.95
-        }
-     ],
-     "Jeans":[ 
-      { 
-         "img":"../../assets/img/Women/jeans_w_1.jpg",
-         "name":"AE FLEECE COLORBLOCK HOODIE",
-         "price":89.95
+      ]
+    },
+    "Hoodies & Sweatshirts": [{
+        "img": "../../assets/img/Men/Hoody_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 1
       },
-      { 
-         "img":"../../assets/img/Women/jeans_w_2.jpg",
-         "name":"AE FLEECE COLORBLOCK HOODIE",
-         "price":89.95
+      {
+        "img": "../../assets/img/Men/Hoody_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 2
       },
-      { 
-         "img":"../../assets/img/Women/jeans_w_3.jpg",
-         "name":"AE FLEECE COLORBLOCK HOODIE",
-         "price":89.95
+      {
+        "img": "../../assets/img/Men/Hoody_3.jpg",
+        "name": "AE FLEECE PULLOVER HOODIE",
+        "price": 89.95,
+        "id": 3
       },
-      { 
-         "img":"../../assets/img/Women/jeans_w_4.jpg",
-         "name":"AE FLEECE COLORBLOCK HOODIE",
-         "price":89.95
+      {
+        "img": "../../assets/img/Men/Hoody_4.jpg",
+        "name": "AE FLEECE PULLOVER HOODIE",
+        "price": 89.95,
+        "id": 4
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 9
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 10
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_3.jpg",
+        "name": "AE FLEECE PULLOVER HOODIE",
+        "price": 89.95,
+        "id": 11
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_4.jpg",
+        "name": "AE FLEECE PULLOVER HOODIE",
+        "price": 89.95,
+        "id": 12
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 13
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 14
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_3.jpg",
+        "name": "AE FLEECE PULLOVER HOODIE",
+        "price": 89.95,
+        "id": 15
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_4.jpg",
+        "name": "AE FLEECE PULLOVER HOODIE",
+        "price": 89.95,
+        "id": 16
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 17
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 18
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_3.jpg",
+        "name": "AE FLEECE PULLOVER HOODIE",
+        "price": 89.95,
+        "id": 19
+      },
+      {
+        "img": "../../assets/img/Men/Hoody_4.jpg",
+        "name": "AE FLEECE PULLOVER HOODIE",
+        "price": 89.95,
+        "id": 20
       }
-   ]
+    ],
+    "Jackets & Coats": [{
+        "img": "../../assets/img/Men/Jacket_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 5
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 6
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 7
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 8
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 21
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 22
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 23
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 24
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 25
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 26
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 27
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 28
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 29
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 30
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 31
+      },
+      {
+        "img": "../../assets/img/Men/Jacket_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 32
+      }
+    ]
+  },
+  "women": {
+    "New Collection": {
+      "Hoodies & Sweatshirts": [{
+          "img": "../../assets/img/Women/Hoody_w_1.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 33
+        },
+        {
+          "img": "../../assets/img/Women/Hoody_w_2.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 34
+        },
+        {
+          "img": "../../assets/img/Women/Hoody_w_3.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 35
+        },
+        {
+          "img": "../../assets/img/Women/Hoody_w_4.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 36
+        }
+      ],
+      "Jeans": [{
+          "img": "../../assets/img/Women/jeans_w_1.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 37
+        },
+        {
+          "img": "../../assets/img/Women/jeans_w_2.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 38
+        },
+        {
+          "img": "../../assets/img/Women/jeans_w_3.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 39
+        },
+        {
+          "img": "../../assets/img/Women/jeans_w_4.jpg",
+          "name": "AE FLEECE COLORBLOCK HOODIE",
+          "price": 89.95,
+          "id": 40
+        }
+      ]
+    },
+    "Hoodies & Sweatshirts": [{
+        "img": "../../assets/img/Women/Hoody_w_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 33
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 34
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 35
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 36
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 41
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 42
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 43
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 44
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 45
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 46
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 47
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 48
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 49
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 50
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 51
+      },
+      {
+        "img": "../../assets/img/Women/Hoody_w_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 52
+      }
+    ],
+    "Jeans": [{
+        "img": "../../assets/img/Women/jeans_w_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 53
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 54
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 55
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 56
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 57
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 58
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 59
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 60
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 61
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 62
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 63
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 64
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_1.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 65
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_2.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 66
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_3.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 67
+      },
+      {
+        "img": "../../assets/img/Women/jeans_w_4.jpg",
+        "name": "AE FLEECE COLORBLOCK HOODIE",
+        "price": 89.95,
+        "id": 68
+      }
+    ]
+  },
+
+  "users": {
+    "SqkAUP6BFKYYYwxiqCiYz6qj8R92": {
+      "firstName": "islam",
+      "lastName": "abdelkarim",
+      "companyName": "Media Gate Studios",
+      "gender": "male",
+      "address": "12 Fidy st. Helwan",
+      "city": "Cairo",
+      "password": 66666666,
+      "country": "Egypt",
+      "phoneno": "01144595955",
+      "email": "username2@test.com"
+    }
   }
 }

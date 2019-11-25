@@ -14,7 +14,7 @@ export class MenComponent implements OnInit, OnDestroy {
   jackets: Item[];
   itemsSub: Subscription;
 
-  constructor(private route: ActivatedRoute, private inStock: InStockService) {}
+  constructor(private inStock: InStockService) {}
 
   ngOnInit() {
       this.itemsSub = this.inStock.menLoader

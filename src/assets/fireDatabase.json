@@ -494,20 +494,5 @@
         "id": 68
       }
     ]
-  },
-
-  "users": {
-    "SqkAUP6BFKYYYwxiqCiYz6qj8R92": {
-      "firstName": "islam",
-      "lastName": "abdelkarim",
-      "companyName": "Media Gate Studios",
-      "gender": "male",
-      "address": "12 Fidy st. Helwan",
-      "city": "Cairo",
-      "password": 66666666,
-      "country": "Egypt",
-      "phoneno": "01144595955",
-      "email": "username2@test.com"
-    }
   }
 }

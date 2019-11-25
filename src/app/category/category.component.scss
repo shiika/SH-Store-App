@@ -39,8 +39,8 @@
       border: none;
       margin: 0;
 
-      &-item:hover {
-        background-color: $primary;
+      .dropdown-item:hover {
+        background-color: #F68236;
         color: white;
       }
     }

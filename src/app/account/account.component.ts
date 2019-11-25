@@ -55,12 +55,9 @@ export class AccountComponent implements OnInit {
     if (this.editMode) {
 
     }
-    const email = this.signupForm.get("authForm.email").value;
-    const password = this.signupForm.get("authForm.password").value;
     const username = `${this.signupForm.get("personalForm.firstName").value} ${this.signupForm.get("personalForm.lastName").value}`;
     const personalInfo = this.signupForm.get('personalForm').value;
     const authInfo = this.signupForm.get('authForm').value;
-    // console.log(personalInfo);
     this.authService.signUp(authInfo, username, personalInfo)
       .subscribe(
         res => {

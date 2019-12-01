@@ -6,6 +6,7 @@
 @import '~bootstrap/scss/button-group';
 @import '~bootstrap/scss/dropdown';
 @import '~bootstrap/scss/pagination';
+@import '~bootstrap/scss/custom-forms';
 @import '~bootstrap/scss/utilities/text';
 
 .category {
@@ -14,71 +15,12 @@
     padding: 3rem 0;
   }
 
-  .btn-group {
-
-    button {
-        border: 0;
-        border-bottom: 1px solid black;
-        margin: 0 1rem;
-    }
-  }
-
-  .dropdown {
-
-    &-toggle {
-
-      &::after {
-        margin-left: 7rem;
-      }
-    }
-
-    &-menu.show {
-      overflow: hidden;
-      height: 0;
-      padding: 0;
-      border: none;
-      margin: 0;
-
-      .dropdown-item:hover {
-        background-color: #F68236;
-        color: white;
-      }
-    }
-
-    &-menu.slideIn {
-      // height: 0;
-      height: 138px;
-      border: 1px solid rgba(0, 0, 0, 0.15);
-      padding: .5rem 0;
-      animation-name: slideIn;
-      animation-duration: .5s;
-    }
+  &__select {
+    background: url(../../assets/caret-down.svg) no-repeat;
+    background-position: 97% 50%;
+    background-size: 14px;
+    border: none;
+    border-bottom: 1px solid #000000;
 
   }
-}
-
-@keyframes slideIn {
-
-  from {
-    height: 0;
-  }
-
-  to {
-    height: 130px;
-  }
-
-
-}
-
-@keyframes slideOut {
-
-  from {
-    height: 130px;
-  }
-
-  to {
-    height: 0;
-  }
-
-
 }

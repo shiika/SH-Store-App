@@ -17,39 +17,31 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center">
-      <div class="btn-group">
-        <button type="button" class="btn btn-secondary dropdown dropdown-toggle bg-white text-dark" appDropdown>
-          Price
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">&euro;20-30</a>
-            <a class="dropdown-item" href="#">&euro;30-50</a>
-            <a class="dropdown-item" href="#">&euro;50-100</a>
-            <a class="dropdown-item" href="#">&euro;100 and more</a>
-          </div>
-        </button>
-        <button type="button" class="btn btn-secondary bg-white text-dark dropdown dropdown-toggle" appDropdown>
-          Size
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">XS</a>
-            <a class="dropdown-item" href="#">SM</a>
-            <a class="dropdown-item" href="#">MD</a>
-            <a class="dropdown-item" href="#">L</a>
-            <a class="dropdown-item" href="#">XL</a>
-          </div>
-        </button>
-        <button type="button" class="btn btn-secondary bg-white text-dark dropdown dropdown-toggle" appDropdown>
-          Color
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">White</a>
-            <a class="dropdown-item" href="#">Blue</a>
-            <a class="dropdown-item" href="#">Red</a>
-            <a class="dropdown-item" href="#">Black</a>
-          </div>
-        </button>
+  <div class="row mt-3">
+    <form (ngSubmit)="onSubmit()" class="col-12 d-flex justify-content-center" [formGroup]="filterForm">
+      <div class="col-3">
+        <select class="custom-select category__select" formControlName="price">
+          <option selected>Price</option>
+          <option *ngFor="let filter of priceFilters" [value]="filter">&euro; {{ filter }}</option>
+        </select>
       </div>
-    </div>
+      <div class="col-3">
+        <select class="custom-select category__select" formControlName="size">
+          <option selected>Size</option>
+          <option *ngFor="let filter of sizeFilters" [value]="filter">{{ filter }}</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <select class="custom-select category__select" formControlName="colour">
+          <option selected>Colour</option>
+          <option *ngFor="let filter of colourFilters" [value]="filter">{{ filter }}</option>
+        </select>
+      </div>
+      <div class="col-3"><button class="btn btn-primary" type="submit">Submit</button></div>
+    </form>
+  </div>
+
+  <div class="row">
   </div>
 
   <div class="row category__items">

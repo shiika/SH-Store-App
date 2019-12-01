@@ -5,6 +5,11 @@ import { Categories } from './categories.model';
 import { InStockService } from './in-stock.service';
 import { Item } from './item.model';
 
+export interface FilterConfig {
+  filter: string;
+  value: string;
+}
+
 @Injectable({providedIn: 'root'})
 
 export class DataService {
@@ -36,5 +41,21 @@ export class DataService {
             }
           )
         )
+    }
+
+    fetchFilteredCategory(gender: string, category: string, filterConfig: FilterConfig) {
+      if (filterConfig.filter === "price") {
+        const filterArr = filterConfig.value.split("-");
+        return this.http.get(`https://shopping-store-1fe69.firebaseio.com/${gender}/${category}.json?orderBy="${filterConfig.filter}"&startAt=${filterArr[0]}&endAt=${filterArr[1]}`)
+        .pipe(
+          take(1),
+          tap(
+            (items: {[key: number]: Item}) => {
+              const itemsArr = Object.values(items);
+              this.inStock.loadCategoryItems(itemsArr);
+            }
+          )
+        )
+      }
     }
 }

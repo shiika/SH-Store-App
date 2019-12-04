@@ -19,17 +19,17 @@ const appRoutes: Routes = [
     },
     {
         path: "men",
-        children: [
-            { path: '', component: MenComponent, resolve: { menItems: ItemsResolverService } },
-            { path: "category", component: CategoryComponent }
-        ],
+        component: MenComponent,
+        resolve: {items: ItemsResolverService}
     },
     {
         path: "women",
-        children: [
-            { path: '', component: WomanComponent, resolve: {womenItems: ItemsResolverService} },
-            { path: 'category', component: CategoryComponent }
-        ],  
+        component: WomanComponent,
+        resolve: {items: ItemsResolverService}  
+    },
+    {
+        path: ":gender/category",
+        component: CategoryComponent
     },
     { path: "home", component: HomeComponent }
 ];

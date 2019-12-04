@@ -2,8 +2,8 @@
   <div class="container px-0">
     <ol class="breadcrumb bg-white">
       <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-      <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/', gender]">{{ gender }}</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{ category }}</li>
+      <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/', gender]">{{ gender | titlecase }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ category | titlecase }}</li>
     </ol>
   </div>
 </nav>
@@ -26,18 +26,17 @@
         </select>
       </div>
       <div class="col-3">
-        <select class="custom-select category__select" formControlName="size">
+        <select class="custom-select category__select">
           <option selected>Size</option>
-          <option *ngFor="let filter of sizeFilters" [value]="filter">{{ filter }}</option>
+          <option *ngFor="let filter of sizeFilters" [value]="filter">{{ filter | uppercase }}</option>
         </select>
       </div>
       <div class="col-3">
-        <select class="custom-select category__select" formControlName="colour">
+        <select class="custom-select category__select" formControlName="color">
           <option selected>Colour</option>
-          <option *ngFor="let filter of colourFilters" [value]="filter">{{ filter }}</option>
+          <option *ngFor="let filter of colorFilters" [value]="filter">{{ filter | titlecase }}</option>
         </select>
       </div>
-      <div class="col-3"><button class="btn btn-primary" type="submit">Submit</button></div>
     </form>
   </div>
 

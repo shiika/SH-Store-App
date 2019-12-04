@@ -57,5 +57,17 @@ export class DataService {
           )
         )
       }
+
+      return this.http.get(`https://shopping-store-1fe69.firebaseio.com/${gender}/${category}/${filterConfig.filter}/${filterConfig.value}.json`)
+      .pipe(
+        take(1),
+        tap(
+          (items: Item[]) => {
+            console.log(items);
+            this.inStock.loadCategoryItems(items);
+          }
+        )
+      )
     }
+
 }

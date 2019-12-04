@@ -17,7 +17,7 @@ export class CategoryComponent implements OnInit {
   filterForm: FormGroup;
   priceFilters: Array<string> = ["10-30","30-50","50-100","100-1000"];
   sizeFilters: Array<string> = ["xs", "s", "m", "l", "xl"];
-  colourFilters: Array<string> = ["White", "Red", "Green", "Blue", "Black"];
+  colorFilters: Array<string> = ["white", "red", "green", "black"];
 
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
@@ -26,7 +26,7 @@ export class CategoryComponent implements OnInit {
     this.filterForm = new FormGroup({
       "price": new FormControl("Price"),
       "size": new FormControl("Size"),
-      "colour": new FormControl("Colour")
+      "color": new FormControl("Colour")
     });
 
     this.route.fragment.pipe(

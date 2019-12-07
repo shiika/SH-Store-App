@@ -11,7 +11,7 @@
     <div class="row men__header">
         <div class="col-12 d-flex flex-column align-items-center">
             <h1 class="text-uppercase text-center">Hoodies & Sweatshirts</h1>
-            <a [routerLink]="['category']" [fragment]="'Hoodies & Sweatshirts'" class="d-block georgia-font"><em>show more &rarr;</em></a>
+            <a [routerLink]="['category']" [queryParams]="{category: 'Hoodies & Sweatshirts'}" class="d-block georgia-font"><em>show more &rarr;</em></a>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
         <div 
         class="col-12 men__items__item col-md-6 col-lg-3 my-5 text-center"
         *ngFor="let hoody of hoodies">
-            <img [src]="hoody.img" class="mw-100" alt="Hoody">
+            <a class="d-block"><img [src]="hoody.img" class="mw-100" alt="Hoody"></a>
             <div class="men__items__item__content d-flex flex-column align-items-center">
                 <h4>{{hoody.name}}</h4>
                 <span class="d-block">&euro; {{hoody.price}}</span>
@@ -31,7 +31,7 @@
     <div class="row men__header">
         <div class="col-12 d-flex flex-column align-items-center">
             <h1 class="text-uppercase">Jackets & Coats</h1>
-            <a [routerLink]="['category']" [fragment]="'Hoodies & Sweatshirts'" class="d-block georgia-font"><em>show more &rarr;</em></a>
+            <a [routerLink]="['category']" [queryParams]="{category: 'Hoodies & Sweatshirts'}" class="d-block georgia-font"><em>show more &rarr;</em></a>
         </div>
     </div>
 
@@ -39,7 +39,7 @@
         <div 
         class="col-12 men__items__item col-md-6 col-lg-3"
         *ngFor="let jacket of jackets">
-            <img [src]="jacket.img" class="mw-100" alt="jacket">
+            <a class="d-block"><img [src]="jacket.img" class="mw-100" alt="jacket"></a>
             <div class="men__items__item__content d-flex flex-column align-items-center">
                 <h4>{{jacket.name}}</h4>
                 <span class="d-block">&euro; {{jacket.price}}</span>

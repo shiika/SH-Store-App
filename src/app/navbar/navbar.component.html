@@ -11,8 +11,8 @@
         <li class="nav-item dropdown" appDropdown routerLinkActive="active">
           <a class="nav-link" [routerLink]="['women']">Woman</a>
           <div class="dropdown-menu">
-            <a [routerLink]="['women', 'category']" [fragment]="'Hoodies & Sweatshirts'" class="dropdown-item">Hoodies & Sweatshirts</a>
-            <a [routerLink]="['women', 'category']" [fragment]="'Jeans'" class="dropdown-item">Jeans</a>
+            <a [routerLink]="['women', 'category']" [queryParams]="{category: 'Hoodies & Sweatshirts'}" class="dropdown-item">Hoodies & Sweatshirts</a>
+            <a [routerLink]="['women', 'category']" [queryParams]="{category: 'Jeans'}" class="dropdown-item">Jeans</a>
             <a class="dropdown-item">Jackets and Coats</a>
             <a class="dropdown-item">Sweaters & Cardigans</a>
           </div>
@@ -23,11 +23,11 @@
             <a 
             class="dropdown-item" 
             [routerLink]="['men', 'category']"
-            [fragment]="'Hoodies & Sweatshirts'">Hoodies & Sweatshirts</a>
+            [queryParams]="{category: 'Hoodies & Sweatshirts'}">Hoodies & Sweatshirts</a>
             <a 
             class="dropdown-item"
             [routerLink]="['men', 'category']"
-            [fragment]="'Jackets & Coats'">Jackets & Coats</a>
+            [queryParams]="{category: 'Jackets & Coats'}">Jackets & Coats</a>
             <a class="dropdown-item">Jeans</a>
             <a class="dropdown-item">Shoes</a>
           </div>

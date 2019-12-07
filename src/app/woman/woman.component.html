@@ -9,13 +9,13 @@
   <div class="row">
     <div class="col-12 women__header d-flex flex-column align-items-center">
       <h1 class="text-uppercase">Hoodies & Sweatshirts</h1>
-      <a [routerLink]="['category']" [fragment]="'Hoodies & Sweatshirts'" class="d-block georgia-font"><em>show more &rarr;</em></a>
+      <a [routerLink]="['category']" [queryParams]="{category: 'Hoodies & Sweatshirts'}" class="d-block georgia-font"><em>show more &rarr;</em></a>
     </div>
   </div>
 
   <div class="row women__items">
     <div class="col-12 women__items__item col-md-6 col-lg-3 my-5" *ngFor="let hoody of hoodies">
-      <img [src]="hoody.img" class="mw-100" alt="Hoody">
+      <a class="d-block"><img [src]="hoody.img" class="mw-100" alt="Hoody"></a>
       <div class="women__items__item__content d-flex flex-column align-items-center">
         <h4>{{hoody.name}}</h4>
         <span class="d-block">&euro; {{hoody.price}}</span>
@@ -26,13 +26,13 @@
   <div class="row">
     <div class="col-12 women__header d-flex flex-column align-items-center">
       <h1 class="text-uppercase">Jeans</h1>
-      <a routerLink="category" [fragment]="'Jeans'" class="d-block georgia-font"><em>show more &rarr;</em></a>
+      <a routerLink="category" [queryParams]="{category: 'Jeans'}" class="d-block georgia-font"><em>show more &rarr;</em></a>
     </div>
   </div>
 
   <div class="row women__items">
     <div class="col-12 women__items__item col-md-6 col-lg-3 my-5" *ngFor="let jean of jeans">
-      <img [src]="jean.img" class="mw-100" alt="jean">
+      <a class="d-block"><img [src]="jean.img" class="mw-100" alt="jean"></a>
       <div class="women__items__item__content d-flex flex-column align-items-center">
         <h4>{{jean.name}}</h4>
         <span class="d-block">&euro; {{jean.price}}</span>

@@ -20,6 +20,7 @@ export class MenComponent implements OnInit, OnDestroy {
       this.itemsSub = this.inStock.menLoader
         .subscribe(
           data => {
+            console.log(data);
             this.hoodies = data["Hoodies & Sweatshirts"];
             this.jackets = data["Jackets & Coats"];
           }

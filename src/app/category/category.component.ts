@@ -1,9 +1,10 @@
-import { Component, OnInit, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { FormGroup, FormControl, AbstractControl } from "@angular/forms";
-import { concatMap, switchMap } from 'rxjs/operators';
+import { FormGroup, FormControl } from "@angular/forms";
+import { concatMap, take } from 'rxjs/operators';
 import { DataService } from '../shared/data.service';
 import { Item } from '../shared/item.model';
+import { InStockService } from '../shared/in-stock.service';
 
 @Component({
   selector: 'app-category',
@@ -20,48 +21,45 @@ export class CategoryComponent implements OnInit {
   colorFilters: Array<string> = ["white", "red", "green", "black"];
 
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService, private inStock: InStockService) { }
 
   ngOnInit() {
     this.filterForm = new FormGroup({
       "price": new FormControl("Price"),
       "size": new FormControl("Size"),
-      "color": new FormControl("Colour")
+      "color": new FormControl("Color")
     });
 
-    this.route.fragment.pipe(
+    this.route.queryParams.pipe(
+      take(1),
       concatMap(
-        category => {
+        params => {
           const path = window.location.pathname.split("/");
           const gender = path[1];
-          this.category = category;
+          this.category = params.category;
           this.gender = gender;
-          return this.dataService.fetchCategory(gender, category)
+          return this.dataService.fetchCategory(gender, params.category)
         }
       )
     ).subscribe(
       (items: Item[]) => {
         this.items = items;
       }
-    );
+    )
 
-    for (let filter in this.filterForm.controls) {
-      this.filterForm.controls[filter].valueChanges
-        .pipe(switchMap(
-          (value: string) => {
-            const filterConfig = {
-              filter,
-              value
-            }
-            return this.dataService.fetchFilteredCategory(this.gender, this.category, filterConfig)
-          }
-        )
-      ).subscribe(
-        (items: {[key: number]: Item}) => {
-          this.items = Object.values(items);
+    this.inStock.categoryLoader.subscribe(
+      (items: Item[]) => {
+        this.items = items;
+      }
+    )
+
+    this.filterForm.valueChanges
+      .subscribe(
+        value => {
+          const { size, color} = value;
+          this.inStock.loadFilteredItems({size, color});
         }
       )
-    }
     
   }
 

@@ -29,7 +29,25 @@ export class InStockService {
   loadCategoryItems(items: Item[]) {
     this.categoryItems = items;
     this.categoryLoader.next(items);
-    console.log(this.categoryItems);
   }
+
+  loadFilteredItems(filterConfig: {size: string; color: string}) {
+    let filtered: Item[] = this.categoryItems;
+    for (let filter in filterConfig) {
+      if (filter === filterConfig[filter].toLowerCase()) {
+          continue;
+      } else {
+        filtered = filtered.filter(
+          (item: Item) => {
+            return item[filter].includes(filterConfig[filter]);
+          }
+        );
+      }
+    }
+
+    this.categoryLoader.next(filtered);
+      
+  }
+
   
 }

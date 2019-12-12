@@ -26,14 +26,14 @@
         </select>
       </div>
       <div class="col-3">
-        <select class="custom-select category__select">
+        <select class="custom-select category__select" formControlName="size">
           <option selected>Size</option>
           <option *ngFor="let filter of sizeFilters" [value]="filter">{{ filter | uppercase }}</option>
         </select>
       </div>
       <div class="col-3">
         <select class="custom-select category__select" formControlName="color">
-          <option selected>Colour</option>
+          <option selected>Color</option>
           <option *ngFor="let filter of colorFilters" [value]="filter">{{ filter | titlecase }}</option>
         </select>
       </div>

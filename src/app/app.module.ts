@@ -8,13 +8,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { DropdownDirective } from './navbar/dropdown.directive';
-import { MenComponent } from './men/men.component';
 import { AppRoutingModule } from './app-routing.module';
-import { WomanComponent } from './woman/woman.component';
 import { LoginComponent } from './login/login.component';
 import { PlaceholderDirective } from './placeholder.directive';
 import { AccountComponent } from './account/account.component';
 import { CategoryComponent } from './category/category.component';
+import { DetailsComponent } from './details/details.component';
+import { GenderComponent } from './gender/gender.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +23,12 @@ import { CategoryComponent } from './category/category.component';
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    MenComponent,
-    WomanComponent,
     LoginComponent,
     PlaceholderDirective,
     AccountComponent,
-    CategoryComponent
+    CategoryComponent,
+    DetailsComponent,
+    GenderComponent
   ],
   imports: [
     BrowserModule,

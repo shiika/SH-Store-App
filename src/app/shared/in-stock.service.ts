@@ -10,25 +10,26 @@ import { Item } from './item.model';
 export class InStockService {
   womenItems: Categories;
   menItems: Categories;
+  genderItems: Categories;
   categoryItems: Item[];
 
-  womenLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);
-  menLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);
+  // womenLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);
+  // menLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);
+  genderLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);
   categoryLoader: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>(null);
 
-  loadMenItems(items: Categories) {
-    this.menItems = items;
-    this.menLoader.next(items);
-  }
-
-  loadWomenItems(items: Categories) {
-    this.womenItems = items;
-    this.womenLoader.next(items);
+  loadGenderItems(items: Categories) {
+    this.genderItems = items;
+    this.genderLoader.next(items);
   }
 
   loadCategoryItems(items: Item[]) {
     this.categoryItems = items;
     this.categoryLoader.next(items);
+  }
+
+  loadItem(id: number) {
+    return this.categoryItems[id];
   }
 
   loadFilteredItems(filterConfig: {size: string; color: string}) {

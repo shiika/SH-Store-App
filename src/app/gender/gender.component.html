@@ -1,0 +1,29 @@
+<nav aria-label="breadcrumb">
+  <div class="container px-0">
+    <ol class="breadcrumb bg-white">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ gender | titlecase }}</li>
+    </ol>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="row gender" *ngFor="let category of categoriesNames">
+    <div class="col-12 d-flex flex-column align-items-center">
+      <h1 class="text-uppercase text-center">{{category}}</h1>
+      <a [routerLink]="[category]" class="d-block georgia-font"><em>show more &rarr;</em></a>
+    </div>
+    <div class="row gender__items">
+      <div class="col-12 gender__items__item col-md-6 col-lg-3 my-5 text-center"
+        *ngFor="let item of categories[category]">
+        <a class="d-block"><img [src]="item.img" class="mw-100" [alt]="category"></a>
+        <div class="gender__items__content d-flex flex-column align-items-center">
+          <h4>{{item.name}}</h4>
+          <span class="d-block">&euro; {{item.price}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -16,11 +16,7 @@ export class DataService {
           take(1),
           tap(
             (items: Categories) => {
-              if (gender === "men") {
-                this.inStock.loadMenItems(items);
-              } else {
-                this.inStock.loadWomenItems(items);
-              }
+              this.inStock.loadGenderItems(items);
             }
           )
         )

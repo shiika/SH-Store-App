@@ -2,8 +2,6 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Categories } from './categories.model';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { WomanComponent } from '../woman/woman.component';
-import { MenComponent } from '../men/men.component';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -17,10 +15,12 @@ export class ItemsResolverService implements Resolve<Categories> {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<Categories> | Promise<Categories> | Categories {
-        if (route.component == WomanComponent) {
-            return this.dataService.fetchItems("women");
-        } else if (route.component == MenComponent) {
-            return this.dataService.fetchItems("men");
-        }
+        const gender = route.params["gender"];
+        return this.dataService.fetchItems(gender);
+        // if (route.component == WomanComponent) {
+        //     return this.dataService.fetchItems("women");
+        // } else if (route.component == MenComponent) {
+        //     return this.dataService.fetchItems("men");
+        // }
     }
 }

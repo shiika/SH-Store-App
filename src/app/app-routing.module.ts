@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { MenComponent } from "./men/men.component";
 import { HomeComponent } from "./home/home.component";
-import { WomanComponent } from "./woman/woman.component";
 import { ItemsResolverService } from "./shared/items-resolver.service";
 import { AccountComponent } from "./account/account.component";
 import { CategoryComponent } from './category/category.component';
+import { DetailsComponent } from './details/details.component';
+import { GenderComponent } from './gender/gender.component';
 
 const appRoutes: Routes = [
     {
@@ -17,20 +17,25 @@ const appRoutes: Routes = [
         path: "account",
         component: AccountComponent
     },
-    {
-        path: "men",
-        component: MenComponent,
-        resolve: {items: ItemsResolverService}
+    { 
+        path: "gender/:gender",
+        children: [
+            {
+                path: "",
+                component: GenderComponent,
+                resolve: {items: ItemsResolverService}
+            },
+            {
+                path: ":category",
+                component: CategoryComponent
+            },
+            {
+                path: ":category/:id",
+                component: DetailsComponent
+            }
+        ]
     },
-    {
-        path: "women",
-        component: WomanComponent,
-        resolve: {items: ItemsResolverService}  
-    },
-    {
-        path: ":gender/category",
-        component: CategoryComponent
-    },
+    
     { path: "home", component: HomeComponent }
 ];
 

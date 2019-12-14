@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { FormGroup, FormControl } from "@angular/forms";
 import { concatMap, take } from 'rxjs/operators';
 import { DataService } from '../shared/data.service';
 import { Item } from '../shared/item.model';
 import { InStockService } from '../shared/in-stock.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements OnInit, OnDestroy {
   category: string;
   items: Item[];
   gender: string;
   filterForm: FormGroup;
+  catSub: Subscription;
   priceFilters: Array<string> = ["10-30","30-50","50-100","100-1000"];
   sizeFilters: Array<string> = ["xs", "s", "m", "l", "xl"];
   colorFilters: Array<string> = ["white", "red", "green", "black"];
@@ -30,15 +32,12 @@ export class CategoryComponent implements OnInit {
       "color": new FormControl("Color")
     });
 
-    this.route.queryParams.pipe(
-      take(1),
+    this.catSub = this.route.params.pipe(
       concatMap(
         params => {
-          const path = window.location.pathname.split("/");
-          const gender = path[1];
-          this.category = params.category;
-          this.gender = gender;
-          return this.dataService.fetchCategory(gender, params.category)
+          this.category = this.route.snapshot.params["category"];
+          this.gender = this.route.snapshot.params["gender"];
+          return this.dataService.fetchCategory(this.gender, params.category)
         }
       )
     ).subscribe(
@@ -63,8 +62,8 @@ export class CategoryComponent implements OnInit {
     
   }
 
-  onSubmit() {
-    console.log(this.filterForm);
+  ngOnDestroy() {
+    this.catSub.unsubscribe();
   }
 
 }

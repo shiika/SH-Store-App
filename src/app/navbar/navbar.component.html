@@ -9,25 +9,23 @@
     <div class="collapse navbar-collapse show" id="navbarTogglerDemo01" [ngClass]="{collapsed: isCollapsed}">
       <ul class="navbar-nav mr-auto py-3" id="navigation-bar">
         <li class="nav-item dropdown" appDropdown routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['women']">Woman</a>
+          <a class="nav-link" [routerLink]="['/gender', 'women']">Woman</a>
           <div class="dropdown-menu">
-            <a [routerLink]="['women', 'category']" [queryParams]="{category: 'Hoodies & Sweatshirts'}" class="dropdown-item">Hoodies & Sweatshirts</a>
-            <a [routerLink]="['women', 'category']" [queryParams]="{category: 'Jeans'}" class="dropdown-item">Jeans</a>
+            <a [routerLink]="['/gender', 'women', 'Hoodies & Sweatshirts']" class="dropdown-item">Hoodies & Sweatshirts</a>
+            <a [routerLink]="['/gender', 'women', 'Jeans']" class="dropdown-item">Jeans</a>
             <a class="dropdown-item">Jackets and Coats</a>
             <a class="dropdown-item">Sweaters & Cardigans</a>
           </div>
         </li>
         <li class="nav-item dropdown" routerLinkActive="active" appDropdown>
-          <a class="nav-link" [routerLink]="['men']">Men</a>
+          <a class="nav-link" [routerLink]="['/gender', 'men']">Men</a>
           <div class="dropdown-menu">
             <a 
             class="dropdown-item" 
-            [routerLink]="['men', 'category']"
-            [queryParams]="{category: 'Hoodies & Sweatshirts'}">Hoodies & Sweatshirts</a>
+            [routerLink]="['/gender', 'men', 'Hoodies & Sweatshirts']">Hoodies & Sweatshirts</a>
             <a 
             class="dropdown-item"
-            [routerLink]="['men', 'category']"
-            [queryParams]="{category: 'Jackets & Coats'}">Jackets & Coats</a>
+            [routerLink]="['/gender', 'men', 'Jackets & Coats']">Jackets & Coats</a>
             <a class="dropdown-item">Jeans</a>
             <a class="dropdown-item">Shoes</a>
           </div>

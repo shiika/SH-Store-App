@@ -52,9 +52,9 @@ export class InStockService {
         );
       }
     }
+    console.log(filtered);
 
-    this.filteredItems = filtered;
-    this.categoryLoader.next(filtered);
+    this.loadCategoryItems(filtered);
       
   }
 

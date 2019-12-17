@@ -45,7 +45,7 @@
 
   <div class="row category__items">
     <div class="col-12 men__items__item col-md-6 col-lg-3 my-3 text-center" *ngFor="let item of items; let i = index">
-      <a class="d-block" [routerLink]="[(+i+1)]" [queryParamsHandling]="'preserve'" routerLinkActive="router-link-active" ><img [src]="item.img" class="mw-100" alt="category"></a>
+      <a class="d-block" (click)="getItem(item['id'])"><img [src]="item.img" class="mw-100" alt="category"></a>
       <div class="men__items__item__content d-flex flex-column align-items-center">
         <h4>{{item.name}}</h4>
         <span class="d-block">&euro; {{item.price}}</span>

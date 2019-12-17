@@ -1,0 +1,57 @@
+@import '../../assets/scss/variables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/breadcrumb';
+@import '~bootstrap/scss/buttons';
+
+.details {
+
+
+  &__desc {
+    h4 {
+      color: $text-secondary;
+    }
+
+    button {
+        padding: .6rem 3rem;
+        border-radius: 0;
+    }
+
+    &__heading {
+      font-size: 2.2rem;
+      color: $text-primary;
+    }
+
+    &__price {
+      font-size: 1.2rem;
+      color: $text-secondary;
+    }
+
+    &__content {
+      font-size: 1rem;
+      color: $text-secondary;
+    }
+
+    &__size {
+
+
+      &__item {
+        width: 2rem;
+        height: 2rem;
+        border: 1px solid #959595;
+
+        &:not(:last-child) {
+          margin-right: .8rem;
+        }
+      }
+    }
+  }
+
+  &__suggestions {
+
+    h2 {
+        color: $text-secondary;
+    }
+  }
+}

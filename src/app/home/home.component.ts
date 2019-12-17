@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -18,41 +18,11 @@ export class HomeComponent implements OnInit {
     "../../assets/img/17251-min.jpg"
   ];
 
-  @ViewChild("img", {static: true}) img: ElementRef;
-
-  @ViewChild("carouselContainer", { static: true }) container: ElementRef;
-  slideSpace: number = 0;
-  extraRight: number;
-  extraLeft: number;
-  
-
   constructor() {
     
   }
 
   ngOnInit() {
-    this.extraRight = +this.container.nativeElement.dataset.extraRight;
-    this.extraLeft = +this.container.nativeElement.dataset.extraLeft;
-  }
-
-  onSlideLeft() {
-    if (this.extraRight > 0 ) {
-      this.slideSpace -= this.container.nativeElement.children[1].offsetLeft;
-      this.container.nativeElement.style.transform = `translateX(${this.slideSpace}px)`;
-      this.extraRight--;
-      this.extraLeft++;
-    } 
-    
-  }
-
-  onSlideRight() {
-    if (this.extraLeft > 0 ) {
-      this.slideSpace += this.container.nativeElement.children[1].offsetLeft;
-      this.container.nativeElement.style.transform = `translateX(${this.slideSpace}px)`;
-      this.extraRight++;
-      this.extraLeft--;
-    }
-    
   }
 
 }

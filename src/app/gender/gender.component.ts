@@ -27,7 +27,6 @@ export class GenderComponent implements OnInit {
           (categories: Categories) => {
             this.categoriesNames = Object.keys(categories);
             this.categories = categories;
-            console.log(this.categoriesNames);
             this.hoodies = categories["Hoodies & Sweatshirts"];
             this.jackets = categories["Jackets & Coats"];
           }

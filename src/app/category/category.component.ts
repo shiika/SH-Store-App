@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormControl } from "@angular/forms";
 import { concatMap, take } from 'rxjs/operators';
 import { DataService } from '../shared/data.service';
@@ -23,7 +23,12 @@ export class CategoryComponent implements OnInit, OnDestroy {
   colorFilters: Array<string> = ["white", "red", "green", "black"];
 
 
-  constructor(private route: ActivatedRoute, private dataService: DataService, private inStock: InStockService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private dataService: DataService, 
+    private inStock: InStockService,
+    private router: Router)
+    { }
 
   ngOnInit() {
     this.filterForm = new FormGroup({
@@ -64,6 +69,10 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.catSub.unsubscribe();
+  }
+
+  getItem(id: number) {
+    this.router.navigate([id], {relativeTo: this.route})
   }
 
 }

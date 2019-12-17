@@ -15,6 +15,7 @@ import { AccountComponent } from './account/account.component';
 import { CategoryComponent } from './category/category.component';
 import { DetailsComponent } from './details/details.component';
 import { GenderComponent } from './gender/gender.component';
+import { TestimonialsComponent } from './testimonials/testimonials.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { GenderComponent } from './gender/gender.component';
     AccountComponent,
     CategoryComponent,
     DetailsComponent,
-    GenderComponent
+    GenderComponent,
+    TestimonialsComponent
   ],
   imports: [
     BrowserModule,

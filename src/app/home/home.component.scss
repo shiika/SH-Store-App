@@ -201,48 +201,6 @@
     }
   }
 
-  &__carousel {
-    overflow: hidden;
-    padding: 0;
-
-    &__container {
-      transform: translateX(0);
-      transition: all .75s;
-    }
-
-    &__arrow {
-      cursor: pointer;
-      position: absolute;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.2);
-      width: 2.3rem;
-      @include perfect-center;
-      z-index: 1000;
-
-      &--right {
-        top: 0;
-        right: 0;
-      }
-
-      // &--left {
-      //     left: 15px;
-      // }
-    }
-
-    &__item {
-      min-width: calc(100%/6);
-      max-height: 8.75rem;
-
-      &:nth-child(even) {
-        background-color: #ccc;
-      }
-
-      &:nth-child(odd) {
-        background-color: $text-primary;
-      }
-    }
-  }
-
   .white-background {
       position: relative;
       background-color: white;

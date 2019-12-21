@@ -34,17 +34,20 @@ export class InStockService {
     
   }
 
-  loadFilteredItems(filterConfig: {size: string; color: string}) {
+  loadFilteredItems(filterConfig: {size: string; color: string; price: string}) {
     let filtered: Item[] = this.categoryItems;
     for (let filter in filterConfig) {
-      if (filter === filterConfig[filter].toLowerCase()) {
-          continue;
-      } else {
-        filtered = filtered.filter(
-          (item: Item) => {
-            return item[filter].includes(filterConfig[filter]);
-          }
-        );
+      if (filter !== filterConfig[filter].toLowerCase()) {
+        if (filter == "price") {
+          const priceRange = filterConfig["price"].split("-");
+          filtered = filtered.filter(item => item.price > +priceRange[0] && item.price < +priceRange[1]);
+        } else {
+          filtered = filtered.filter(
+            (item: Item) => {
+              return item[filter].includes(filterConfig[filter]);
+            }
+          );
+        }
       }
     }
 

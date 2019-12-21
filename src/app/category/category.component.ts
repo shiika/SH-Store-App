@@ -60,8 +60,8 @@ export class CategoryComponent implements OnInit, OnDestroy {
     this.filterForm.valueChanges
       .subscribe(
         value => {
-          const { size, color} = value;
-          this.inStock.loadFilteredItems({size, color});
+          const { size, color, price} = value;
+          this.inStock.loadFilteredItems({size, color, price});
         }
       )
     

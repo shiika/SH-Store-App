@@ -4,7 +4,6 @@ import { Directive, Renderer2, ElementRef, HostListener } from "@angular/core";
   selector: '[appDropdown]'
 })
 export class DropdownDirective {
-  target: HTMLElement;
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) {
   }

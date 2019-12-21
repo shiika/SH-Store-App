@@ -30,7 +30,8 @@ export class LoginComponent {
             err => {
                 this.errorMessage = err || "Network Error";
             }
-        )
+        );
+        this.authForm.reset();
         
     }
 

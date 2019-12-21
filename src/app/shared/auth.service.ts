@@ -126,7 +126,6 @@ export class AuthService {
         this.userAuthentication.next(user);
         localStorage.setItem("userData", JSON.stringify(user));
         this.router.navigate(['/']);
-        console.log(expirationDate);
         this.autoLogout(+expiresIn * 1000);
     }
 }

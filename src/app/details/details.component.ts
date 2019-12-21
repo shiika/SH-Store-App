@@ -25,12 +25,9 @@ export class DetailsComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.item = this.inStock.loadItem(+params["id"]);
-          console.log(this.item);
         }
       )
-    // const id = +this.route.snapshot.params["id"];
     this.category = this.route.snapshot.params["category"];
-    // this.item = this.inStock.loadItem(id);
   }
 
   replaceLargeImg(img: string) {
@@ -48,7 +45,6 @@ export class DetailsComponent implements OnInit {
   navigateToItem(imgPath: string) {
     const id = this.inStock.loadSuggestions().find(item => item["img"] == imgPath)['id'];
     this.router.navigate(["../", id], {relativeTo: this.route});
-    console.log(id);
   }
 
 

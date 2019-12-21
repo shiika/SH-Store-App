@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Categories } from './categories.model';
 import { BehaviorSubject } from 'rxjs';
 import { Item } from './item.model';
-import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Injectable({
@@ -13,10 +12,6 @@ export class InStockService {
   menItems: Categories;
   genderItems: Categories;
   categoryItems: Item[];
-  filteredItems: Item[];
-
-  // womenLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);
-  // menLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);
   genderLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);
   categoryLoader: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>(null);
 
@@ -52,9 +47,8 @@ export class InStockService {
         );
       }
     }
-    console.log(filtered);
 
-    this.loadCategoryItems(filtered);
+    this.categoryLoader.next(filtered);
       
   }
 

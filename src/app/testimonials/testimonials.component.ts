@@ -24,7 +24,6 @@ export class TestimonialsComponent implements OnInit {
   ngOnInit() {
     this.extraRight = +this.testimonials.length - 6;
     this.extraLeft = 0;
-    console.log(this.testimonials)
   }
 
   onSlideLeft() {

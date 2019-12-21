@@ -14,9 +14,16 @@
     color: white;
     padding: .35rem .5rem .5rem;
     margin-right: .6rem;
+    animation-name: logo-animation;
+    animation-duration: 1s;
   }
 
   .navbar-nav {
+    position: relative;
+    animation-name: nav-animation;
+    animation-duration: 1.2s;
+    animation-delay: 1s;
+    animation-fill-mode: backwards;
 
     .dropdown {
 
@@ -147,6 +154,32 @@
     }
   }
 
+}
+
+@keyframes nav-animation {
+  0% {
+    opacity: 0;
+    left: -20%;
+  }
+
+  80% {
+    opacity: 1;
+    left: 10%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes logo-animation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideIn {

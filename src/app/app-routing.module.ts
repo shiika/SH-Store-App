@@ -6,8 +6,6 @@ import { AccountComponent } from "./account/account.component";
 import { CategoryComponent } from './category/category.component';
 import { DetailsComponent } from './details/details.component';
 import { GenderComponent } from './gender/gender.component';
-import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
-import { AuthGuard } from './shared/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -17,7 +15,6 @@ const appRoutes: Routes = [
   },
 
   { path: "home", component: HomeComponent },
-  { path: "basket", component: ShoppingBagComponent, canActivate: [AuthGuard] },
 
   {
     path: "account",

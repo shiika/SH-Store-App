@@ -1,4 +1,4 @@
-<nav class="navbar bg-white navbar-expand-lg navbar-light">
+<nav class="navbar bg-white navbar-expand-lg navbar-light" #navbar>
 
   <div class="container">
     <a class="navbar-brand" routerLink="/" routerLinkActive="active">SH</a>
@@ -9,23 +9,23 @@
     <div class="collapse navbar-collapse show" id="navbarTogglerDemo01" [ngClass]="{collapsed: isCollapsed}">
       <ul class="navbar-nav mr-auto py-3" id="navigation-bar">
         <li class="nav-item dropdown" appDropdown routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/gender', 'women']">Woman</a>
+          <a class="nav-link" [routerLink]="['women']">Woman</a>
           <div class="dropdown-menu">
-            <a [routerLink]="['/gender', 'women', 'Hoodies & Sweatshirts']" class="dropdown-item">Hoodies & Sweatshirts</a>
-            <a [routerLink]="['/gender', 'women', 'Jeans']" class="dropdown-item">Jeans</a>
+            <a [routerLink]="['women', 'Hoodies & Sweatshirts']" class="dropdown-item">Hoodies & Sweatshirts</a>
+            <a [routerLink]="['women', 'Jeans']" class="dropdown-item">Jeans</a>
             <a class="dropdown-item">Jackets and Coats</a>
             <a class="dropdown-item">Sweaters & Cardigans</a>
           </div>
         </li>
         <li class="nav-item dropdown" routerLinkActive="active" appDropdown>
-          <a class="nav-link" [routerLink]="['/gender', 'men']">Men</a>
+          <a class="nav-link" [routerLink]="['men']">Men</a>
           <div class="dropdown-menu">
             <a 
             class="dropdown-item" 
-            [routerLink]="['/gender', 'men', 'Hoodies & Sweatshirts']">Hoodies & Sweatshirts</a>
+            [routerLink]="['men', 'Hoodies & Sweatshirts']">Hoodies & Sweatshirts</a>
             <a 
             class="dropdown-item"
-            [routerLink]="['/gender', 'men', 'Jackets & Coats']">Jackets & Coats</a>
+            [routerLink]="['men', 'Jackets & Coats']">Jackets & Coats</a>
             <a class="dropdown-item">Jeans</a>
             <a class="dropdown-item">Shoes</a>
           </div>
@@ -72,7 +72,7 @@
           </a>
         </li>
         <li class="nav-item disable-after mr-5">
-          <a href="#" class="nav-link d-flex justify-content-center align-items-center">
+          <a routerLink="/basket" class="nav-link d-flex justify-content-center align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="17" height="17" viewBox="0 0 17 17">
               <path
                 d="M17,17H0L1,4H3V6A2.381,2.381,0,0,0,5,8C5.87,8,6,6.747,6,6V4h5V6c0,.747.13,2,1,2a2.381,2.381,0,0,0,2-2V4h2l1,13ZM4.5,5.879a.414.414,0,0,1-.342-.219A1.241,1.241,0,0,1,4,5a5.62,5.62,0,0,1,.088-1A4.822,4.822,0,0,1,9,0c2.114,0,3.584,1.5,3.931,4h0A7.308,7.308,0,0,1,13,5c0,.589-.259.858-.5.858S12,5.59,12,5a6.377,6.377,0,0,0-.078-1C11.777,3.1,11.207,1,9,1A4.235,4.235,0,0,0,5.163,4,3.325,3.325,0,0,0,5,5C5,5.6,4.739,5.879,4.5,5.879Z"

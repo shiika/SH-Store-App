@@ -1,45 +1,48 @@
-<nav aria-label="breadcrumb">
-  <div class="container px-0">
-    <ol class="breadcrumb bg-white">
-      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-      <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/gender', gender]">{{ gender | titlecase }}</a></li>
-      <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['../']">{{ category | titlecase }}</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{ item.name }}</li>
-    </ol>
-  </div>
-</nav>
-
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-sm-5 text-center details__img">
-      <img style="max-width: 100%;" [src]="replaceLargeImg(item.img)" alt="'item.name'">
+<div class="details">
+  <nav aria-label="breadcrumb">
+    <div class="container px-0">
+      <ol class="breadcrumb bg-white">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a
+            [routerLink]="[gender]">{{ gender | titlecase }}</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['../']">{{ category | titlecase }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ item.name }}</li>
+      </ol>
     </div>
-  </div>
+  </nav>
 
-  <div class="row justify-content-center details__desc">
-    <div class="col-12 col-sm-6 text-center">
-      <h2 class="details__desc__heading">{{ item.name }}</h2>
-      <p class="details__desc__price"><em>&euro; {{ item.price }}</em></p>
-      <p class="details__desc__content">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque
-        dui, non felis.
-        Maecenas malesuada elit lectus felis, malesuada ultricies. </p>
-      <h4 class="text-uppercase font-weight-normal mb-3">size</h4>
-      <div class="details__desc__size d-flex justify-content-center">
-        <div 
-        class="details__desc__size__item font-weight-bold d-flex align-items-center justify-content-center"
-        *ngFor="let size of item.size.split(',')">{{ size | uppercase }}</div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-5 text-center details__img">
+        <img style="max-width: 100%;" [src]="replaceLargeImg(item.img)" alt="'item.name'">
       </div>
-      <button class="btn btn-primary text-white my-5">Add To Cart</button>
     </div>
 
+    <div class="row justify-content-center details__desc">
+      <div class="col-12 col-sm-6 text-center">
+        <h2 class="details__desc__heading">{{ item.name }}</h2>
+        <p class="details__desc__price"><em>&euro; {{ item.price }}</em></p>
+        <p class="details__desc__content">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque
+          dui, non felis.
+          Maecenas malesuada elit lectus felis, malesuada ultricies. </p>
+        <h4 class="text-uppercase font-weight-normal mb-3">size</h4>
+        <div class="details__desc__size d-flex justify-content-center">
+          <div class="details__desc__size__item font-weight-bold d-flex align-items-center justify-content-center"
+            *ngFor="let size of item.size.split(',')">{{ size | uppercase }}</div>
+        </div>
+        <button class="btn btn-primary text-white my-5">Add To Cart</button>
+      </div>
 
-  </div>
 
-  <div class="row">
+    </div>
+
+    <div class="row">
       <div class="details__suggestions col-12">
         <h2 class="text-capitalize text-center font-weight-normal"><em>you may also like</em></h2>
         <app-testimonials [images]="getSuggestions()" (onSelectItem)="navigateToItem($event)"></app-testimonials>
-        <a class="d-block text-center text-uppercase mt-4" style="text-decoration: underline;" [routerLink]="['../']">show me more related clothes</a>
+        <a class="d-block text-center text-uppercase mt-4" style="text-decoration: underline;"
+          [routerLink]="['../']">show me more related clothes</a>
       </div>
+    </div>
   </div>
 </div>

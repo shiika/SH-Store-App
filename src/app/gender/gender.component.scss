@@ -2,11 +2,16 @@
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/breadcrumb';
+@import '../../assets/scss/mixins';
+
+.gender__cont {
+  @include navbar-fix;
+}
 
 .gender {
 
     h1 {
-      font-size: 2.7rem;
+      font-size: 2.25rem;
     }
 
     a:hover {

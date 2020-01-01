@@ -8,8 +8,6 @@ import { Item } from './item.model';
   providedIn: 'root'
 })
 export class InStockService {
-  womenItems: Categories;
-  menItems: Categories;
   genderItems: Categories;
   categoryItems: Item[];
   genderLoader: BehaviorSubject<Categories> = new BehaviorSubject<Categories>(null);

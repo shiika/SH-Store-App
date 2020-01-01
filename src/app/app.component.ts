@@ -1,6 +1,5 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
-import { InStockService } from './shared/in-stock.service';
 import { LoginComponent } from './login/login.component';
 
 import { PlaceholderDirective } from './placeholder.directive';
@@ -12,8 +11,9 @@ import { AuthService } from './shared/auth.service';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   loginClosingSub: Subscription;
+  authSub: Subscription;
   @ViewChild(PlaceholderDirective, {static: false}) hostDirective: PlaceholderDirective;
   constructor(
     private compFacRes: ComponentFactoryResolver,
@@ -21,24 +21,21 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.authService.autoLogin();
-  }
-
-  showLogin() {
-    const loginCompFac = this.compFacRes.resolveComponentFactory(LoginComponent);
-    const hostComp = this.hostDirective.viewContRef;
-
-    hostComp.clear();
-    const loginComp = hostComp.createComponent(loginCompFac);
-    this.loginClosingSub = loginComp.instance.closeComp.subscribe(
+    this.authSub = this.authService.onAuthenticate.subscribe(
       () => {
-        this.loginClosingSub.unsubscribe();
-        hostComp.clear();
+          const loginCompFac = this.compFacRes.resolveComponentFactory(LoginComponent);
+          const hostComp = this.hostDirective.viewContRef;
+
+          hostComp.clear();
+          const loginComp = hostComp.createComponent(loginCompFac);
+          this.loginClosingSub = loginComp.instance.closeComp.subscribe(
+            () => {
+              this.loginClosingSub.unsubscribe();
+              hostComp.clear();
+            }
+          )
       }
     )
-  }
-
-  ngOnDestroy() {
-    this.loginClosingSub.unsubscribe();
   }
 
 }

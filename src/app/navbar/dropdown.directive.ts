@@ -12,14 +12,14 @@ export class DropdownDirective {
     this.renderer.addClass(this.elRef.nativeElement.lastChild, "show");
       setTimeout(() => {
         this.renderer.addClass(this.elRef.nativeElement.lastChild, "slideIn");
-      }, 200);
+      }, 100);
   }
 
   @HostListener("mouseleave") onLeave() {
     this.renderer.removeClass(this.elRef.nativeElement.lastChild, "slideIn");
     setTimeout(() => {
       this.renderer.removeClass(this.elRef.nativeElement.lastChild, "show");
-    }, 200);
+    }, 100);
   }
 
 }

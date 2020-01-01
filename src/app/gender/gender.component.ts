@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../shared/item.model';
 import { Subscription } from 'rxjs';
-import { InStockService } from '../shared/in-stock.service';
+import { InStockService } from '../shared/stock.service';
 import { ActivatedRoute } from '@angular/router';
 import { Categories } from '../shared/categories.model';
 

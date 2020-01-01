@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { InStockService } from '../shared/in-stock.service';
+import { InStockService } from '../shared/stock.service';
 import { Item } from '../shared/item.model';
 
 @Component({

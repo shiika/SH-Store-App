@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { concatMap, take } from 'rxjs/operators';
 import { DataService } from '../shared/data.service';
 import { Item } from '../shared/item.model';
-import { InStockService } from '../shared/in-stock.service';
+import { InStockService } from '../shared/stock.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -17,11 +17,13 @@ export class CategoryComponent implements OnInit, OnDestroy {
   items: Item[];
   gender: string;
   filterForm: FormGroup;
-  catSub: Subscription;
   priceFilters: Array<string> = ["10-30","30-50","50-100","100-1000"];
   sizeFilters: Array<string> = ["xs", "s", "m", "l", "xl"];
   colorFilters: Array<string> = ["white", "red", "green", "black"];
-
+  
+  catSub: Subscription;
+  filterSub: Subscription;
+  paramsSub: Subscription;
 
   constructor(
     private route: ActivatedRoute, 
@@ -37,7 +39,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
       "color": new FormControl("Color")
     });
 
-    this.catSub = this.route.params.pipe(
+    this.paramsSub = this.route.params.pipe(
       concatMap(
         params => {
           this.category = this.route.snapshot.params["category"];
@@ -51,13 +53,13 @@ export class CategoryComponent implements OnInit, OnDestroy {
       }
     )
 
-    this.inStock.categoryLoader.subscribe(
+    this.catSub = this.inStock.categoryLoader.subscribe(
       (items: Item[]) => {
         this.items = items;
       }
     )
 
-    this.filterForm.valueChanges
+    this.filterSub = this.filterForm.valueChanges
       .subscribe(
         value => {
           const { size, color, price} = value;
@@ -68,7 +70,9 @@ export class CategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.filterSub.unsubscribe();
     this.catSub.unsubscribe();
+    this.paramsSub.unsubscribe();
   }
 
   getItem(id: number) {

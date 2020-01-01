@@ -39,7 +39,7 @@ export class LoginComponent {
         this.closeComp.emit();
     }
 
-    onNavigate() {
+    navigateToSignup() {
         this.router.navigate(['./account']);
     }
 

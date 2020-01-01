@@ -6,37 +6,42 @@ import { AccountComponent } from "./account/account.component";
 import { CategoryComponent } from './category/category.component';
 import { DetailsComponent } from './details/details.component';
 import { GenderComponent } from './gender/gender.component';
+import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const appRoutes: Routes = [
-    {
+  {
+    path: "",
+    redirectTo: "home",
+    pathMatch: "full"
+  },
+
+  { path: "home", component: HomeComponent },
+  { path: "basket", component: ShoppingBagComponent, canActivate: [AuthGuard] },
+
+  {
+    path: "account",
+    component: AccountComponent
+  },
+
+  {
+    path: ":gender",
+    children: [
+      {
         path: "",
-        redirectTo: "home",
-        pathMatch: "full"
-    },
-    {
-        path: "account",
-        component: AccountComponent
-    },
-    { 
-        path: "gender/:gender",
-        children: [
-            {
-                path: "",
-                component: GenderComponent,
-                resolve: {items: ItemsResolverService}
-            },
-            {
-                path: ":category",
-                component: CategoryComponent
-            },
-            {
-                path: ":category/:id",
-                component: DetailsComponent
-            }
-        ]
-    },
-    
-    { path: "home", component: HomeComponent }
+        component: GenderComponent,
+        resolve: { items: ItemsResolverService }
+      },
+      {
+        path: ":category",
+        component: CategoryComponent
+      },
+      {
+        path: ":category/:id",
+        component: DetailsComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

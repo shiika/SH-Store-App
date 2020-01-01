@@ -1,69 +1,72 @@
-<nav aria-label="breadcrumb">
-  <div class="container px-0">
-    <ol class="breadcrumb bg-white">
-      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-      <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/gender', gender]">{{ gender | titlecase }}</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{ category | titlecase }}</li>
-    </ol>
-  </div>
-</nav>
-
-
-<div class="container category">
-  <div class="row category__header">
-    <div class="col-12 d-flex flex-column align-items-center">
-      <h1 class="text-uppercase">{{ gender }}</h1>
-      <h3 class="d-block georgia-font font-weight-normal"><em>{{ category }}</em></h3>
+<div class="category__cont">
+  <nav aria-label="breadcrumb">
+    <div class="container px-0">
+      <ol class="breadcrumb bg-white">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a
+            [routerLink]="['/', gender]">{{ gender | titlecase }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ category | titlecase }}</li>
+      </ol>
     </div>
-  </div>
+  </nav>
 
-  <div class="row mt-3">
-    <form class="col-12 d-flex justify-content-center" [formGroup]="filterForm">
-      <div class="col-3">
-        <select class="custom-select category__select" formControlName="price">
-          <option selected>Price</option>
-          <option *ngFor="let filter of priceFilters" [value]="filter">&euro; {{ filter }}</option>
-        </select>
-      </div>
-      <div class="col-3">
-        <select class="custom-select category__select" formControlName="size">
-          <option selected>Size</option>
-          <option *ngFor="let filter of sizeFilters" [value]="filter">{{ filter | uppercase }}</option>
-        </select>
-      </div>
-      <div class="col-3">
-        <select class="custom-select category__select" formControlName="color">
-          <option selected>Color</option>
-          <option *ngFor="let filter of colorFilters" [value]="filter">{{ filter | titlecase }}</option>
-        </select>
-      </div>
-    </form>
-  </div>
 
-  <div class="row">
-  </div>
-
-  <div class="row category__items">
-    <div class="col-12 men__items__item col-md-6 col-lg-3 my-3 text-center" *ngFor="let item of items; let i = index">
-      <a class="d-block" (click)="getItem(item['id'])"><img [src]="item.img" class="mw-100" alt="category"></a>
-      <div class="men__items__item__content d-flex flex-column align-items-center">
-        <h4>{{item.name}}</h4>
-        <span class="d-block">&euro; {{item.price}}</span>
+  <div class="container category">
+    <div class="row category__header">
+      <div class="col-12 d-flex flex-column align-items-center">
+        <h1 class="text-uppercase color-primary">{{ gender }}</h1>
+        <h3 class="d-block georgia-font font-weight-normal color-secondary"><em>{{ category }}</em></h3>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link">Previous</a></li>
-          <li class="page-item active"><a class="page-link">1</a></li>
-          <li class="page-item"><a class="page-link">2</a></li>
-          <li class="page-item"><a class="page-link">3</a></li>
-          <li class="page-item"><a class="page-link">Next</a></li>
-        </ul>
-      </nav>
+    <div class="row mt-3">
+      <form class="col-12 d-flex justify-content-center" [formGroup]="filterForm">
+        <div class="col-3">
+          <select class="custom-select category__select" formControlName="price">
+            <option selected>Price</option>
+            <option *ngFor="let filter of priceFilters" [value]="filter">&euro; {{ filter }}</option>
+          </select>
+        </div>
+        <div class="col-3">
+          <select class="custom-select category__select" formControlName="size">
+            <option selected>Size</option>
+            <option *ngFor="let filter of sizeFilters" [value]="filter">{{ filter | uppercase }}</option>
+          </select>
+        </div>
+        <div class="col-3">
+          <select class="custom-select category__select" formControlName="color">
+            <option selected>Color</option>
+            <option *ngFor="let filter of colorFilters" [value]="filter">{{ filter | titlecase }}</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+    </div>
+
+    <div class="row category__items">
+      <div class="col-12 men__items__item col-md-6 col-lg-3 my-3 text-center" *ngFor="let item of items; let i = index">
+        <a class="d-block" (click)="getItem(item['id'])"><img [src]="item.img" class="mw-100" alt="category"></a>
+        <div class="men__items__item__content d-flex flex-column align-items-center">
+          <h4>{{item.name}}</h4>
+          <span class="d-block">&euro; {{item.price}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link">Previous</a></li>
+            <li class="page-item active"><a class="page-link">1</a></li>
+            <li class="page-item"><a class="page-link">2</a></li>
+            <li class="page-item"><a class="page-link">3</a></li>
+            <li class="page-item"><a class="page-link">Next</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
 </div>

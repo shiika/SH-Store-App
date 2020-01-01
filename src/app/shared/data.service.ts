@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap, take } from 'rxjs/operators';
 import { Categories } from './categories.model';
-import { InStockService } from './in-stock.service';
+import { InStockService } from './stock.service';
 import { Item } from './item.model';
 
 @Injectable({providedIn: 'root'})

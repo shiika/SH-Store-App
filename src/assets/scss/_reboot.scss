@@ -51,6 +51,14 @@ a {
     background-color: #606060 !important;
 }
 
+.color-primary {
+    color: $text-primary !important;
+}
+
+.color-secondary {
+    color: $text-secondary !important;
+}
+
 // @include media-breakpoint-down(md) {
 
 //     html {

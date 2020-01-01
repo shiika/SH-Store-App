@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, concatMap, tap, take } from 'rxjs/operators';
@@ -23,6 +23,8 @@ export class AuthService {
     constructor(private http: HttpClient, private router: Router) {}
 
     userAuthentication: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+    onAuthenticate = new EventEmitter<any>();
+    redirectUrl: string = "/home";
 
     signUp(authInfo: {email: string; password: string}, username: string, userInfo: UserInfo) {
         return this.http.post<ResPayload>("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB3hy4SAeurJT6IUoBnX3geh9hnARxBuU8", {
@@ -84,10 +86,7 @@ export class AuthService {
     logout() {
         this.userAuthentication.next(null);
         localStorage.clear();
-    }
-
-    private saveUserInfo() {
-        
+        this.router.navigate(["/home"]);
     }
 
     private autoLogout(expirationDuration: number) {
@@ -125,7 +124,11 @@ export class AuthService {
         const user = new User(email, localId, idToken, expirationDate, username);
         this.userAuthentication.next(user);
         localStorage.setItem("userData", JSON.stringify(user));
-        this.router.navigate(['/']);
+        this.router.navigate([this.redirectUrl]);
         this.autoLogout(+expiresIn * 1000);
+    }
+
+    emitLogin() {
+        this.onAuthenticate.emit();
     }
 }

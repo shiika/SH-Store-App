@@ -6,16 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  isLarge: boolean;
+
   testimonials: Array<string> = [
-    '../../assets/img/17026-min.jpg',
-    "../../assets/img/590335-PMG3Q5-312-min.jpg",
-    "../../assets/img/17251-min.jpg",
-    "../../assets/img/riki--1OKgmz4bmo-unsplash-min.jpg",
-    "../../assets/img/riki-nLv9Ne4uqro-unsplash-min.jpg",
-    "../../assets/img/doran-_RzFdVWffmU-unsplash-min.jpg",
-    '../../assets/img/17026-min.jpg',
-    "../../assets/img/590335-PMG3Q5-312-min.jpg",
-    "../../assets/img/17251-min.jpg"
+    '../../assets/img/17026_min.jpg',
+    '../../assets/img/17251_min.jpg',
+    '../../assets/img/590335_pmg3q5_312_mi_ebJWe.jpg',
+    '../../assets/img/riki__1okgmz4bmo_uns_uwb1n.jpg',
+    '../../assets/img/riki_nlv9ne4uqro_uns_5MFBh.jpg',
+    '../../assets/img/doran__rzfdvwffmu_un_ulRMG.jpg',
+    '../../assets/img/17026_min.jpg',
+    '../../assets/img/17251_min.jpg',
+    '../../assets/img/590335_pmg3q5_312_mi_ebJWe.jpg',
   ];
 
   constructor() {
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLarge = window.outerWidth > 970 ? true: false;
   }
 
 }

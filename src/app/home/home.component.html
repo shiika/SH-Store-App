@@ -1,7 +1,11 @@
-<div class="home" appScroll>
+<div class="home">
   <div class="home__header d-flex justify-content-start align-items-center flex-column mb-5">
     <div class="home__img">
-      <img src="../../assets/img/20190909_aehp_jeansjoggers_lg.jpg" class="mw-100" alt="Models" #img>
+      <picture>
+        <source srcset="../../assets/img/Small-Devices/20190909_aehp_jeansj_tZ0Fs.jpg" media="(max-width: 767px)">
+        <source srcset="../../assets/img/20190909_aehp_jeansjoggers_lg.jpg" media="(min-width: 768px)">
+        <img src="../../assets/img/20190909_aehp_jeansjoggers_lg.jpg" class="mw-100" alt="Models" #img>
+      </picture>
     </div>
     <div class="home__container">
       <h1 class="text-uppercase m-2 home__heading text-center font-weight-normal">hazy shade of spring</h1>
@@ -17,7 +21,7 @@
       <div class="row">
         <div class="col-12">
           <div class="home__grid">
-            <div class="home__grid__item home__grid__item--1">
+            <div class="home__grid__item home__grid__item--1 lax" data-lax-scale="0 0, 500 1.5">
               <div class="home__grid__item__heading text-center text-white font-weight-bold text-uppercase">
                 <h2>Heather</h2>
                 <h2>Grey Basics</h2>
@@ -58,7 +62,7 @@
                 <em>Braided Leather</em>
               </div>
             </div>
-            <div class="home__grid__item home__grid__item--8">sh</div>
+            <div class="home__grid__item home__grid__item--8"></div>
             <div class="home__grid__item home__grid__item--9 bg-dark">
               <img src="../../assets/SVG/Thin Left Down Arrow.svg" class="mb-3" alt="Thin Left Arrow">
               <div class="home__grid__item__heading text-center text-white font-weight-bold text-uppercase">
@@ -89,7 +93,7 @@
         </div>
       </div>
 
-      <app-testimonials [images]="testimonials"></app-testimonials>
+      <app-testimonials [images]="testimonials" *ngIf="isLarge"></app-testimonials>
     </div>
   </div>
 </div>

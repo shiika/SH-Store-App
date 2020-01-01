@@ -8,6 +8,15 @@
 
 .navbar {
   padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  transform: translateY(0);
+  transition: transform .6s;
+  transition-timing-function: ease-in-out;
 
   .navbar-brand {
     background-color: $logo-color;
@@ -155,6 +164,10 @@
     }
   }
 
+}
+
+.nav-up {
+  transform: translateY(-95px);
 }
 
 @keyframes nav-animation {

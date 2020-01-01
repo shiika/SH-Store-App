@@ -4,9 +4,10 @@
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/breadcrumb';
 @import '~bootstrap/scss/buttons';
+@import '../../assets/scss/mixins';
 
 .details {
-
+  @include navbar-fix;
 
   &__desc {
     h4 {

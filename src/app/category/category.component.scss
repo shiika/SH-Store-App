@@ -8,8 +8,19 @@
 @import '~bootstrap/scss/pagination';
 @import '~bootstrap/scss/custom-forms';
 @import '~bootstrap/scss/utilities/text';
+@import '../../assets/scss/mixins';
+
+.category__cont {
+  @include navbar-fix;
+}
 
 .category {
+
+  &__header {
+    h1 {
+      font-size: 2.25rem;
+    }
+  }
 
   &__items {
     padding: 3rem 0;

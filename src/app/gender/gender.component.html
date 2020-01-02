@@ -15,7 +15,7 @@
         <h1 class="text-uppercase text-center color-primary">{{category}}</h1>
         <a [routerLink]="[category]" class="d-block georgia-font"><em>show more &rarr;</em></a>
       </div>
-      <div class="row gender__items">
+      <div class="col-12 gender__items">
         <div class="col-12 gender__items__item col-md-6 col-lg-3 my-5 text-center"
           *ngFor="let item of categories[category]">
           <a class="d-block"><img [src]="item.img" class="mw-100" [alt]="category"></a>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-
     </div>
+
   </div>
 </div>

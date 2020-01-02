@@ -5,6 +5,7 @@
 @import '../../assets/scss/mixins';
 
 .gender__cont {
+  width: 100%;
   @include navbar-fix;
 }
 

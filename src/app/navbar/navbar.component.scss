@@ -35,32 +35,6 @@
     animation-fill-mode: backwards;
     animation-timing-function: ease-in-out;
 
-    .dropdown {
-
-      .dropdown-menu.show {
-        overflow: hidden;
-        height: 0;
-        padding: 0;
-        border: none;
-        margin: 0;
-
-        .dropdown-item:hover {
-          background-color: $primary;
-          color: white;
-        }
-      }
-
-      .dropdown-menu.slideIn {
-        // height: 0;
-        height: 130px;
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        padding: .5rem 0;
-        animation-name: slideIn;
-        animation-duration: .5s;
-      }
-
-    }
-
     .nav-item:hover,
     .nav-item.active {
 
@@ -139,7 +113,8 @@
     .navbar-collapse {
       overflow: hidden;
       height: 0;
-      transition: height 1s;
+      font-size: 1.2rem;
+      transition: height .7s;
 
       .nav-item {
         padding: .2rem 1.2rem;
@@ -156,7 +131,7 @@
     }
 
     .collapsed {
-      height: 260px;
+      height: 18rem;
     }
 
     .dropdown-menu {

@@ -20,20 +20,20 @@
     </div>
 
     <div class="row mt-3">
-      <form class="col-12 d-flex justify-content-center" [formGroup]="filterForm">
-        <div class="col-3">
+      <form class="col-12 row justify-content-center" [formGroup]="filterForm">
+        <div class="col-12 col-sm-3">
           <select class="custom-select category__select" formControlName="price">
             <option selected>Price</option>
             <option *ngFor="let filter of priceFilters" [value]="filter">&euro; {{ filter }}</option>
           </select>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-sm-3">
           <select class="custom-select category__select" formControlName="size">
             <option selected>Size</option>
             <option *ngFor="let filter of sizeFilters" [value]="filter">{{ filter | uppercase }}</option>
           </select>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-sm-3">
           <select class="custom-select category__select" formControlName="color">
             <option selected>Color</option>
             <option *ngFor="let filter of colorFilters" [value]="filter">{{ filter | titlecase }}</option>
@@ -43,11 +43,13 @@
     </div>
 
     <div class="row category__items">
-      <div class="col-12 men__items__item col-md-6 col-lg-3 my-3 text-center" *ngFor="let item of items; let i = index">
+      <div class="category__items__item col-6 col-lg-3 my-3 text-center" *ngFor="let item of items; let i = index">
         <a class="d-block" (click)="getItem(item['id'])"><img [src]="item.img" class="mw-100" alt="category"></a>
-        <div class="men__items__item__content d-flex flex-column align-items-center">
+        <a class="d-block"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 26 26"><g transform="translate(0 -1026.362)"><circle cx="13" cy="1039.362" r="13" fill="#50b748" fill-rule="evenodd"/><path style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;isolation:auto;mix-blend-mode:normal" fill="#fff" fill-rule="evenodd" d="m 8,2 c 3.319604,0 5.999963,2.6803455 6,6 1.8e-5,3.319654 -2.680356,6 -6,6 C 4.6803565,14 1.9980292,11.319654 1.9980469,8 1.9980837,4.6803455 4.6803952,2 8,2 Z M 7.9863281,4.0039062 C 7.7101831,4.0082149 7.4898197,4.235574 7.4941406,4.5117188 L 7.5,7.5039062 4.5039062,7.5097656 c -0.6679685,0.0013 -0.6660153,1.0032553 0.00195,1.0019532 L 7.5,8.5058594 7.5058594,11.5 c -0.00956,0.676162 1.0095636,0.676162 1,0 l -0.00391,-2.9960938 2.9921876,-0.00586 c 0.676089,0.00815 0.674099,-1.010791 -0.002,-1 L 8.5,7.5039062 8.4960938,4.5117188 C 8.4994272,4.2294345 8.2685784,4.0003547 7.9863281,4.0058594 Z" color="#000" font-family="sans-serif" font-weight="400" overflow="visible" transform="translate(5.001 1031.362)" white-space="normal"/></g></svg></a>
+        <div class="category__items__item__content d-flex flex-column align-items-center">
           <h4>{{item.name}}</h4>
           <span class="d-block">&euro; {{item.price}}</span>
+          
         </div>
       </div>
     </div>

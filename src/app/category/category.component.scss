@@ -20,10 +20,24 @@
     h1 {
       font-size: 2.25rem;
     }
+
+    h3 {
+      font-size: 1.2rem;
+    }
   }
 
   &__items {
     padding: 3rem 0;
+
+    &__item {
+      position: relative;
+
+      svg {
+        position: absolute;
+        top: 74%;
+        left: 84%;
+      }
+    }
   }
 
   &__select {

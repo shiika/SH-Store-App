@@ -6,6 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter} 
   styleUrls: ['./testimonials.component.scss']
 })
 export class TestimonialsComponent implements OnInit {
+  @Input("DevCapable") DevCapable: boolean;
   @Input("images") testimonials: Array<string>;
   @Output("onSelectItem") onSelectItem: EventEmitter<string> = new EventEmitter<string>();
 

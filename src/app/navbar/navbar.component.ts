@@ -10,12 +10,14 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   isCollapsed: boolean = false;
-  isAuthenticated: boolean = false;
+  isAuthenticated: boolean;
+  isAdmin: boolean;
   username: string = null;
   userSub: Subscription;
 
   lastScrollTop: number = 0;
   @ViewChild("navbar", {static: true}) navElement: ElementRef;
+  @ViewChild("navBtn", {static: true}) navBtn: ElementRef;
 
   constructor(private authService: AuthService, private renderer: Renderer2) { }
 
@@ -23,11 +25,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.userSub = this.authService.userAuthentication.subscribe(
         user => {
           this.isAuthenticated = !!user;
+          this.isAdmin = false;
           if (user) {
             const newName = user.username.slice(0, user.username.indexOf(" "));
-            this.username = newName;
-          } else {
-            this.username = null;
+            this.username = this.authService.checkAdministration(user.email) ? "Admin" : `Hey, ${newName}`;
+            this.isAdmin = this.authService.checkAdministration(user.email);
           }
         });
 
@@ -35,6 +37,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
         scrollEvent.pipe(
           debounceTime(17)
         ).subscribe(this.onScroll.bind(this));
+
+        window.addEventListener("click", (e) => {
+          this.isCollapsed = this.navBtn.nativeElement.contains(e.target) ? !this.isCollapsed : false;
+        })
   }
 
   onAuth() {
@@ -43,10 +49,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   logout() {
     this.authService.logout();
-  }
-
-  onCollapse() {
-      this.isCollapsed = !this.isCollapsed;
   }
 
   onScroll(e: Event) {

@@ -16,6 +16,7 @@ import { CategoryComponent } from './category/category.component';
 import { DetailsComponent } from './details/details.component';
 import { GenderComponent } from './gender/gender.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
     CategoryComponent,
     DetailsComponent,
     GenderComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
+    ShoppingBagComponent
   ],
   imports: [
     BrowserModule,

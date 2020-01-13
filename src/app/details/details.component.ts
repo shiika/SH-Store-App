@@ -13,6 +13,7 @@ export class DetailsComponent implements OnInit {
   gender: string;
   category: string;
   item: Item;
+  isCapable: boolean;
 
   constructor(
     private route: ActivatedRoute, 
@@ -28,6 +29,8 @@ export class DetailsComponent implements OnInit {
         }
       )
     this.category = this.route.snapshot.params["category"];
+
+    this.isCapable = window.outerWidth > 970 ? true: false;
   }
 
   replaceLargeImg(img: string) {
@@ -47,5 +50,7 @@ export class DetailsComponent implements OnInit {
     this.router.navigate(["../", id], {relativeTo: this.route});
   }
 
-
+  addToCart() {
+    this.inStock.addToBasket(this.item);
+  }
 }

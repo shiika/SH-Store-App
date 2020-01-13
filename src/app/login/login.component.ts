@@ -23,6 +23,7 @@ export class LoginComponent {
         const { email, password } = this.authForm.form.value;
         this.authObs = this.authService.signIn({email, password});
         
+        
         this.authObs.subscribe(
             () => {
                 this.closeComp.emit();

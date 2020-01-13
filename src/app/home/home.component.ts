@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  isLarge: boolean;
+  isCapable: boolean;
 
   testimonials: Array<string> = [
     '../../assets/img/17026_min.jpg',
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLarge = window.outerWidth > 970 ? true: false;
+    this.isCapable = window.outerWidth > 970 ? true: false;
   }
 
 }

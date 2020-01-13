@@ -24,6 +24,7 @@ export class AuthService {
 
     userAuthentication: BehaviorSubject<User> = new BehaviorSubject<User>(null);
     onAuthenticate = new EventEmitter<any>();
+    administration: boolean = false;
     redirectUrl: string = "/home";
 
     signUp(authInfo: {email: string; password: string}, username: string, userInfo: UserInfo) {
@@ -87,6 +88,7 @@ export class AuthService {
         this.userAuthentication.next(null);
         localStorage.clear();
         this.router.navigate(["/home"]);
+        this.administration = false;
     }
 
     private autoLogout(expirationDuration: number) {
@@ -126,6 +128,12 @@ export class AuthService {
         localStorage.setItem("userData", JSON.stringify(user));
         this.router.navigate([this.redirectUrl]);
         this.autoLogout(+expiresIn * 1000);
+        this.administration = true;
+    }
+
+    checkAdministration(email: string) {
+        this.administration = email.endsWith("@shopping.com");
+        return this.administration;
     }
 
     emitLogin() {

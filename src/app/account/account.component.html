@@ -87,7 +87,7 @@
 
           <div class="form-group col-12 d-flex justify-content-center form__submit">
             <button type="submit" class="btn btn-primary text-white rounded-0"
-              [disabled]="signupForm.invalid">{{editMode ? "Save Changes" : "Sign Up"}}</button>
+              [disabled]="(signupForm.invalid)">{{editMode ? "Save Changes" : "Sign Up"}}</button>
           </div>
         </div>
       </form>

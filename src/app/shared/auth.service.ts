@@ -32,8 +32,6 @@ export class AuthService {
             ...authInfo,
             returnSecureToken: true
         }).pipe(
-            take(1),
-            // Following the signup request with an edit POST request to assign a username to the user
             catchError(this.handleError),
             concatMap(
                 (payload: ResPayload) => {
@@ -55,7 +53,6 @@ export class AuthService {
             ),  
             concatMap(
                 (res) => {
-                    console.log(res);
                     return this.signIn(authInfo);
                 }
             )
@@ -67,7 +64,6 @@ export class AuthService {
             ...authInfo,
             returnSecureToken: true
         }).pipe(
-            take(1),
             catchError(this.handleError),
             tap(this.handleAuthentication.bind(this))
         )
@@ -129,6 +125,7 @@ export class AuthService {
         this.router.navigate([this.redirectUrl]);
         this.autoLogout(+expiresIn * 1000);
         this.administration = true;
+        console.log(user.token);
     }
 
     checkAdministration(email: string) {

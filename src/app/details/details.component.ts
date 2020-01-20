@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { InStockService } from '../shared/stock.service';
 import { Item } from '../shared/item.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -9,11 +10,12 @@ import { Item } from '../shared/item.model';
   styleUrls: ['./details.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent implements OnInit, OnDestroy {
   gender: string;
   category: string;
   item: Item;
   isCapable: boolean;
+  paramsSub: Subscription;
 
   constructor(
     private route: ActivatedRoute, 
@@ -22,7 +24,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     this.gender = this.route.snapshot.params["gender"];
-    this.route.params
+    this.paramsSub = this.route.params
       .subscribe(
         (params: Params) => {
           this.item = this.inStock.loadItem(+params["id"]);
@@ -52,5 +54,9 @@ export class DetailsComponent implements OnInit {
 
   addToCart() {
     this.inStock.addToBasket(this.item);
+  }
+
+  ngOnDestroy() {
+    this.paramsSub.unsubscribe();
   }
 }

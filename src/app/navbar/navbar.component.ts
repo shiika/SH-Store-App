@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Renderer2 } from '
 import { AuthService } from '../shared/auth.service';
 import { Subscription, fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { User } from '../shared/user.model';
+import { DataService } from '../shared/data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,20 +15,22 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isAuthenticated: boolean;
   isAdmin: boolean;
   username: string = null;
+  userId: string;
   userSub: Subscription;
 
   lastScrollTop: number = 0;
   @ViewChild("navbar", {static: true}) navElement: ElementRef;
   @ViewChild("navBtn", {static: true}) navBtn: ElementRef;
 
-  constructor(private authService: AuthService, private renderer: Renderer2) { }
+  constructor(private authService: AuthService, private renderer: Renderer2, private dataService: DataService) { }
 
   ngOnInit() {
       this.userSub = this.authService.userAuthentication.subscribe(
-        user => {
+        (user: User) => {
           this.isAuthenticated = !!user;
           this.isAdmin = false;
           if (user) {
+            this.userId = user.id;
             const newName = user.username.slice(0, user.username.indexOf(" "));
             this.username = this.authService.checkAdministration(user.email) ? "Admin" : `Hey, ${newName}`;
             this.isAdmin = this.authService.checkAdministration(user.email);
@@ -60,6 +64,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
     
     this.lastScrollTop = presentScroll;
+  }
+
+  onEditAccount() {
+    this.dataService.getUserInfo();
   }
 
   ngOnDestroy() {

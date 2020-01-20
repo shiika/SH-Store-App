@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent {
 
     submitForm() {
         const { email, password } = this.authForm.form.value;
-        this.authObs = this.authService.signIn({email, password});
+        this.authObs = this.authService.signIn({email, password}).pipe(take(1));
         
         
         this.authObs.subscribe(

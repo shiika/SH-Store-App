@@ -7,6 +7,8 @@ import { CategoryComponent } from './category/category.component';
 import { DetailsComponent } from './details/details.component';
 import { GenderComponent } from './gender/gender.component';
 import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
+import { AuthGuard } from './shared/auth.guard';
+import { ConfirmDeactivateGuard } from './shared/can-deactivate.guard';
 
 const appRoutes: Routes = [
   {
@@ -16,11 +18,12 @@ const appRoutes: Routes = [
   },
 
   { path: "home", component: HomeComponent },
-  { path: "basket", component: ShoppingBagComponent },
+  { path: "basket", component: ShoppingBagComponent, canActivate: [AuthGuard] },
 
   {
     path: "account",
-    component: AccountComponent
+    component: AccountComponent,
+    canDeactivate: [ConfirmDeactivateGuard]
   },
 
   {

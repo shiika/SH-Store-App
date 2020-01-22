@@ -17,6 +17,7 @@ import { DetailsComponent } from './details/details.component';
 import { GenderComponent } from './gender/gender.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
+import { DetailDirective } from './details/detail.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
     DetailsComponent,
     GenderComponent,
     TestimonialsComponent,
-    ShoppingBagComponent
+    ShoppingBagComponent,
+    DetailDirective
   ],
   imports: [
     BrowserModule,

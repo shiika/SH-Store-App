@@ -38,6 +38,10 @@ export class DataService {
         )
     }
 
+    fetchItem(id: number, category: string, gender: string) {
+      return this.http.get(`https://shopping-store-1fe69.firebaseio.com/${gender}/${category}.json?orderBy="id"&equalTo=${id}`)
+    }
+
     getUserInfo() {
       this.authService.userAuthentication.pipe(take(1)).subscribe( (user: User) =>  {this.user = user});
       return this.http.get(`https://shopping-store-1fe69.firebaseio.com/users/${this.user.id}.json`, {

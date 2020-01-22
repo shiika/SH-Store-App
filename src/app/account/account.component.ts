@@ -25,18 +25,18 @@ export class AccountComponent implements OnInit,OnDestroy, CanComponentDeactivat
     ) {
       this.signupForm = new FormGroup({
         personalForm: new FormGroup({
-          "firstName": new FormControl(null, [this.validateString.bind(this)]),
-          "lastName": new FormControl(null, [this.validateString.bind(this)]),
-          "companyName": new FormControl(null),
-          "gender": new FormControl(null),
-          "address": new FormControl(null),
-          "city": new FormControl(null),
-          "country": new FormControl(null),
-          "phoneno": new FormControl(null, Validators.minLength(11)),
+          "firstName": new FormControl("Hassan", [this.validateString.bind(this)]),
+          "lastName": new FormControl("Yehia", [this.validateString.bind(this)]),
+          "companyName": new FormControl("Mahgoub"),
+          "gender": new FormControl("male"),
+          "address": new FormControl("Masakn"),
+          "city": new FormControl("Cairo"),
+          "country": new FormControl("Egypt"),
+          "phoneno": new FormControl("201115909716", [Validators.minLength(12), this.numberValidator.bind(this)]),
         }),
         authForm: new FormGroup({
-          "password": new FormControl(null, Validators.minLength(8)),
-          "email": new FormControl(null, Validators.email)
+          "password": new FormControl("66666666", Validators.minLength(8)),
+          "email": new FormControl("hassan@test.com", Validators.email)
         })
       });
     }
@@ -69,6 +69,14 @@ export class AccountComponent implements OnInit,OnDestroy, CanComponentDeactivat
       return {invalid: true}
     }
     return null
+  }
+
+  private numberValidator(control: FormControl): {[s: string]: boolean} {
+    if (isNaN(control.value) || !control.value.startsWith("20")) {
+      return { invalid: true }
+    }
+
+    return null;
   }
 
   private populateData(info: UserInfo) {
@@ -106,6 +114,6 @@ export class AccountComponent implements OnInit,OnDestroy, CanComponentDeactivat
   }
 
   ngOnDestroy() {
-    this.formSub.unsubscribe();
+    this.editMode ? this.formSub.unsubscribe() : null;
   }
 }

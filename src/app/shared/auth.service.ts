@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, concatMap, tap, take } from 'rxjs/operators';
+import { catchError, concatMap, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
 import { UserInfo } from './userInfo.model';
@@ -45,17 +45,18 @@ export class AuthService {
                 }
             ),
             concatMap(
+                _ => {
+                    return this.signIn(authInfo);
+                }
+            ),
+            concatMap(
                 (payload: ResPayload) => {
                     const userData = JSON.stringify(userInfo);
                     const userId = payload.localId;
-                    return this.http.put(`https://shopping-store-1fe69.firebaseio.com/users/${userId}.json`, userData);
+                    const userToken = payload.idToken;
+                    return this.http.put(`https://shopping-store-1fe69.firebaseio.com/users/${userId}.json?auth=${userToken}`, userData);
                 }
             ),  
-            concatMap(
-                (res) => {
-                    return this.signIn(authInfo);
-                }
-            )
         )
     }
 
@@ -125,7 +126,6 @@ export class AuthService {
         this.router.navigate([this.redirectUrl]);
         this.autoLogout(+expiresIn * 1000);
         this.administration = true;
-        console.log(user.token);
     }
 
     checkAdministration(email: string) {

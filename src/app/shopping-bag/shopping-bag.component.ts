@@ -16,6 +16,7 @@ export class ShoppingBagComponent implements OnInit {
     this.basketService.productsLoader
       .subscribe(
         (items: Item[]) => {
+          console.log(items);
           this.products = items;
         }
       )

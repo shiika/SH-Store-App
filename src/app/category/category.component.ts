@@ -49,6 +49,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
       )
     ).subscribe(
       (items: Item[]) => {
+        console.log(items);
         this.items = items;
       }
     )

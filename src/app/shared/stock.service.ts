@@ -57,11 +57,5 @@ export class InStockService {
       
   }
 
-  addToBasket(item: Item) {
-    const {img, name, color, size, price} = item;
-    let newProduct = new Product(img, name, color, size, 1, price);
-    console.log(newProduct);
-  }
-
   
 }

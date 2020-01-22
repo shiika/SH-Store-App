@@ -3,8 +3,7 @@
     <div class="container px-0">
       <ol class="breadcrumb bg-white">
         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a
-            [routerLink]="['/', gender]">{{ gender | titlecase }}</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/', gender]">{{ gender | titlecase }}</a></li>
         <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['../']">{{ category | titlecase }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ item.name }}</li>
       </ol>
@@ -27,8 +26,14 @@
           Maecenas malesuada elit lectus felis, malesuada ultricies. </p>
         <h4 class="text-uppercase font-weight-normal mb-3">size</h4>
         <div class="details__desc__size d-flex justify-content-center">
-          <div class="details__desc__size__item font-weight-bold"
-            *ngFor="let size of item.size.split(',')"><a class="d-flex align-items-center justify-content-center h-100">{{ size | uppercase }}</a>
+          <div class="details__desc__size__item font-weight-bold" detailSelector
+            *ngFor="let size of sizes"><a class="d-flex align-items-center justify-content-center h-100">{{ size | uppercase }}</a>
+          </div>
+        </div>
+        <h4 class="text-uppercase font-weight-normal mb-3">Color</h4>
+        <div class="details__desc__size details__desc__color d-flex justify-content-center">
+          <div class="details__desc__size__item font-weight-bold" detailSelector
+            *ngFor="let color of colors" [ngStyle]="{backgroundColor: color}"><a class="d-flex align-items-center justify-content-center h-100"></a>
           </div>
         </div>
         <div class="row justify-content-center details__desc__btn mt-5">
@@ -45,13 +50,13 @@
 
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="details__suggestions col-12" *ngIf="isCapable">
         <h2 class="text-capitalize text-center font-weight-normal"><em>you may also like</em></h2>
         <app-testimonials [images]="getSuggestions()" (onSelectItem)="navigateToItem($event)"></app-testimonials>
         <a class="d-block text-center text-uppercase mt-4" style="text-decoration: underline;"
           [routerLink]="['../']">show me more related clothes</a>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

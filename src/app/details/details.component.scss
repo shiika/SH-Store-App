@@ -31,15 +31,34 @@
 
     &__size {
 
+      .active {
+        background-color: $primary;
+        
+        a {
+          color: white;
+        }
+      }
 
       &__item {
         width: 2rem;
         height: 2rem;
         border: 1px solid #959595;
+        transition: background-color .5s;
+
+        a {
+          transition: color .5s;
+        }
 
         &:not(:last-child) {
           margin-right: .8rem;
         }
+      }
+    }
+
+    &__color {
+
+      .active {
+        outline: 1px solid black;
       }
     }
 

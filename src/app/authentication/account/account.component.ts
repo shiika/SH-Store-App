@@ -1,12 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../shared/auth.service';
+import { AuthService } from '../../shared/auth.service';
 import { take, concatMap } from "rxjs/operators";
-import { DataService } from "../shared/data.service";
-import { UserInfo } from '../shared/userInfo.model';
+import { DataService } from "../../shared/data.service";
+import { UserInfo } from '../../shared/userInfo.model';
 import { Subscription, Observable } from 'rxjs';
-import { CanComponentDeactivate } from '../shared/can-deactivate.guard';
+import { CanComponentDeactivate } from './can-deactivate.guard';
+import { PlaceholderDirective } from '../../placeholder.directive';
 
 @Component({
   selector: 'app-account',
@@ -18,6 +19,7 @@ export class AccountComponent implements OnInit,OnDestroy, CanComponentDeactivat
   signupForm: FormGroup;
   formChanged: boolean;
   formSub: Subscription;
+
   constructor(
     private route: ActivatedRoute, 
     private authService: AuthService,

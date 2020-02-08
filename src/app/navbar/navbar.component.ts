@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { Subscription, fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, take } from 'rxjs/operators';
 import { User } from '../shared/user.model';
 import { DataService } from '../shared/data.service';
+import { BasketService } from '../shared/basket.service';
+import { Product } from '../shared/product.model';
 
 @Component({
   selector: 'app-navbar',
@@ -22,7 +24,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   @ViewChild("navbar", {static: true}) navElement: ElementRef;
   @ViewChild("navBtn", {static: true}) navBtn: ElementRef;
 
-  constructor(private authService: AuthService, private renderer: Renderer2, private dataService: DataService) { }
+  constructor(
+    private authService: AuthService, 
+    private renderer: Renderer2, 
+    private dataService: DataService,
+    private basket: BasketService) { }
 
   ngOnInit() {
       this.isAdmin = false;
@@ -53,6 +59,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   logout() {
     this.authService.logout();
+    this.basket.clearProducts();
   }
 
   onScroll(e: Event) {

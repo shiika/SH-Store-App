@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormControl } from "@angular/forms";
 import { concatMap, take } from 'rxjs/operators';
-import { DataService } from '../shared/data.service';
-import { Item } from '../shared/item.model';
-import { InStockService } from '../shared/stock.service';
+import { DataService } from '../../shared/data.service';
+import { Item } from '../../shared/item.model';
+import { InStockService } from '../../shared/stock.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -49,7 +49,6 @@ export class CategoryComponent implements OnInit, OnDestroy {
       )
     ).subscribe(
       (items: Item[]) => {
-        console.log(items);
         this.items = items;
       }
     )

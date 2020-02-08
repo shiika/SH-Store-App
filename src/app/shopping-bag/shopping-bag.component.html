@@ -6,10 +6,12 @@
           <h3 class="text-capitalize text-center color-secondary georgia-font font-weight-normal mt-0"><em>items reserved for a limited time only</em></h3>
       </div>
 
+      <app-placeholder *ngIf="!products"></app-placeholder>
+
       <table class="table col-md-12">
         <thead>
           <tr>
-            <th scope="col">product</th>
+            <th scope="col">Product</th>
             <th scope="col" class="text-left">Description</th>
             <th scope="col">Color</th>
             <th scope="col">Size</th>
@@ -18,35 +20,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products">
+          <tr *ngFor="let product of products; let i = index" class="basket__row" appRow>
             <td scope="row"><img [src]="product.img" [alt]="product.name" class="mw-100" height="100px">
             </td>
             <td class="text-left">{{ product.name }}</td>
-            <td>{{product.color}}</td>
-            <td>{{ product.size }}</td>
+            <td>{{product.color | titlecase}}</td>
+            <td>{{ product.size | uppercase }}</td>
             <td>1</td>
-            <td>@{{ product.price }}</td>
+            <td>{{ product.price }}</td>
+            <td class="basket__row__close" style="font-weight: bold; cursor: pointer;" (click)="onRemoveProduct(i)">x</td>
           </tr>
-          <!-- <tr>
-            <!-- <td scope="row"><img src="../../assets/img/Men/Hoody_1.jpg" alt="product" class="mw-100" height="100px">
-            </td>
-            <td class="text-left">Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@fat</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td scope="row"><img src="../../assets/img/Men/Hoody_1.jpg" alt="product" class="mw-100" height="100px">
-            </td>
-            <td class="text-left">Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-          </tr> --> -->
         </tbody>
       </table>
+
+      <div class="col-12 d-flex justify-content-center">
+        <button type="button" class="btn btn-primary text-white" (click)="saveToBasket()">Save to Basket</button>
+      </div>
     </div>
+
+    <app-shipping></app-shipping>
   </div>
 </div>

@@ -9,23 +9,23 @@
     <div class="collapse navbar-collapse show" id="navbarTogglerDemo01" [ngClass]="{collapsed: isCollapsed}">
       <ul class="navbar-nav mr-auto py-3" id="navigation-bar">
         <li class="nav-item dropdown" appDropdown routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['women']" (click)="isCollapsed = !isCollapsed">Woman</a>
+          <a class="nav-link" [routerLink]="['/store/women']" (click)="isCollapsed = !isCollapsed">Woman</a>
           <div class="dropdown-menu">
-            <a [routerLink]="['women', 'Hoodies & Sweatshirts']" class="dropdown-item">Hoodies & Sweatshirts</a>
-            <a [routerLink]="['women', 'Jeans']" class="dropdown-item">Jeans</a>
+            <a [routerLink]="['/store/women', 'Hoodies & Sweatshirts']" class="dropdown-item">Hoodies & Sweatshirts</a>
+            <a [routerLink]="['/store/women', 'Jeans']" class="dropdown-item">Jeans</a>
             <a class="dropdown-item">Jackets and Coats</a>
             <a class="dropdown-item">Sweaters & Cardigans</a>
           </div>
         </li>
         <li class="nav-item dropdown" routerLinkActive="active" appDropdown>
-          <a class="nav-link" [routerLink]="['men']" (click)="isCollapsed = false">Men</a>
+          <a class="nav-link" [routerLink]="['/store/men']" (click)="isCollapsed = false">Men</a>
           <div class="dropdown-menu">
             <a 
             class="dropdown-item" 
-            [routerLink]="['men', 'Hoodies & Sweatshirts']">Hoodies & Sweatshirts</a>
+            [routerLink]="['/store/men', 'Hoodies & Sweatshirts']">Hoodies & Sweatshirts</a>
             <a 
             class="dropdown-item"
-            [routerLink]="['men', 'Jackets & Coats']">Jackets & Coats</a>
+            [routerLink]="['/store/men', 'Jackets & Coats']">Jackets & Coats</a>
             <a class="dropdown-item">Jeans</a>
             <a class="dropdown-item">Shoes</a>
           </div>

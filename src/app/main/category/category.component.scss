@@ -8,7 +8,7 @@
 @import '~bootstrap/scss/pagination';
 @import '~bootstrap/scss/custom-forms';
 @import '~bootstrap/scss/utilities/text';
-@import '../../assets/scss/mixins';
+@import '../../../assets/scss/mixins';
 
 .category__cont {
   @include navbar-fix;
@@ -41,7 +41,7 @@
   }
 
   &__select {
-    background: url(../../assets/caret-down.svg) no-repeat;
+    background: url(../../../assets/caret-down.svg) no-repeat;
     background-position: 97% 50%;
     background-size: 14px;
     border: none;

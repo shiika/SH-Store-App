@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Item } from '../shared/item.model';
+import { Item } from '../../shared/item.model';
 import { Subscription } from 'rxjs';
-import { InStockService } from '../shared/stock.service';
+import { InStockService } from '../../shared/stock.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Categories } from '../shared/categories.model';
+import { Categories } from '../../shared/categories.model';
 import { switchMap, take } from 'rxjs/operators';
 
 @Component({

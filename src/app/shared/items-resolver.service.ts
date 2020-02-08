@@ -16,6 +16,7 @@ export class ItemsResolverService implements Resolve<Categories> {
         state: RouterStateSnapshot
     ): Observable<Categories> | Promise<Categories> | Categories {
         const gender = route.params["gender"];
+        console.log("resolved!");
         return this.dataService.fetchItems(gender);
     }
 }

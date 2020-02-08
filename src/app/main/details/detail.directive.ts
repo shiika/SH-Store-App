@@ -1,4 +1,4 @@
-import { Directive, Renderer2, HostListener, ElementRef } from '@angular/core';
+import { Directive, Renderer2, HostListener, ElementRef, Output, EventEmitter, Input } from '@angular/core';
 
 @Directive({
     selector: "[detailSelector]"
@@ -7,7 +7,7 @@ import { Directive, Renderer2, HostListener, ElementRef } from '@angular/core';
 export class DetailDirective {
     constructor(private renderer: Renderer2, private elRef: ElementRef) {}
 
-    @HostListener("mousedown") onClick() {
+    @HostListener("mousedown", ["$event"]) onClick() {
         for (let child of this.elRef.nativeElement.parentElement.children) {
             this.renderer.removeClass(child, "active");
         }

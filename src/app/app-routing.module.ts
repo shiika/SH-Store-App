@@ -1,14 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
-import { ItemsResolverService } from "./shared/items-resolver.service";
-import { AccountComponent } from "./account/account.component";
-import { CategoryComponent } from './category/category.component';
-import { DetailsComponent } from './details/details.component';
-import { GenderComponent } from './gender/gender.component';
 import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
 import { AuthGuard } from './shared/auth.guard';
-import { ConfirmDeactivateGuard } from './shared/can-deactivate.guard';
+import { ProductsResolverService } from './shared/products-resolver.service';
 
 const appRoutes: Routes = [
   {
@@ -16,33 +10,10 @@ const appRoutes: Routes = [
     redirectTo: "home",
     pathMatch: "full"
   },
-
-  { path: "home", component: HomeComponent },
-  { path: "basket", component: ShoppingBagComponent, canActivate: [AuthGuard] },
-
-  {
-    path: "account",
-    component: AccountComponent,
-    canDeactivate: [ConfirmDeactivateGuard]
-  },
-
-  {
-    path: ":gender",
-    children: [
-      {
-        path: "",
-        component: GenderComponent,
-        resolve: { items: ItemsResolverService }
-      },
-      {
-        path: ":category",
-        component: CategoryComponent
-      },
-      {
-        path: ":category/:id",
-        component: DetailsComponent
-      }
-    ]
+  { path: "basket",
+    canActivate: [AuthGuard],
+    component: ShoppingBagComponent,
+    resolve: {products: ProductsResolverService}
   }
 ];
 

@@ -5,6 +5,7 @@ import { catchError, concatMap, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
 import { UserInfo } from './userInfo.model';
+import { BasketService } from './basket.service';
 
 interface ResPayload {
     idToken: string;
@@ -16,8 +17,7 @@ interface ResPayload {
     registered?: boolean;
 }
 
-@Injectable({providedIn: 'root'})
-
+@Injectable({providedIn: "root"})
 
 export class AuthService {
     constructor(private http: HttpClient, private router: Router) {}
@@ -51,10 +51,12 @@ export class AuthService {
             ),
             concatMap(
                 (payload: ResPayload) => {
-                    const userData = JSON.stringify(userInfo);
+                    const userData = {...userInfo, products: []};
+                    console.log(userData);
+                    const userString = JSON.stringify(userData);
                     const userId = payload.localId;
                     const userToken = payload.idToken;
-                    return this.http.put(`https://shopping-store-1fe69.firebaseio.com/users/${userId}.json?auth=${userToken}`, userData);
+                    return this.http.put(`https://shopping-store-1fe69.firebaseio.com/users/${userId}.json?auth=${userToken}`, userString);
                 }
             ),  
         )
@@ -131,6 +133,10 @@ export class AuthService {
     checkAdministration(email: string) {
         this.administration = email.endsWith("@shopping.com");
         return this.administration;
+    }
+
+    checkAuthentication() {
+        return this.userAuthentication
     }
 
     emitLogin() {

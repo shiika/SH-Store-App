@@ -1,10 +1,10 @@
-@import '../../assets/scss/variables';
+@import '../../../assets/scss/variables';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/breadcrumb';
 @import '~bootstrap/scss/buttons';
-@import '../../assets/scss/mixins';
+@import '../../../assets/scss/mixins';
 
 .details {
   @include navbar-fix;

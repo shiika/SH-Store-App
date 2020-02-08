@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, ViewChild } from "@angular/core";
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../shared/auth.service';
+import { AuthService } from '../../shared/auth.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';

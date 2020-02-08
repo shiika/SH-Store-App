@@ -2,15 +2,13 @@ import { Injectable } from '@angular/core';
 import { Categories } from './categories.model';
 import { BehaviorSubject } from 'rxjs';
 import { Item } from './item.model';
-import { BasketService } from './basket.service';
-import { Product } from './product.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class InStockService {
-  constructor(private basketService: BasketService) {}
+  constructor() {}
 
   genderItems: Categories;
   categoryItems: Item[];
@@ -29,11 +27,6 @@ export class InStockService {
 
   loadItem(id: number) {
     return this.categoryItems.find(item => item["id"] == id);
-  }
-
-  loadSuggestions() {
-    return this.categoryItems.slice(0, 8);
-    
   }
 
   loadFilteredItems(filterConfig: {size: string; color: string; price: string}) {

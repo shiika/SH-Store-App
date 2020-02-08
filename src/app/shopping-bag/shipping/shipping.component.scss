@@ -1,0 +1,31 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/forms';
+@import '~bootstrap/scss/custom-forms';
+@import '~bootstrap/scss/buttons';
+
+@import "../../../assets/scss/mixins";
+
+.shipping {
+
+  &__header {
+
+    h1 {
+        font-size: 2.25rem;
+    }
+  }
+
+  button[type=submit] {
+    background-color: #F68236;
+    border: 1px solid #F68236;
+    cursor: pointer;
+    width: 40%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  button[disabled] {
+    cursor: not-allowed;
+  }
+}

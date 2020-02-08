@@ -9,7 +9,6 @@ export class User {
 
     get token() {
         if (new Date() < this._tokenExpirationDate) {
-            console.log("Authenticated");
             return this._token;
         }
     }

@@ -1,6 +1,6 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './authentication/login/login.component';
 
 import { PlaceholderDirective } from './placeholder.directive';
 import { Subscription } from 'rxjs';
@@ -13,15 +13,15 @@ import { AuthService } from './shared/auth.service';
 })
 export class AppComponent implements OnInit {
   loginClosingSub: Subscription;
-  authSub: Subscription;
-  @ViewChild(PlaceholderDirective, {static: false}) hostDirective: PlaceholderDirective;
+  @ViewChild(PlaceholderDirective, {static: false}) hostDirective: PlaceholderDirective
+
   constructor(
     private compFacRes: ComponentFactoryResolver,
     private authService: AuthService) {}
 
   ngOnInit() {
     this.authService.autoLogin();
-    this.authSub = this.authService.onAuthenticate.subscribe(
+    this.authService.onAuthenticate.subscribe(
       () => {
           const loginCompFac = this.compFacRes.resolveComponentFactory(LoginComponent);
           const hostComp = this.hostDirective.viewContRef;

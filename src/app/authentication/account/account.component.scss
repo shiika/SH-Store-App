@@ -6,7 +6,7 @@
 @import '~bootstrap/scss/forms';
 @import '~bootstrap/scss/custom-forms';
 @import '~bootstrap/scss/alert';
-@import "../../assets/scss/mixins";
+@import "../../../assets/scss/mixins";
 
 input.ng-invalid.ng-touched {
     border: 1px solid $danger;

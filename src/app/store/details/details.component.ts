@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { BasketService } from '../../shared/basket.service';
 import { DataService } from 'src/app/shared/data.service';
 import { switchMap } from 'rxjs/operators';
+import { Product } from 'src/app/shared/product.model';
 
 @Component({
   selector: 'app-details',
@@ -17,6 +18,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   category: string;
   item: Item;
   isCapable: boolean;
+  editMode: boolean;
   resolverSub: Subscription;
   size: string = null;
   color: string = null;
@@ -29,6 +31,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnInit() {
+    this.editMode = !!this.route.snapshot.fragment;
     ({gender: this.gender, category: this.category} = this.route.snapshot.params);
     this.resolverSub = this.route.data
       .pipe(
@@ -65,8 +68,15 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.color = color;
   }
 
-  addToCart() {
-    this.basket.addProduct(this.item, this.size, this.color);
+
+
+  updateCart() {
+    const newProduct = new Product(this.item.img, this.item.name, this.color, this.size, this.item.price, this.item.id, this.gender, this.category, 1);
+    if (this.editMode) {
+      this.basket.editProduct(+this.item.id, newProduct);
+    } else {
+      this.basket.addProduct(newProduct);
+    }
   }
   ngOnDestroy() {
     this.resolverSub.unsubscribe();

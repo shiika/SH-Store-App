@@ -1,0 +1,47 @@
+@import "../../../assets/scss/variables";
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/buttons';
+@import "../../../assets/scss/mixins";
+
+.order {
+    @include navbar-fix;
+
+    &__edit-account {
+        padding: .7rem 2rem;
+    }
+
+    .table {
+        margin-top: 2rem;
+
+        th {
+            text-transform: uppercase;
+            color: #909090;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        .order__row {
+
+            &__products {
+                width: 35%;
+
+                h3 {
+                    margin-left: 2.5rem;
+                }
+            }
+
+            td {
+                padding-top: 1rem;
+                border: none;
+                vertical-align: top;
+            }
+
+            &:first-child td {
+                padding-top: 1.5rem;
+            }
+        }
+    }
+    
+}

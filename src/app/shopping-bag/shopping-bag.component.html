@@ -6,9 +6,9 @@
           <h3 class="text-capitalize text-center color-secondary georgia-font font-weight-normal mt-0"><em>items reserved for a limited time only</em></h3>
       </div>
 
-      <app-placeholder *ngIf="!products"></app-placeholder>
+      <app-placeholder *ngIf="products.length == 0"></app-placeholder>
 
-      <table class="table col-md-12">
+      <table class="table col-md-12" *ngIf="products.length > 0">
         <thead>
           <tr>
             <th scope="col">Product</th>
@@ -26,18 +26,19 @@
             <td class="text-left">{{ product.name }}</td>
             <td>{{product.color | titlecase}}</td>
             <td>{{ product.size | uppercase }}</td>
-            <td>1</td>
+            <td><div class="qty"><span class="d-inline-block" style="cursor: pointer;" (click)="decQty(i)"><img src="https://img.icons8.com/flat_round/64/000000/minus.png" class="mw-100"></span> {{product.qty}} <span class="d-inline-block" (click)="incQty(i)"><img src="https://img.icons8.com/cute-clipart/64/000000/plus.png" class="mw-100"></span></div></td>
             <td>{{ product.price }}</td>
             <td class="basket__row__close" style="font-weight: bold; cursor: pointer;" (click)="onRemoveProduct(i)">x</td>
+            <td><button type="button" class="btn btn-primary text-white btn__edit" (click)="onEditProduct(product)">Edit</button></td>
           </tr>
         </tbody>
       </table>
 
-      <div class="col-12 d-flex justify-content-center">
-        <button type="button" class="btn btn-primary text-white" (click)="saveToBasket()">Save to Basket</button>
+      <div class="col-12 d-flex justify-content-center basket__save">
+        <button type="button" class="btn btn-primary text-white" (click)="saveToBasket()" [disabled]="products.length == 0">Save to Basket</button>
       </div>
     </div>
 
-    <app-shipping></app-shipping>
+    <app-shipping [shippingProducts]="products"></app-shipping>
   </div>
 </div>

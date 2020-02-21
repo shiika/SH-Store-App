@@ -6,6 +6,9 @@ export class Product {
         public size: string,
         public price: number,
         public id: number,
+        public gender: string,
+        public category: string,
         public qty?: number
     ) {}
+
 }

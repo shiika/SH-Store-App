@@ -1,50 +1,49 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Item } from './item.model';
 import { Product } from './product.model';
 import { Router } from '@angular/router';
-import { DataService } from './data.service';
-import { tap, take, switchMap, takeWhile } from 'rxjs/operators';
 
 @Injectable({providedIn: "root"})
 
 export class BasketService {
-    constructor(private router: Router, private dataService: DataService) {}
+    constructor(private router: Router) {}
 
     productsLoader: BehaviorSubject<Product[]> = new BehaviorSubject([]);
-    fetchedProducts: Product[] = [];
-    productsBag: Array<Product> = [];
+    private productsBag: Array<Product> = [];
 
-    get fetchedProductsInstance() {
-        return this.fetchedProducts;
+    get productsInstance() {
+        return this.productsBag.slice();
     }
-    
+
     onFetchProducts(products: Product[]) {
-        this.fetchedProducts = products;
+        this.productsBag = products || [];
+        this.loadProducts(this.productsInstance);
     }
 
-    addProduct(item: Item, size: string, color: string) {
-        const product = new Product(item.img, item.name, color, size, item.price, item.id);
+    addProduct(product: Product) {
         this.productsBag.push(product);
-        this.loadProducts(this.productsBag);
+        this.loadProducts(this.productsInstance);
 
         this.router.navigate(["/basket"]);
     }
 
-    saveProducts(lastProducts: Product[]) {
-       return this.dataService.addToBasket(lastProducts);
-    }
-
-    removeProduct(index: number) {
-        this.productsBag.splice(index, 1);
-        this.loadProducts(this.productsBag);
+    editProduct(id: number, newProduct: Product) {
+        const index = this.productsBag.findIndex(item => item.id == id);
+        this.productsBag.splice(index, 1, newProduct);
+        this.loadProducts(this.productsInstance);
     }
 
     clearProducts() {
         this.productsBag = [];
+        this.loadProducts(this.productsInstance);
     }
 
-    loadProducts(products: Product[]) {
+    removeProduct(index: number) {
+        this.productsBag.splice(index, 1);
+        this.loadProducts(this.productsInstance)
+    }
+
+    private loadProducts(products: Product[]) {
         this.productsLoader.next(products);
     }
 }

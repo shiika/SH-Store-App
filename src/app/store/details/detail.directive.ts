@@ -1,4 +1,4 @@
-import { Directive, Renderer2, HostListener, ElementRef, Output, EventEmitter, Input } from '@angular/core';
+import { Directive, Renderer2, HostListener, ElementRef } from '@angular/core';
 
 @Directive({
     selector: "[detailSelector]"

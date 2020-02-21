@@ -27,6 +27,13 @@
       }
     }
 
+    .btn__edit {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      background-color: #F68236;
+      border-color: #F68236;
+    }
+
     tbody {
         
         td {
@@ -43,13 +50,29 @@
     }
   }
 
-  button[type=button] {
-    background-color: #F68236;
-    border: 1px solid #F68236;
-    cursor: pointer;
-    width: 40%;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  &__save {
+
+    .btn-primary {
+      background-color: #F68236;
+      border: 1px solid #F68236;
+      cursor: pointer;
+      width: 40%;
+      padding: 1rem 0.75rem;
+    }
+  }
+
+  .qty {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      width: 1.2rem;
+      cursor: pointer;
+    }
+
+    span:last-child {
+      width: 1.3rem;
+    }
   }
 
   button[disabled] {

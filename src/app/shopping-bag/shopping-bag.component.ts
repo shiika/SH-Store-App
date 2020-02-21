@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { BasketService } from '../shared/basket.service';
 import { Product } from '../shared/product.model';
-import { take, switchMap } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { DataService } from '../shared/data.service';
 
 export class RowDirective {
 
@@ -15,25 +17,44 @@ export class RowDirective {
   encapsulation: ViewEncapsulation.None
 })
 export class ShoppingBagComponent implements OnInit, OnDestroy  {
-  products: Product[] = [];
+  products: Product[];
   basketSub: Subscription;
+  productQty: number = 1;
 
-  constructor(private basketService: BasketService) {
+  constructor(
+    private basketService: BasketService, 
+    private dataService: DataService,
+    private router: Router) {
   }
 
   ngOnInit() {
-    this.products = this.basketService.fetchedProductsInstance;
+    this.products = [];
     this.basketSub = this.basketService.productsLoader
-      .subscribe(
+    .subscribe(
         (products: Product[]) => {
-          this.products.push(...products);
+          this.products = products;
         }
-      );
+        );
 
   }
 
+  incQty(index: string) {
+    console.log(this.products);
+    this.products[index].qty == 3 ? this.products[index].qty = 3 : this.products[index].qty++;
+  }
+
+  decQty(index: string) {
+    console.log(this.products);
+    this.products[index].qty == 0 ? this.products[index].qty = 0 : this.products[index].qty--;
+  }
+
+  onEditProduct(product: Product) {
+    const {gender, category, id} = product;
+    this.router.navigate(["/store", gender, category, id], {fragment: "editMode"});
+  }
+
   saveToBasket() {
-    this.basketService.saveProducts(this.products)
+    this.dataService.addToBasket(this.products)
       .pipe(take(1))
       .subscribe(
         (products: Product[]) => {

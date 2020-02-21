@@ -8,34 +8,29 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { DropdownDirective } from './navbar/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
-import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
-import { MainModule } from './main/main.module';
 import { AuthModule } from './authentication/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { PlaceholderDirective } from './placeholder.directive';
-import { ShippingComponent } from './shopping-bag/shipping/shipping.component';
-import { PlaceholderComponent } from './shopping-bag/placeholder/placeholder.component';
+import { HomeComponent } from './home/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DropdownDirective,
     NavbarComponent,
+    HomeComponent,
     FooterComponent,
-    ShoppingBagComponent,
-    PlaceholderDirective,
-    ShippingComponent,
-    PlaceholderComponent
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MainModule,
     AuthModule,
     SharedModule
   ],
+
   providers: [
     
   ],

@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { Subscription, fromEvent } from 'rxjs';
-import { debounceTime, take } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { User } from '../shared/user.model';
 import { DataService } from '../shared/data.service';
 import { BasketService } from '../shared/basket.service';
@@ -12,13 +12,15 @@ import { Product } from '../shared/product.model';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit {
   isCollapsed: boolean = false;
   isAuthenticated: boolean;
   isAdmin: boolean;
   username: string = null;
   userId: string;
   userSub: Subscription;
+  basketSub: Subscription;
+  inBasketLength: number;
 
   lastScrollTop: number = 0;
   @ViewChild("navbar", {static: true}) navElement: ElementRef;
@@ -32,7 +34,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
       this.isAdmin = false;
-      this.userSub = this.authService.userAuthentication.subscribe(
+      this.authService.userAuthentication.subscribe(
         (user: User) => {
           this.isAuthenticated = !!user;
           if (user) {
@@ -42,6 +44,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.isAdmin = this.authService.checkAdministration(user.email);
           }
         });
+
+      this.basket.productsLoader
+                        .subscribe(
+                          (products: Product[]) => {
+                            this.inBasketLength = products.length;
+                          }
+                        )
 
         const scrollEvent = fromEvent(window, "scroll");
         scrollEvent.pipe(
@@ -75,10 +84,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onEditAccount() {
     this.dataService.getUserInfo();
-  }
-
-  ngOnDestroy() {
-    this.userSub.unsubscribe();
   }
 
 }

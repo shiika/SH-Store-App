@@ -25,7 +25,8 @@ export class LoginComponent {
         this.authObs = this.authService.signIn({email, password}).pipe(take(1));
         
         
-        this.authObs.subscribe(
+        this.authObs
+        .subscribe(
             () => {
                 this.closeComp.emit();
             },
@@ -39,6 +40,7 @@ export class LoginComponent {
 
     onClose() {
         this.closeComp.emit();
+        this.authService.redirectUrl = "";
     }
 
     navigateToSignup() {

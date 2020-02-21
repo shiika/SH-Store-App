@@ -1,8 +1,7 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
-import { AuthGuard } from './shared/auth.guard';
-import { ProductsResolverService } from './shared/products-resolver.service';
+import { RouterModule, Routes, PreloadAllModules } from "@angular/router";
+import { CanLoadShoppingBagService } from './shared/can-load-shopping.service';
+import { HomeComponent } from './home/home/home.component';
 
 const appRoutes: Routes = [
   {
@@ -10,15 +9,21 @@ const appRoutes: Routes = [
     redirectTo: "home",
     pathMatch: "full"
   },
-  { path: "basket",
-    canActivate: [AuthGuard],
-    component: ShoppingBagComponent,
-    resolve: {products: ProductsResolverService}
-  }
+
+  { path: "home", component: HomeComponent },
+  {
+    path: "store/:gender",
+    loadChildren: () => import("./store/store.module").then(m => {console.log("store loaded"); return m.StoreModule})
+  },
+  { 
+    path: "basket",
+    loadChildren: () => import("./shopping-bag/shopping-bag.module").then(m => m.ShoppingBagModule),
+    canLoad: [CanLoadShoppingBagService]
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

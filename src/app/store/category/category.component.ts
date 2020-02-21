@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormControl } from "@angular/forms";
-import { concatMap, take } from 'rxjs/operators';
+import { take, switchMap } from 'rxjs/operators';
 import { DataService } from '../../shared/data.service';
 import { Item } from '../../shared/item.model';
 import { InStockService } from '../../shared/stock.service';
@@ -20,6 +20,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
   priceFilters: Array<string> = ["10-30","30-50","50-100","100-1000"];
   sizeFilters: Array<string> = ["xs", "s", "m", "l", "xl"];
   colorFilters: Array<string> = ["white", "red", "green", "black"];
+  page: number = 1;
   
   catSub: Subscription;
   filterSub: Subscription;
@@ -40,11 +41,12 @@ export class CategoryComponent implements OnInit, OnDestroy {
     });
 
     this.paramsSub = this.route.params.pipe(
-      concatMap(
+      switchMap(
         params => {
-          this.category = this.route.snapshot.params["category"];
-          this.gender = this.route.snapshot.params["gender"];
-          return this.dataService.fetchCategory(this.gender, params.category)
+          this.category = params["category"];
+          this.gender = params["gender"];
+          this.dataService.fetchCategory(this.gender, this.category).pipe(take(1)).subscribe();
+          return this.inStock.categoryLoader;
         }
       )
     ).subscribe(
@@ -53,25 +55,41 @@ export class CategoryComponent implements OnInit, OnDestroy {
       }
     )
 
-    this.catSub = this.inStock.categoryLoader.subscribe(
-      (items: Item[]) => {
-        this.items = items;
-      }
-    )
-
     this.filterSub = this.filterForm.valueChanges
+      .pipe(
+        switchMap(
+          value => {
+            const { size, color, price} = value;
+            this.inStock.loadFilteredItems({size, color, price}, this.page);
+            return this.inStock.categoryLoader
+          }
+        )
+      )
       .subscribe(
-        value => {
-          const { size, color, price} = value;
-          this.inStock.loadFilteredItems({size, color, price});
+        (items: Item[]) => {
+          this.items = items;
         }
       )
     
   }
 
+  nextPage() {
+    this.page++;
+    this.inStock.navigatePage(this.page);
+  }
+
+  previousPage() {
+    this.page--;
+    this.inStock.navigatePage(this.page);
+  }
+
+  navigateToPage(index: string) {
+    this.page = +index;
+    this.inStock.navigatePage(this.page);
+  }
+
   ngOnDestroy() {
     this.filterSub.unsubscribe();
-    this.catSub.unsubscribe();
     this.paramsSub.unsubscribe();
   }
 

@@ -11,7 +11,7 @@
     <form class="col-8 mt-5 row form" [formGroup]="shipForm" (ngSubmit)="onSubmit()">
       <div class="form-group col-12">
         <label class="form__label">SELECT DELIVERY METHOD</label>
-        <select name="method" class="custom-select" formControlName="method" required>
+        <select name="method" class="custom-select" formControlName="deliveryMethod" required>
           <option value="DHL" selected>DHL International - &euro; 15.00</option>
           <option value="FedEx">FexEx International - &euro; 15.00</option>
         </select>
@@ -39,6 +39,11 @@
         <div class="form-group col-12 col-sm-6">
           <label for="phone" class="form__label">Phone Number</label>
           <input type="text" class="form-control" name="phone" id="phone" formControlName="phoneno" required>
+        </div>
+
+        <div class="form-group col-12">
+          <label for="email" class="form__label">Email</label>
+          <input type="email" class="form-control" name="email" id="email" formControlName="email">
         </div>
 
         <div class="form-group col-12 d-flex justify-content-center form__submit">

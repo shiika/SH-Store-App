@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { InStockService } from '../../shared/stock.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Categories } from '../../shared/categories.model';
-import { switchMap, take } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-gender',

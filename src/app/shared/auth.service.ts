@@ -1,10 +1,11 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, concatMap, tap } from 'rxjs/operators';
+import { catchError, concatMap, tap, take } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
 import { UserInfo } from './userInfo.model';
+import { Product } from './product.model';
 import { BasketService } from './basket.service';
 
 interface ResPayload {
@@ -20,7 +21,10 @@ interface ResPayload {
 @Injectable({providedIn: "root"})
 
 export class AuthService {
-    constructor(private http: HttpClient, private router: Router) {}
+    constructor(
+        private http: HttpClient, 
+        private router: Router, 
+        private basket: BasketService) {}
 
     userAuthentication: BehaviorSubject<User> = new BehaviorSubject<User>(null);
     onAuthenticate = new EventEmitter<any>();
@@ -52,13 +56,12 @@ export class AuthService {
             concatMap(
                 (payload: ResPayload) => {
                     const userData = {...userInfo, products: []};
-                    console.log(userData);
                     const userString = JSON.stringify(userData);
                     const userId = payload.localId;
                     const userToken = payload.idToken;
                     return this.http.put(`https://shopping-store-1fe69.firebaseio.com/users/${userId}.json?auth=${userToken}`, userString);
                 }
-            ),  
+            )
         )
     }
 
@@ -72,6 +75,20 @@ export class AuthService {
         )
     }
 
+    fetchBasket() {
+        let userInfo: User;
+        this.userAuthentication.pipe(take(1)).subscribe(user => { userInfo = user });
+        return this.http.get<Product[]>(`https://shopping-store-1fe69.firebaseio.com/users/${userInfo.id}/products.json?auth=${userInfo.token}`)
+                .pipe(
+                  tap(
+                    (products: Product[]) => {
+                      console.log("from fetchBasket()");
+                      this.basket.onFetchProducts(products);
+                    }
+                  )
+                )
+      }
+
     autoLogin() {
         const data = JSON.parse(localStorage.getItem("userData"));
         if (!data) {
@@ -81,13 +98,14 @@ export class AuthService {
         this.userAuthentication.next(user);
         const expiredDuration = (new Date(data._tokenExpirationDate).getTime() - new Date().getTime());
         this.autoLogout(expiredDuration);
+        this.fetchBasket().pipe(take(1)).subscribe();
     }
 
     logout() {
+        this.administration = false;
         this.userAuthentication.next(null);
         localStorage.clear();
         this.router.navigate(["/home"]);
-        this.administration = false;
     }
 
     private autoLogout(expirationDuration: number) {
@@ -127,7 +145,8 @@ export class AuthService {
         localStorage.setItem("userData", JSON.stringify(user));
         this.router.navigate([this.redirectUrl]);
         this.autoLogout(+expiresIn * 1000);
-        this.administration = true;
+        this.checkAdministration(email);
+        this.fetchBasket().pipe(take(1)).subscribe();
     }
 
     checkAdministration(email: string) {
@@ -135,8 +154,9 @@ export class AuthService {
         return this.administration;
     }
 
-    checkAuthentication() {
-        return this.userAuthentication
+    redirectToLogin(url: string) {
+        this.redirectUrl = url;
+        this.emitLogin();
     }
 
     emitLogin() {

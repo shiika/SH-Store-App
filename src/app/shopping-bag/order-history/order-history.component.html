@@ -1,0 +1,50 @@
+<div class="container order">
+  <div class="row">
+    <div class="col-12 order__header d-flex flex-column align-items-center">
+      <h1 class="text-uppercase text-center">
+        hi, {{userName}}<br>
+        this is your order history
+      </h1>
+      <button type="button" class="btn btn-primary text-white order__edit-account">Edit Account</button>
+    </div>
+
+    <table class="table col-md-12" *ngIf="orders.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">order no</th>
+          <th scope="col">order date</th>
+          <th scope="col" rowspan="3">products</th>
+          <th scope="col">ship date</th>
+          <th scope="col">total amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders; let i = index" class="order__row">
+          <td scope="row">#{{ order.id }}
+          </td>
+          <td>{{ order.orderDate | date:"mediumDate" }}</td>
+          <td class="order__row__products">
+              <div class="d-flex mb-3" *ngFor="let product of order.products">
+                  <img [src]="product.img" alt="product" class="d-inline-block" width="40">
+                  <h3>{{ product.name }}</h3>
+              </div>
+          </td>
+          <td> {{ order.shipDate | date:"mediumDate" }} </td>
+          <td> &euro;{{ order.totalAmount }} </td>
+          <!-- <td>{{order.color | titlecase}}</td>
+          <td>{{ order.size | uppercase }}</td>
+          <td>
+            <div class="qty"><span class="d-inline-block" style="cursor: pointer;" (click)="decQty(i)"><img
+                  src="https://img.icons8.com/flat_round/64/000000/minus.png" class="mw-100"></span> {{order.qty}}
+              <span class="d-inline-block" (click)="incQty(i)"><img
+                  src="https://img.icons8.com/cute-clipart/64/000000/plus.png" class="mw-100"></span></div>
+          </td>
+          <td>{{ order.price }}</td>
+          <td class="basket__row__close" style="font-weight: bold; cursor: pointer;" (click)="onRemoveProduct(i)">x</td>
+          <td><button type="button" class="btn btn-primary text-white btn__edit"
+              (click)="onEditProduct(product)">Edit</button></td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

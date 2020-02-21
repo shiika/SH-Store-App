@@ -6,7 +6,6 @@ import { DetailDirective } from './details/detail.directive';
 import { SharedModule } from '../shared/shared.module';
 import { SuggestionsPipe } from './details/suggestions.pipe';
 import { StoreRoutingModule } from './store-routing.module';
-import { StoreComponent } from './store.component';
 
 @NgModule({
     declarations: [
@@ -14,8 +13,7 @@ import { StoreComponent } from './store.component';
         DetailsComponent,
         GenderComponent,
         DetailDirective,
-        SuggestionsPipe,
-        StoreComponent
+        SuggestionsPipe
     ],
 
     imports: [

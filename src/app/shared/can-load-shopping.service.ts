@@ -1,14 +1,15 @@
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
-import { map, take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { CanLoad, UrlSegment, Route } from '@angular/router';
 import { User } from './user.model';
+import { BasketService } from './basket.service';
 
 @Injectable({providedIn: "root"})
 
 export class CanLoadShoppingBagService implements CanLoad {
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService, private basketService: BasketService) {}
 
     canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
         return this.authService.userAuthentication

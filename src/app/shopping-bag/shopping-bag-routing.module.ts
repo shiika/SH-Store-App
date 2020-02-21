@@ -7,7 +7,8 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 const routes: Routes = [
     { 
         path: "",
-        component: ShoppingBagComponent
+        component: ShoppingBagComponent,
+        canActivate: [AuthGuard]
     },
     {
       path: ":id/order-history",

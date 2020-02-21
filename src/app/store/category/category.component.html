@@ -58,8 +58,8 @@
         <nav aria-label="Page navigation example">
           <ul class="pagination">
             <li class="page-item"><a class="page-link" (click)="previousPage()" *ngIf="!(page == 1)">Previous</a></li>
-            <li class="page-item" [ngClass]="{'active': page == 1}"><a class="page-link" (click)="navigateToPage(1)">1</a></li>
-            <li class="page-item" [ngClass]="{'active': page == 2}"><a class="page-link" (click)="navigateToPage(2)">2</a></li>
+            <li class="page-item" [class.active]="page == 1"><a class="page-link" (click)="navigateToPage(1)">1</a></li>
+            <li class="page-item" [class.active]="page == 2"><a class="page-link" (click)="navigateToPage(2)">2</a></li>
             <li class="page-item"><a class="page-link" (click)="nextPage()" *ngIf="!(page == 2)">Next</a></li>
           </ul>
         </nav>

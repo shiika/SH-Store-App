@@ -10,23 +10,20 @@ const routes: Routes = [
     {
         path: "",
         component: GenderComponent,
-        resolve: { items: ItemsResolverService },
-        children: [
-          {
-            path: "",
-            component: GenderComponent,
-          },
-          {
-            path: ":category",
-            component: CategoryComponent
-          },
-          {
-            path: ":category/:id",
-            component: DetailsComponent,
-            resolve: {item: ItemResolver}
-          }
-        ]
+        resolve: { items: ItemsResolverService }
+    },
+
+    {
+      path: ":category",
+      component: CategoryComponent
+    },
+    
+    {
+      path: ":category/:id",
+      component: DetailsComponent,
+      resolve: {item: ItemResolver}
     }
+        
 ]
 
 @NgModule({

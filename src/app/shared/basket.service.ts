@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
 export class BasketService {
     constructor(private router: Router) {}
 
-    productsLoader: BehaviorSubject<Product[]> = new BehaviorSubject([]);
     private productsBag: Array<Product> = [];
+    productsLoader: BehaviorSubject<Product[]> = new BehaviorSubject([]);
 
     get productsInstance() {
         return this.productsBag.slice();
     }
 
     onFetchProducts(products: Product[]) {
-        this.productsBag = products || [];
+        this.productsBag.push(...products);
         this.loadProducts(this.productsInstance);
     }
 

@@ -83,7 +83,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
     this.inStock.navigatePage(this.page);
   }
 
-  navigateToPage(index: string) {
+  navigateToPage(index: number) {
     this.page = +index;
     this.inStock.navigatePage(this.page);
   }

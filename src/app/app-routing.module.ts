@@ -13,7 +13,7 @@ const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
   {
     path: "store/:gender",
-    loadChildren: () => import("./store/store.module").then(m => {console.log("store loaded"); return m.StoreModule})
+    loadChildren: () => import("./store/store.module").then(m => m.StoreModule)
   },
   { 
     path: "basket",

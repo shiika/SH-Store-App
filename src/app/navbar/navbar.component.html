@@ -61,7 +61,7 @@
               </span>
               <div class="dropdown-menu" *ngIf="isAuthenticated">
                 <a class="dropdown-item" *ngIf="!isAdmin" [routerLink]="['/account']" [fragment]="'editMode'">Edit Your Account</a>
-                <a class="dropdown-item" *ngIf="!isAdmin" [routerLink]="[userId, 'order-history']">Your Order History</a>
+                <a class="dropdown-item" *ngIf="!isAdmin" [routerLink]="['/basket', userId, 'order-history']">Your Order History</a>
                 <a class="dropdown-item" *ngIf="!isAdmin">Your Favourites</a>
                 <a class="dropdown-item" (click)="logout()">Logout</a>
               </div>

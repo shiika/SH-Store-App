@@ -36,8 +36,8 @@ export class AccountComponent implements OnInit,OnDestroy, CanComponentDeactivat
           "phoneno": new FormControl("201115909716", [Validators.minLength(12), this.numberValidator.bind(this)]),
         }),
         authForm: new FormGroup({
-          "password": new FormControl("66666666", Validators.minLength(8)),
-          "email": new FormControl("hassan@test.com", Validators.email)
+          "password": new FormControl(null, Validators.minLength(8)),
+          "email": new FormControl(null, Validators.email)
         })
       });
     }

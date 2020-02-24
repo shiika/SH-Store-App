@@ -87,6 +87,8 @@ export class AccountComponent implements OnInit,OnDestroy, CanComponentDeactivat
   }
 
   onSubmit() {
+    this.formChanged = false;
+    this.signupForm.reset();
     if (this.editMode) {
       const newInfo = this.signupForm.get("personalForm").value;
       this.dataService.updateUserInfo(newInfo)

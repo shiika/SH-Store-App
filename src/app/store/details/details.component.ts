@@ -72,6 +72,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   updateCart() {
     const newProduct = new Product(this.item.img, this.item.name, this.color, this.size, this.item.price, this.item.id, this.gender, this.category, 1);
+    
     if (this.editMode) {
       this.basket.editProduct(+this.item.id, newProduct);
     } else {

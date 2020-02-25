@@ -16,7 +16,14 @@ export class BasketService {
     }
 
     onFetchProducts(products: Product[]) {
-        this.productsBag.push(...products);
+        const productsMap = products.map(
+            (item, index) => {
+                const { img, name, color, size, price, id, gender, category, qty } = item;
+                const newItem = new Product(img, name, color, size, price, id, gender, category, qty);
+                return newItem
+            }
+        );
+        this.productsBag.push(...productsMap);
         this.loadProducts(this.productsInstance);
     }
 

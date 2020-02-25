@@ -79,14 +79,6 @@ export class AuthService {
         let userInfo: User;
         this.userAuthentication.pipe(take(1)).subscribe(user => { userInfo = user });
         return this.http.get<Product[]>(`https://shopping-store-1fe69.firebaseio.com/users/${userInfo.id}/products.json?auth=${userInfo.token}`)
-                .pipe(
-                  tap(
-                    (products: Product[]) => {
-                      console.log("from fetchBasket()");
-                      this.basket.onFetchProducts(products);
-                    }
-                  )
-                )
       }
 
     autoLogin() {
@@ -146,7 +138,16 @@ export class AuthService {
         this.router.navigate([this.redirectUrl]);
         this.autoLogout(+expiresIn * 1000);
         this.checkAdministration(email);
-        this.fetchBasket().pipe(take(1)).subscribe();
+        this.fetchBasket()
+            .pipe(
+                take(1),
+                tap(
+                    products => {
+                        this.basket.onFetchProducts(products);
+                    }
+                )
+            )
+            .subscribe();
     }
 
     checkAdministration(email: string) {

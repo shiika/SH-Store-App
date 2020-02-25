@@ -143,7 +143,9 @@ export class AuthService {
                 take(1),
                 tap(
                     products => {
-                        this.basket.onFetchProducts(products);
+                        if (products != null) {
+                            this.basket.onFetchProducts(products);
+                        }
                     }
                 )
             )

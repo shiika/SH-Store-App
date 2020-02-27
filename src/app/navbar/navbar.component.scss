@@ -138,9 +138,10 @@
       height: 18rem;
     }
 
-    .dropdown-menu {
+    .dropdown-menu:not(.navbar__login__dropdown) {
       display: none;
     }
+
   }
 
 }

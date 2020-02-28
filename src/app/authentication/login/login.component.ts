@@ -15,7 +15,7 @@ export class LoginComponent {
     constructor(private authService: AuthService, private router: Router) {}
     authObs: Observable<any>;
     errorMessage: string = null;
-    @ViewChild('authForm', {static: false}) authForm: NgForm;
+    @ViewChild('authForm') authForm: NgForm;
 
     @Output() closeComp: EventEmitter<any> = new EventEmitter<any>();
 

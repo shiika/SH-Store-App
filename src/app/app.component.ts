@@ -13,7 +13,7 @@ import { AuthService } from './shared/auth.service';
 })
 export class AppComponent implements OnInit {
   loginClosingSub: Subscription;
-  @ViewChild(PlaceholderDirective, {static: false}) hostDirective: PlaceholderDirective
+  @ViewChild(PlaceholderDirective, { static: false }) hostDirective: PlaceholderDirective
 
   constructor(
     private compFacRes: ComponentFactoryResolver,

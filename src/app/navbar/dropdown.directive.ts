@@ -8,12 +8,12 @@ export class DropdownDirective {
   constructor(private elRef: ElementRef, private renderer: Renderer2) {
   }
 
-  @HostListener("mouseenter") onHover() {
-      this.renderer.addClass(this.elRef.nativeElement.lastChild, "show");
+  @HostListener("mouseenter", ["$event"]) onHover(e) {
+      this.renderer.addClass(this.elRef.nativeElement.lastElementChild, "show");
   }
 
   @HostListener("mouseleave") onLeave() {
-      this.renderer.removeClass(this.elRef.nativeElement.lastChild, "show");
+      this.renderer.removeClass(this.elRef.nativeElement.lastElementChild, "show");
   }
   
 }

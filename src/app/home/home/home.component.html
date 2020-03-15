@@ -12,8 +12,10 @@
         <div class="col-10 home__container">
             <h1 class="text-uppercase m-2 home__heading text-center font-weight-normal">hazy<br class="d-block d-sm-none"> shade of spring</h1>
             <h3 class="home__label m-0">Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo.</h3>
-            <button type="button" class="home__button d-inline-block btn btn-primary text-uppercase text-white">check new
-              arrivals</button>
+            <div class="col-12 home__container__buttons d-flex justify-content-around">
+              <button type="button" [routerLink]="['/store/women']" class="home__button d-inline-block btn btn-primary text-uppercase text-white">Women arrivals</button>
+              <button type="button" [routerLink]="['/store/men']" class="home__button d-inline-block btn btn-primary text-uppercase text-white">Men arrivals</button>
+            </div>
           </div>
       </div>
     </div>

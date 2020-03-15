@@ -56,14 +56,14 @@ export class NavbarComponent implements OnInit {
         scrollEvent.pipe(
           debounceTime(17)
         ).subscribe(
-          e => {
+          (e: Event) => {
             this.onScroll(e);
             this.isCollapsed = false;
           }
         );
 
         window.addEventListener("click", (e) => {
-          if (this.navElement.nativeElement.contains(e.target)) {
+          if (this.navBtn.nativeElement.contains(e.target)) {
             this.isCollapsed = this.navBtn.nativeElement.contains(e.target) ? !this.isCollapsed : true;
           } else {
             this.isCollapsed = false;

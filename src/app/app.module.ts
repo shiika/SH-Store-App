@@ -12,6 +12,8 @@ import { AuthModule } from './authentication/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { PlaceholderDirective } from './placeholder.directive';
 import { HomeComponent } from './home/home/home.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { HomeComponent } from './home/home/home.component';
     AppRoutingModule,
     HttpClientModule,
     AuthModule,
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
 
   providers: [

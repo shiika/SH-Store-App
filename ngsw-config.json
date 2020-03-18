@@ -25,5 +25,19 @@
         ]
       }
     }
+  ],
+
+  "dataGroups": [
+    {
+      "name": "store",
+      "urls": [
+        "https://shopping-store-1fe69.firebaseio.com/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "6h",
+        "timeout": "7s"
+      }
+    }
   ]
 }

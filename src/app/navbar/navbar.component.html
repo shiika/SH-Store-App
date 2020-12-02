@@ -57,12 +57,11 @@
             </svg>
             <div class="dropdown" *ngIf="isAuthenticated; else login" appDropdown style="cursor: pointer;">
               {{ username }}
-              <span class="nav-link__caret dropdown-toggle">
+              <span class="nav-link__caret dropdown-toggle" *ngIf="!isAdmin">
               </span>
               <div class="dropdown-menu navbar__login__dropdown" *ngIf="isAuthenticated">
                 <a class="dropdown-item" *ngIf="!isAdmin" [routerLink]="['/account']" [fragment]="'editMode'">Edit Your Account</a>
                 <a class="dropdown-item" *ngIf="!isAdmin" [routerLink]="['/basket', userId, 'order-history']">Your Order History</a>
-                <a class="dropdown-item" *ngIf="!isAdmin">Your Favourites</a>
                 <a class="dropdown-item" (click)="logout()">Logout</a>
               </div>
             </div>

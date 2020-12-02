@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { Subscription, fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { concatMap, debounceTime } from 'rxjs/operators';
 import { User } from '../shared/user.model';
 import { DataService } from '../shared/data.service';
 import { BasketService } from '../shared/basket.service';
 import { Product } from '../shared/product.model';
+import { UserInfo } from '../shared/userInfo.model';
 
 @Component({
   selector: 'app-navbar',
@@ -34,16 +35,23 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
       this.isAdmin = false;
-      this.authService.userAuthentication.subscribe(
+      this.authService.userAuthentication
+      .subscribe(
         (user: User) => {
           this.isAuthenticated = !!user;
           if (user) {
             this.userId = user.id;
-            const newName = user.username.slice(0, user.username.indexOf(" "));
-            this.username = this.authService.checkAdministration(user.email) ? "Admin" : `Hey, ${newName}`;
             this.isAdmin = this.authService.checkAdministration(user.email);
-          }
-        });
+            this.dataService.getUserInfo()
+              .subscribe(
+                (userInfo: UserInfo) => {
+                  this.username = `Hey, ${this.isAdmin ? 'Admin' : userInfo.firstName}`;
+      
+                }
+              )
+        }
+      });
+        
 
       this.basket.productsLoader
                         .subscribe(

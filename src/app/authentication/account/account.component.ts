@@ -97,8 +97,8 @@ export class AccountComponent implements OnInit,OnDestroy, CanComponentDeactivat
       this.dataService.updateUserInfo(newInfo)
         .pipe(take(1))
         .subscribe(
-          _ => {
-            console.log(this.signupForm.get("personalForm"));
+          r => {
+            console.log(r);
           }
           )
     } else {

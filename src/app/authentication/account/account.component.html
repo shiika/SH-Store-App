@@ -2,18 +2,18 @@
 
 
 <div class="account">
-  <nav aria-label="breadcrumb" id="breadcrumb">
-    <ol class="breadcrumb bg-white">
-      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-      <li class="breadcrumb-item">Account</li>
-      <li class="breadcrumb-item active">{{editMode ? "Edit Information" : "Sign up"}}</li>
-    </ol>
-  </nav>
-
-  <h1 class="text-uppercase text-center">{{ editMode ? "Edit" : "Create" }} Your Account</h1>
-
+  
   <div class="container">
     <div class="row justify-content-center">
+      <nav aria-label="breadcrumb" id="breadcrumb" class="col-12">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+          <li class="breadcrumb-item">Account</li>
+          <li class="breadcrumb-item active">{{editMode ? "Edit Information" : "Sign up"}}</li>
+        </ol>
+      </nav>
+    
+      <h1 class="text-uppercase text-center col-12">{{ editMode ? "Edit" : "Create" }} Your Account</h1>
       <form class="col-8 mt-5 form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="row" [formGroup]="signupForm.get('personalForm')">
           <div class="form-group col-12 col-sm-6">

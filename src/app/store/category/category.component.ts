@@ -68,24 +68,16 @@ export class CategoryComponent implements OnInit, OnDestroy {
       .subscribe(
         (items: Item[]) => {
           this.items = items;
+          console.log(this.items);
         }
       )
     
   }
 
-  nextPage() {
-    this.page++;
-    this.inStock.navigatePage(this.page);
-  }
-
-  previousPage() {
-    this.page--;
-    this.inStock.navigatePage(this.page);
-  }
-
   navigateToPage(index: number) {
     this.page = +index;
     this.inStock.navigatePage(this.page);
+    this.inStock.loadFilteredItems(this.filterForm.value, this.page);
   }
 
   ngOnDestroy() {
